@@ -1,6 +1,8 @@
 <template>
   <v-app>
-
+    <v-main>
+      <router-view/>
+    </v-main>
   </v-app>
 </template>
 
@@ -8,9 +10,11 @@
 
 export default {
   name: 'App',
-
-  data: () => ({
-    //
-  }),
 };
 </script>
+
+<style scoped>
+.v-application {
+  background-color: #1a1a1a;
+}
+</style>
