@@ -1,6 +1,7 @@
 <template>
     <div>
-        <SecondaryHeader/>
+        <PageHeader/>
+        <ImageFadeTemplate/>
         <section class="description">
             <h1>Track Your Films</h1>
             <h1>Share With Friends</h1>
@@ -18,7 +19,8 @@
 <script>
 // import axios from "axios";
 // import cookies from 'vue-cookies';
-import SecondaryHeader from '@/components/SecondaryHeader.vue'
+import PageHeader from '@/components/PageHeader.vue'
+import ImageFadeTemplate from '@/components/ImageFadeTemplate.vue'
 import UserSignup from '@/components/UserSignup.vue'
 
     export default {
@@ -29,7 +31,8 @@ import UserSignup from '@/components/UserSignup.vue'
             }
         },
         components: {
-            SecondaryHeader,
+            PageHeader,
+            ImageFadeTemplate,
             UserSignup
         },
         methods: {

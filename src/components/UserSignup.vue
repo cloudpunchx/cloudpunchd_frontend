@@ -141,9 +141,7 @@ import router from '@/router';
                         password: this.password,
                     }
                 }).then((response)=>{
-                    this.clearTextBox();
-                    // update push when page is created
-                    router.push("/")
+                    router.push("/home")
                     cookies.set(`sessionToken`, response.data.token);
                     cookies.set(`userId`, response.data.userId);
                 }).catch((error)=>{
