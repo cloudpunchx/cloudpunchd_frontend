@@ -10,7 +10,8 @@
                 <label for="checkbox_toggle" class="hamburger">&#9776;</label>
                 <!-- NAVIGATION MENUS -->
                 <div class="menu">
-                    <li><a href="/">SIGN IN</a></li>
+                    <!-- MAKE USERNAME CHANGE FOR EACH PERSON LOGGED IN -->
+                    <li><a href="/">USERNAME*</a></li>
                     <li><a href="/">CREATE ACCOUNT</a></li>
                     <li class="services">
                         <a href="/">Services</a>
@@ -27,7 +28,7 @@
 
 <script>
     export default {
-        name: "PageHeader"
+        name: "SignedInHeader"
     }
 </script>
 

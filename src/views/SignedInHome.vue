@@ -1,16 +1,16 @@
 <template>
     <div>
-        <PageHeader/>
+        <SignedInHeader/>
     </div>
 </template>
 
 <script>
-import PageHeader from '@/components/PageHeader.vue'
+import SignedInHeader from '@/components/SignedInHeader.vue'
 
     export default {
         name: "SignedInHome",
         components: {
-            PageHeader
+            SignedInHeader
         }
     }
 </script>
