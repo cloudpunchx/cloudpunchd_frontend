@@ -11,7 +11,9 @@
             <div v-if="active" class="signUpPopOut">
                 <UserSignup/>
             </div>
-
+            <div>
+                <FeaturedMovies/>
+            </div>
         </section>
     </div>
 </template>
@@ -21,6 +23,7 @@
 // import cookies from 'vue-cookies';
 import PageHeader from '@/components/PageHeader.vue'
 import ImageFadeTemplate from '@/components/ImageFadeTemplate.vue'
+import FeaturedMovies from '@/components/FeaturedMovies.vue'
 import UserSignup from '@/components/UserSignup.vue'
 
     export default {
@@ -33,6 +36,7 @@ import UserSignup from '@/components/UserSignup.vue'
         components: {
             PageHeader,
             ImageFadeTemplate,
+            FeaturedMovies,
             UserSignup
         },
         methods: {
@@ -52,7 +56,7 @@ h1{
 .description{
     text-align: center;
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
@@ -63,7 +67,7 @@ h1{
 }
 .signUpPopOut{
     position: absolute;
-    top: -220%;
+    top: -200%;
     left: 50%;
     transform: translateX(-50%);
     width: 30vw;

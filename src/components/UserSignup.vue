@@ -141,9 +141,9 @@ import router from '@/router';
                         password: this.password,
                     }
                 }).then((response)=>{
-                    router.push("/home")
                     cookies.set(`sessionToken`, response.data.token);
                     cookies.set(`userId`, response.data.userId);
+                    router.push("/home")
                 }).catch((error)=>{
                     this.errorMsg = error;
                     this.clearTextBox();
