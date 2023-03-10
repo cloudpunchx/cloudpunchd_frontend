@@ -1,7 +1,7 @@
 <template>
     <v-form v-model="valid">
         <v-container class="signUpForm">
-            <h3>JOIN CLOUDPUNCHD</h3>
+            <h3>Join Cloudpunchd</h3>
             <v-row>
                 <v-col
                     cols="12"
@@ -10,7 +10,6 @@
                     <v-text-field
                     v-model="username"
                     :rules="usernameRules"
-                    :counter="20"
                     label="Username"
                     required
                     ></v-text-field>
@@ -23,7 +22,6 @@
                     <v-text-field
                     v-model="firstName"
                     :rules="nameRules"
-                    :counter="10"
                     label="First Name"
                     required
                     ></v-text-field>
@@ -36,7 +34,6 @@
                     <v-text-field
                     v-model="lastName"
                     :rules="nameRules"
-                    :counter="10"
                     label="Last Name"
                     required
                     ></v-text-field>
@@ -89,15 +86,10 @@ import router from '@/router';
         lastName: '',
         username: "",
         usernameRules: [
-        value => {
+            value => {
             if (value) return true
 
             return 'Username is required.'
-            },
-            value => {
-            if (value?.length <= 20) return true
-
-            return 'Username must be less than 20 characters.'
             },
         ],
         nameRules: [
@@ -105,11 +97,6 @@ import router from '@/router';
             if (value) return true
 
             return 'Name is required.'
-            },
-            value => {
-            if (value?.length <= 10) return true
-
-            return 'Name must be less than 10 characters.'
             },
         ],
         email: '',
@@ -163,6 +150,7 @@ import router from '@/router';
 
 <style scoped>
 .signUpForm{
+    width: 800px;
     background-color: whitesmoke;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 8px;

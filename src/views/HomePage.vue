@@ -6,11 +6,11 @@
             <h1>Track Your Films</h1>
             <h1>Share With Friends</h1>
             <div class="buttonContainer">
-                <v-btn @click="showModal = true" class="signUpPopOut" variant="tonal">
+                <v-btn @click="showModal = true" variant="tonal">
                 CREATE AN ACCOUNT
                 </v-btn>
             </div>
-            <div v-if="active" class="signUpPopOut">
+            <div v-if="active">
                 <UserSignup/>
             </div>
             <div class="featuredContainer">
@@ -84,15 +84,7 @@ h1{
     transform: translateX(-50%);
 }
 .v-btn{
-    width: 300px;
-}
-.signUpPopOut{
-    position: absolute;
-    top: -100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 250px;
-    z-index: 1;
+    width: 270px;
 }
 
 .featuredContainer{
@@ -100,23 +92,16 @@ h1{
 }
 
 .modal {
-    position: absolute;
     position: fixed;
-    top: 0;
+    top: 20%;
     right: 0;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     margin: auto;
     text-align: center;
-    width: fit-content;
-    height: fit-content;
-    max-width: 22em;
-    padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-    background: #FFF;
     z-index: 999;
-    transform: none;
 }
 
 .modal-overlay {

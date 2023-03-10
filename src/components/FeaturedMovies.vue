@@ -8,8 +8,7 @@
             >
                 <v-img
                     :src="movie.poster"
-                    aspect-ratio=".7"
-                    width="100"
+                    class="poster"
                 >
                     <template v-slot:placeholder>
                         <v-row
@@ -60,6 +59,6 @@ import axios from "axios";
 
 <style scoped>
 .poster{
-    width: 100vw;
+    height: 100%;
 }
 </style>
