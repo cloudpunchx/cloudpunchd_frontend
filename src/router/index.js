@@ -52,7 +52,7 @@ const routes = [
     ]
   },
   {
-    path: '/:userId',
+    path: '/:id',
     name: 'UserProfile',
     component: UserProfile,
     meta: [
