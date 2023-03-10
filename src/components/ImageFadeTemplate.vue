@@ -16,7 +16,7 @@
 
 <style scoped>
 .backdropFade{
-    height: 80vh;
+    height: 65vh;
     position: absolute;
     left: 50%;
     top: 0%;

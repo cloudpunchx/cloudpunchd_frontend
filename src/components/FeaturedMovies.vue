@@ -1,22 +1,20 @@
 <template>
     <div>
-        <v-row>
+        <v-row dense align-content="center" justify="center">
             <v-col
             v-for="movie in movies"
             :key="movie.id"
-            class="d-flex child-flex"
-            cols="4"
+            cols="1"
             >
                 <v-img
                     :src="movie.poster"
-                    aspect-ratio=".6"
-                    cover
-                    class="bg-grey-lighten-2"
+                    aspect-ratio=".7"
+                    width="100"
                 >
                     <template v-slot:placeholder>
                         <v-row
                             class="fill-height ma-0"
-                            align="center"
+                            align-content="center"
                             justify="center"
                         >
                             <v-progress-circular
@@ -61,5 +59,7 @@ import axios from "axios";
 </script>
 
 <style scoped>
-
+.poster{
+    width: 100vw;
+}
 </style>
