@@ -4,6 +4,7 @@ import HomePage from '../views/HomePage.vue'
 import SignedInHome from '../views/SignedInHome.vue'
 import UserProfile from '../views/UserProfile.vue'
 import WatchList from '../views/WatchList.vue'
+import MoviePage from '../views/MoviePage.vue'
 
 Vue.use(VueRouter)
 
@@ -53,7 +54,7 @@ const routes = [
     ]
   },
   {
-    path: '/:id',
+    path: '/:userId',
     name: 'UserProfile',
     component: UserProfile,
     meta: [
@@ -75,7 +76,7 @@ const routes = [
     ]
   },
   {
-    path: '/:id/watchlist',
+    path: '/:userId/watchlist',
     name: 'WatchList',
     component: WatchList,
     meta: [
@@ -85,6 +86,28 @@ const routes = [
       {
         name: "description",
         content: "User Watch List."
+      },
+      {
+        name: "keywords",
+        content: "cloudpunchd, movies, movie, social, track, watchlist, watched, film, films"
+      },
+      {
+        name: "author",
+        content: "Siobhan Bonardi"
+      }
+    ]
+  },
+  {
+    path: '/movie/:movieId',
+    name: 'MoviePage',
+    component: MoviePage,
+    meta: [
+      {
+        title: "Cloudpunchd | "
+      },
+      {
+        name: "description",
+        content: "Detailed Movie Page, add to watchlist, add to watched."
       },
       {
         name: "keywords",

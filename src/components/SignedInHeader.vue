@@ -2,7 +2,9 @@
     <div>
         <nav class="navbar">
             <!-- LOGO -->
-            <img class="logo" src="../assets/cloudpunchdLogo.png" alt="Cloudpunchd Logo">
+            <router-link to="/home" class="logo">
+                <img class="logo" src="../assets/cloudpunchdLogo.png" alt="Cloudpunchd Logo">
+            </router-link>
             <!-- NAVIGATION MENU -->
             <ul class="nav-links">
             <!-- USING CHECKBOX HACK -->
