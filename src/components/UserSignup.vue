@@ -128,9 +128,9 @@ import router from '@/router';
                         password: this.password,
                     }
                 }).then((response)=>{
-                    // COOKIES ARE NOT SETTING
-                    cookies.set(`sessionToken`, response);
-                    cookies.set(`userId`, response);
+                    // COOKIES ARE NOT SETTING, Debugger?
+                    cookies.set(`sessionToken`, response.data.token);
+                    cookies.set(`userId`, response.data.id);
                     router.push("/home")
                 }).catch((error)=>{
                     this.errorMsg = error;

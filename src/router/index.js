@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from '../views/HomePage.vue'
 import SignedInHome from '../views/SignedInHome.vue'
-import UserProfile from '../views/UserProfile'
+import UserProfile from '../views/UserProfile.vue'
+import WatchList from '../views/WatchList.vue'
 
 Vue.use(VueRouter)
 
@@ -61,7 +62,29 @@ const routes = [
       },
       {
         name: "description",
-        content: "User profile page for Cloudpunchd."
+        content: "User profile page."
+      },
+      {
+        name: "keywords",
+        content: "cloudpunchd, movies, movie, social, track, watchlist, watched, film, films"
+      },
+      {
+        name: "author",
+        content: "Siobhan Bonardi"
+      }
+    ]
+  },
+  {
+    path: '/:id/watchlist',
+    name: 'WatchList',
+    component: WatchList,
+    meta: [
+      {
+        title: "Cloudpunchd | Watchlist"
+      },
+      {
+        name: "description",
+        content: "User Watch List."
       },
       {
         name: "keywords",
