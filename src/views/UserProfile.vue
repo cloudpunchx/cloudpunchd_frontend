@@ -1,15 +1,18 @@
 <template>
     <div>
         <SignedInHeader/>
-        <section class="profileContainer" v-for="user in users" :key="user.id">
-            <v-avatar :src="user.profile_img" size="80"></v-avatar>
-            <h3>{{ user.username }}</h3>
-            <p>{{ user.bio }}</p>
+
+        <section class="profileContainer">
+            <v-avatar size="150"><v-img :src="profile_img"></v-img></v-avatar>
+            <div class="userInfo">
+                <h2>{{ username }}</h2>
+                <p class="bio">{{ bio }}</p>
+            </div>
+            
         </section>
+
     </div>
 </template>
-
-<!-- cookies aren't saving in browser, so that why its not loading -->
 
 <script>
 import axios from "axios";
@@ -24,7 +27,6 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
-                users: [],
                 token: "",
                 username: "",
                 firstName: "",
@@ -47,11 +49,13 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
                     headers: {
                         token: this.token
                     },
-                    params: {
-                        userId: this.$route.params.id
-                    }
                 }).then((response)=>{
-                    this.users = response.data;
+                    this.username = response.data.username;
+                    this.firstName = response.data.firstName;
+                    this.lastName = response.data.lastName;
+                    this.email = response.data.email;
+                    this.bio = response.data.bio;
+                    this.profile_img = response.data.profile_img;
                 }).catch((error)=>{
                     this.errorMsg = error;
                 })
@@ -66,7 +70,20 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
 
 <style scoped>
 .profileContainer{
-    color: black;
-    background-color: whitesmoke;
+    color: white;
+    background-color: #212529;
+    padding: 10px;
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.userInfo{
+    position: absolute;
+    top: 15%;
+    left: 19%;
+}
+.bio{
+    margin-top: 10px;
 }
 </style>

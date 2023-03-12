@@ -25,6 +25,40 @@
                 </v-img>
             </v-col>
         </v-row>
+
+        <!-- Dynamic Routing -->
+        <!-- <v-row dense align-content="center" justify="center">
+            <v-col
+            v-for="movie in movies"
+            :key="movie.id"
+            cols="1"
+            >   
+                <router-link
+                :to="{
+                    name: 'MoviePage',
+                    params: {movie: movie.id}
+                }"
+                >
+                    <v-img
+                    :src="movie.poster"
+                    class="poster"
+                    >
+                        <template v-slot:placeholder>
+                            <v-row
+                                class="fill-height ma-0"
+                                align-content="center"
+                                justify="center"
+                            >
+                                <v-progress-circular
+                                indeterminate
+                                color="grey-lighten-5"
+                                ></v-progress-circular>
+                            </v-row>
+                        </template>
+                    </v-img>
+                </router-link>
+            </v-col>
+        </v-row> -->
     </div>
 </template>
 

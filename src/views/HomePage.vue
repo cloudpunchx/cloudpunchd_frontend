@@ -43,17 +43,17 @@ import UserSignup from '@/components/UserSignup.vue'
 
     export default {
         name: "HomePage",
-        data() {
-            return {
-                active: false,
-                showModal: false,
-            }
-        },
         components: {
             PageHeader,
             ImageFadeTemplate,
             FeaturedMovies,
             UserSignup
+        },
+        data() {
+            return {
+                active: false,
+                showModal: false,
+            }
         },
         methods: {
             signUpPopOut() {

@@ -36,7 +36,7 @@
 <style scoped>
 .logo{
     width: 14vw;
-    left: 25%;
+    left: 22%;
     position: relative;
     z-index: 2;
 }

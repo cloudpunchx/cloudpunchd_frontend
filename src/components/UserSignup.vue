@@ -84,7 +84,7 @@ import router from '@/router';
         valid: false,
         firstName: '',
         lastName: '',
-        username: "",
+        username: '',
         usernameRules: [
             value => {
             if (value) return true
@@ -113,8 +113,8 @@ import router from '@/router';
             },
         ],
         }),
-        password: "",
-        errorMsg: "",
+        password: '',
+        errorMsg: '',
         methods: {
             userSignUp() {
                 axios.request({
@@ -128,10 +128,10 @@ import router from '@/router';
                         password: this.password,
                     }
                 }).then((response)=>{
-                    // COOKIES ARE NOT SETTING, Debugger?
-                    cookies.set(`sessionToken`, response.data.token);
-                    cookies.set(`userId`, response.data.id);
-                    router.push("/home")
+                    cookies.set(`userId`, response.data[0]);
+                    cookies.set(`sessionToken`, response.data[1]);
+                    // NEED TO VERIFY THE DYNAMIC ROUTER CHANGES FOR EACH USER
+                    router.push({name: 'UserProfile', params: {username: this.username}})
                 }).catch((error)=>{
                     this.errorMsg = error;
                     this.clearTextBox();
