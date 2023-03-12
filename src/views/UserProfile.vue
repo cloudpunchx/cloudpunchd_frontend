@@ -2,15 +2,20 @@
     <div>
         <SignedInHeader/>
 
+        <!-- LEAVING OFF STYLING PROFILE -->
+
         <section class="profileContainer">
             <v-avatar size="150"><v-img :src="profile_img"></v-img></v-avatar>
             <div class="userInfo">
                 <h2>{{ username }}</h2>
                 <p class="bio">{{ bio }}</p>
+                <router-link to="/settings" class="settingsLink">
+                    <v-btn variant="tonal">
+                    EDIT PROFILE
+                    </v-btn>
+                </router-link>
             </div>
-            
         </section>
-
     </div>
 </template>
 
@@ -22,7 +27,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
     export default {
         name: "UserProfile",
         components: {
-            SignedInHeader
+            SignedInHeader,
         },
         data() {
             return {
@@ -79,11 +84,18 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
     transform: translateX(-50%);
 }
 .userInfo{
-    position: absolute;
-    top: 15%;
-    left: 19%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 30px;
 }
 .bio{
     margin-top: 10px;
+}
+.v-btn{
+    font-size: 8pt;
+    width: 100px;
+}
+.settingsLink{
+    text-decoration: none;
 }
 </style>

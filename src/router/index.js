@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomePage from '../views/HomePage.vue'
 import SignedInHome from '../views/SignedInHome.vue'
 import UserProfile from '../views/UserProfile.vue'
+import EditProfile from '../views/EditProfile.vue'
 import WatchList from '../views/WatchList.vue'
 import MoviePage from '../views/MoviePage.vue'
 
@@ -64,6 +65,28 @@ const routes = [
       {
         name: "description",
         content: "User profile page."
+      },
+      {
+        name: "keywords",
+        content: "cloudpunchd, movies, movie, social, track, watchlist, watched, film, films"
+      },
+      {
+        name: "author",
+        content: "Siobhan Bonardi"
+      }
+    ]
+  },
+  {
+    path: '/settings',
+    name: 'EditProfile',
+    component: EditProfile,
+    meta: [
+      {
+        title: "Cloudpunchd | Edit Profile"
+      },
+      {
+        name: "description",
+        content: "Edit profile information."
       },
       {
         name: "keywords",
