@@ -1,37 +1,40 @@
 <template>
     <div>
         <PageHeader/>
-        <ImageFadeTemplate/>
-        <section class="description">
-            <h1>Track Your Films</h1>
-            <h1>Share With Friends</h1>
-            <div class="buttonContainer">
-                <v-btn @click="showModal = true" variant="tonal">
-                CREATE AN ACCOUNT
-                </v-btn>
-            </div>
-            <div v-if="active">
-                <UserSignup/>
-            </div>
-            <div class="featuredContainer">
-                <FeaturedMovies/>
-            </div>
-        </section>
+        <div>
+            <ImageFadeTemplate/>
+            <section class="description">
+                <h1>Track Your Films</h1>
+                <h1>Share With Friends</h1>
+                <div class="buttonContainer">
+                    <v-btn @click="showModal = true" variant="tonal">
+                    CREATE AN ACCOUNT
+                    </v-btn>
+                </div>
+                <div v-if="active">
+                    <UserSignup/>
+                </div>
+                <div class="featuredContainer">
+                    <FeaturedMovies/>
+                </div>
+            </section>
 
-        <transition name="fade" appear>
-            <div class="modal-overlay" 
-                v-if="showModal" 
-                @click="showModal = false"></div>
-        </transition>
-        <transition name="pop" appear>
-            <div class="modal" 
-            role="dialog" 
-            v-if="showModal"
-            >
-                <UserSignup/>
-            </div>
-        </transition>
+            <transition name="fade" appear>
+                <div class="modal-overlay" 
+                    v-if="showModal" 
+                    @click="showModal = false"></div>
+            </transition>
+            <transition name="pop" appear>
+                <div class="modal" 
+                role="dialog" 
+                v-if="showModal"
+                >
+                    <UserSignup/>
+                </div>
+            </transition>
+        </div>
 
+        <PageFooter/>
     </div>
 </template>
 
@@ -40,6 +43,7 @@ import PageHeader from '@/components/PageHeader.vue'
 import ImageFadeTemplate from '@/components/ImageFadeTemplate.vue'
 import FeaturedMovies from '@/components/FeaturedMovies.vue'
 import UserSignup from '@/components/UserSignup.vue'
+import PageFooter from '@/components/PageFooter.vue'
 
     export default {
         name: "HomePage",
@@ -47,7 +51,8 @@ import UserSignup from '@/components/UserSignup.vue'
             PageHeader,
             ImageFadeTemplate,
             FeaturedMovies,
-            UserSignup
+            UserSignup,
+            PageFooter
         },
         data() {
             return {

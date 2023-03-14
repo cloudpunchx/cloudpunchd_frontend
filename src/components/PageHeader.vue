@@ -13,14 +13,6 @@
                 <!-- NAVIGATION MENUS -->
                 <div class="menu">
                     <li><a href="/">SIGN IN</a></li>
-                    <li><a href="/">CREATE ACCOUNT</a></li>
-                    <li class="services">
-                        <a href="/">Services</a>
-                        <!-- DROPDOWN MENU -->
-                        <ul class="dropdown">
-                            <li><a href="/">Dropdown 1 </a></li>
-                        </ul>
-                    </li>
                 </div>
             </ul>   
         </nav>

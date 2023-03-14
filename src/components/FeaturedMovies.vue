@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="boxContainer">
         <v-row dense align-content="center" justify="center">
             <v-col
             v-for="movie in movies"
@@ -76,7 +76,8 @@ import axios from "axios";
         methods: {
             getFeaturedMovies() {
                 axios.request({
-                    url: "http://127.0.0.1:5000/api/movies-featured",
+                    // url: "http://127.0.0.1:5000/api/movies-featured",
+                    url: this.apiUrl+"/movies-featured",
                     method: "GET",
                 }).then((response)=>{
                     this.movies = response.data;
@@ -94,5 +95,12 @@ import axios from "axios";
 <style scoped>
 .poster{
     height: 100%;
+}
+.boxContainer{
+    background-color: #212120;
+    padding: 30px;
+    width: 100vw;
+    margin-top: 150px;
+    margin-bottom: 500px;
 }
 </style>

@@ -2,6 +2,7 @@
     <div>
         <SignedInHeader/>
 
+        <!-- API CALL NOT WORKING -->
         <div>
             <v-row dense align-content="center" justify="center">
                 <v-col
@@ -33,8 +34,9 @@
 </template>
 
 <script>
-import SignedInHeader from '@/components/SignedInHeader.vue'
 import axios from "axios";
+import cookies from 'vue-cookies';
+import SignedInHeader from '@/components/SignedInHeader.vue'
 
     export default {
         name: "WatchList",
@@ -44,14 +46,23 @@ import axios from "axios";
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
-                watchList: [],
+                token: "",
+                watchList: []
             }
         },
         methods: {
+            getToken(){
+                this.token = cookies.get(`sessionToken`);
+            },
+            // FUNCTION NOT WORKING
             getUserWatchList() {
                 axios.request({
+                    // url: this.apiUrl+"/watchlist",
                     url: "http://127.0.0.1:5000/api/user-watchlist",
                     method: "GET",
+                    headers: {
+                        token: this.token
+                    }
                 }).then((response)=>{
                     this.watchList = response.data;
                 }).catch((error)=>{
@@ -60,7 +71,8 @@ import axios from "axios";
             },
         },
         mounted () {
-            this.getUserWatchList();
+            this.getToken();
+            this.getUserWatchList;
         },
     }
 </script>
