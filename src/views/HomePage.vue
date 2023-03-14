@@ -88,7 +88,7 @@ h1{
 }
 
 .v-btn:hover {
-    background-color: #ffc300;
+    background-color: #4c9e9e;
 }
 
 .featuredContainer{

@@ -99,7 +99,7 @@ const routes = [
     ]
   },
   {
-    path: '/:userId/watchlist',
+    path: '/:username/watchlist',
     name: 'WatchList',
     component: WatchList,
     meta: [

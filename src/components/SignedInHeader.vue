@@ -12,9 +12,8 @@
                 <label for="checkbox_toggle" class="hamburger">&#9776;</label>
                 <!-- NAVIGATION MENUS -->
                 <div class="menu">
-                    <!-- MAKE USERNAME CHANGE FOR EACH PERSON LOGGED IN -->
-                    <li><a href="/">USERNAME*</a></li>
-                    <li><a href="/">CREATE ACCOUNT</a></li>
+                    <li><router-link :to="'/user/'+username">{{ username }}</router-link></li>
+                    <li><router-link :to="username+'/watchlist'">WATCHLIST</router-link></li>
                     <li class="services">
                         <a href="/">Services</a>
                         <!-- DROPDOWN MENU -->
@@ -29,8 +28,40 @@
 </template>
 
 <script>
+import axios from "axios";
+import cookies from 'vue-cookies';
+
     export default {
-        name: "SignedInHeader"
+        name: "SignedInHeader",
+        data() {
+            return {
+                apiUrl : process.env.VUE_APP_API_URL,
+                token: "",
+                username: "",
+            }
+        },
+        methods: {
+            getToken(){
+                this.token = cookies.get(`sessionToken`);
+            },
+            get_user_profile(){
+                axios.request({
+                    url: "http://127.0.0.1:5000/api/user",
+                    method: "GET",
+                    headers: {
+                        token: this.token
+                    },
+                }).then((response)=>{
+                    this.username = response.data.username;
+                }).catch((error)=>{
+                    this.errorMsg = error;
+                })
+            },
+        },
+        created (){
+            this.getToken();
+            this.get_user_profile();
+        }
     }
 </script>
 
@@ -64,6 +95,7 @@
 
 li{
     list-style-type: none;
+    text-transform: uppercase;
 }
 
 /* NAVBAR MENU */
