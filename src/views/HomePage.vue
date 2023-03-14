@@ -87,6 +87,10 @@ h1{
     width: 270px;
 }
 
+.v-btn:hover {
+    background-color: #ffc300;
+}
+
 .featuredContainer{
     margin-top: 100px;
 }

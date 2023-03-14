@@ -16,6 +16,7 @@
                 </router-link>
             </div>
         </section>
+
     </div>
 </template>
 
@@ -95,7 +96,11 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
     font-size: 8pt;
     width: 100px;
 }
+.v-btn:hover {
+    background-color: #ffc300;
+}
 .settingsLink{
     text-decoration: none;
 }
+
 </style>

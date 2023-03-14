@@ -130,7 +130,6 @@ import router from '@/router';
                 }).then((response)=>{
                     cookies.set(`userId`, response.data[0]);
                     cookies.set(`sessionToken`, response.data[1]);
-                    // NEED TO VERIFY THE DYNAMIC ROUTER CHANGES FOR EACH USER
                     router.push({name: 'UserProfile', params: {username: this.username}})
                 }).catch((error)=>{
                     this.errorMsg = error;
