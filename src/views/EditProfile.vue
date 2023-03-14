@@ -86,11 +86,11 @@
                     ></v-text-field>
                 </v-col>
             </v-row>
-            <v-btn @click="editProfile" variant="tonal">
+            <v-btn @click="edit_user_profile" variant="tonal">
                 SUBMIT
             </v-btn>
-            <div v-if="errorMsg">
-                <p class="errorText">{{ errorMsg }}</p>
+            <div v-if="feedbackMsg">
+                <p class="feedback">{{ feedbackMsg }}</p>
             </div>
         </v-container>
     </v-form>
@@ -118,7 +118,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
                 password: "",
                 bio: "",
                 profile_img: "",
-                errorMsg: "",
+                feedbackMsg: "",
             }
         },
         methods: {
@@ -140,9 +140,32 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
                     this.bio = response.data.bio;
                     this.profile_img = response.data.profile_img;
                 }).catch((error)=>{
-                    this.errorMsg = error;
+                    this.feedbackMsg = error;
                 })
             },
+            edit_user_profile(){
+                axios.request({
+                    url: "http://127.0.0.1:5000/api/user",
+                    method: "PATCH",
+                    headers: {
+                        token: this.token
+                    },
+                    data: {
+                        username: this.username,
+                        firstName: this.firstName,
+                        lastName: this.lastName,
+                        email: this.email,
+                        password: this.password,
+                        bio: this.bio,
+                        profileImg: this.profile_img
+                    }
+                }).then(()=>{
+                    this.feedbackMsg = "Successfully edited profile";
+                    this.password = ""
+                }).catch((error)=>{
+                    this.feedbackMsg = error;
+                })
+            }
         },
         created (){
             this.getToken();
@@ -170,7 +193,7 @@ h3{
 .v-btn:hover {
     background-color: #ffc300;
 }
-.errorText{
+.feedback{
     margin-top: 30px;
 }
 </style>
