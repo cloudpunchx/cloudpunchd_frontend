@@ -12,13 +12,13 @@
                 <label for="checkbox_toggle" class="hamburger">&#9776;</label>
                 <!-- NAVIGATION MENUS -->
                 <div class="menu">
-                    <li><router-link :to="'/user/'+username">{{ username }}</router-link></li>
-                    <li><router-link :to="username+'/watchlist'">WATCHLIST</router-link></li>
+                    <!-- <li><router-link :to="'/user/'+username">{{ username }}</router-link></li> -->
+                    <!-- <li><router-link :to="username+'/watchlist'">WATCHLIST</router-link></li> -->
                     <li class="services">
-                        <a href="/">Services</a>
+                        <router-link :to="'/user/'+username">{{ username }}</router-link>
                         <!-- DROPDOWN MENU -->
                         <ul class="dropdown">
-                            <li><a href="/">Dropdown 1 </a></li>
+                            <li><router-link :to="username+'/watchlist'">WATCHLIST</router-link></li>
                         </ul>
                     </li>
                 </div>

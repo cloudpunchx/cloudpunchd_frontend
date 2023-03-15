@@ -8,20 +8,51 @@
             <!-- NAVIGATION MENU -->
             <ul class="nav-links">
             <!-- USING CHECKBOX HACK -->
-                <input type="checkbox" id="checkbox_toggle" />
+                <input type="checkbox" id="checkbox_toggle"/>
                 <label for="checkbox_toggle" class="hamburger">&#9776;</label>
                 <!-- NAVIGATION MENUS -->
                 <div class="menu">
-                    <li><a href="/">SIGN IN</a></li>
+                    <li><button @click="showModal = true">SIGN IN</button></li>
                 </div>
             </ul>   
         </nav>
+
+        <transition name="fade" appear>
+                <div class="modal-overlay" 
+                    v-if="showModal" 
+                    @click="showModal = false"></div>
+            </transition>
+            <transition name="pop" appear>
+                <div class="modal" 
+                role="dialog" 
+                v-if="showModal"
+                >
+                    <UserLogin/>
+                </div>
+            </transition>
+        
     </div>
 </template>
 
 <script>
+import UserLogin from '@/components/UserLogin.vue'
+
     export default {
-        name: "PageHeader"
+        name: "PageHeader",
+        components: {
+            UserLogin,
+        },
+        data() {
+            return {
+                active: false,
+                showModal: false,
+            }
+        },
+        methods: {
+            signUpPopOut() {
+                this.active = !this.active;
+            }
+        }
     }
 </script>
 
@@ -62,8 +93,7 @@ li{
 .menu {
     display: flex;
     gap: 1em;
-    /* font-size: 18px; */
-    font-size: 1em;
+    font-size: 22px;
 }
 
 .menu li:hover {
@@ -115,6 +145,57 @@ li{
 input[type=checkbox]{
     display: none;
 } 
+
+/* Pop Up for Sign In */
+.modal {
+    position: fixed;
+    top: 20%;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    text-align: center;
+    border-radius: 1rem;
+    z-index: 999;
+}
+
+.modal-overlay {
+    content: '';
+    position: absolute;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 998;
+    background: #505153;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+/* Modal Overlay Transition */
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .4s linear;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.pop-enter-active,
+.pop-leave-active {
+    transition: transform 0.4s cubic-bezier(0.5, 0, 0.5, 1), opacity 0.4s linear;
+}
+
+.pop-enter,
+.pop-leave-to {
+    opacity: 0;
+    transform: scale(0.3) translateY(-50%);
+}
 
 /*HAMBURGER MENU*/
 

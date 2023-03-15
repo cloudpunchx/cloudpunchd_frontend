@@ -1,75 +1,65 @@
 <template>
-    <v-form v-model="valid">
-        <v-container class="signUpForm">
-            <h3>Join Cloudpunchd</h3>
-            <v-row>
-                <v-col
-                    cols="12"
-                    md="4"
-                >
-                    <v-text-field
+    <div>
+        <v-card
+            class="mx-auto"
+            max-width="600"
+            title="User Registration"
+        >
+            <v-container class="signUpForm">
+                <h3>Join Cloudpunchd</h3>
+                <v-text-field
                     v-model="username"
                     :rules="usernameRules"
+                    color="rgb(1, 139, 139)"
                     label="Username"
-                    required
-                    ></v-text-field>
-                </v-col>
+                    variant="underlined"
+                ></v-text-field>
 
-                <v-col
-                    cols="12"
-                    md="4"
-                >
-                    <v-text-field
+                <v-text-field
                     v-model="firstName"
                     :rules="nameRules"
+                    color="rgb(1, 139, 139)"
                     label="First Name"
-                    required
-                    ></v-text-field>
-                </v-col>
-        
-                <v-col
-                    cols="12"
-                    md="4"
-                >
-                    <v-text-field
+                    variant="underlined"
+                ></v-text-field>
+
+                <v-text-field
                     v-model="lastName"
                     :rules="nameRules"
+                    color="rgb(1, 139, 139)"
                     label="Last Name"
-                    required
-                    ></v-text-field>
-                </v-col>
-        
-                <v-col
-                    cols="12"
-                    md="4"
-                >
-                    <v-text-field
+                    variant="underlined"
+                ></v-text-field>
+
+                <v-text-field
                     v-model="email"
                     :rules="emailRules"
-                    label="E-mail"
-                    required
-                    ></v-text-field>
-                </v-col>
+                    color="rgb(1, 139, 139)"
+                    label="Email"
+                    variant="underlined"
+                ></v-text-field>
 
-                <v-col
-                    cols="12"
-                    md="4"
-                >
-                    <v-text-field
+                <v-text-field
                     v-model="password"
+                    color="rgb(1, 139, 139)"
                     label="Password"
-                    required
-                    ></v-text-field>
-                </v-col>
-            </v-row>
-            <v-btn @click="userSignUp" variant="tonal">
-                SUBMIT
-            </v-btn>
-            <div v-if="errorMsg">
-                <p class="errorText">{{ errorMsg }}</p>
-            </div>
-        </v-container>
-    </v-form>
+                    variant="underlined"
+                ></v-text-field>
+
+                <v-checkbox
+                    v-model="terms"
+                    color="rgb(1, 139, 139)"
+                    label="I agree to site terms and conditions"
+                ></v-checkbox>
+                <v-btn @click="userSignUp" variant="tonal">
+                    SUBMIT
+                </v-btn>
+                <div v-if="errorMsg">
+                    <p class="errorText">{{ errorMsg }}</p>
+                </div>
+            </v-container>
+        </v-card>
+    </div>
 </template>
 
 <script>
@@ -115,6 +105,7 @@ import router from '@/router';
         }),
         password: '',
         errorMsg: '',
+        terms: false,
         methods: {
             userSignUp() {
                 axios.request({
@@ -150,18 +141,23 @@ import router from '@/router';
 
 <style scoped>
 .signUpForm{
-    width: 800px;
-    background-color: whitesmoke;
+    background-color: white;  
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 8px;
     padding: 40px;
 }
 h3{
     margin-bottom: 20px;
-    color: rgb(81, 80, 80);
+    color: black;
 }
 .v-btn{
-    margin-top: 25px;
+    margin-top: 15px;
+    width: 150px;
+}
+.v-btn:hover{
+    color: white;
+    background-color: rgb(1, 139, 139);
+    margin-top: 15px;
     width: 150px;
 }
 .errorText{

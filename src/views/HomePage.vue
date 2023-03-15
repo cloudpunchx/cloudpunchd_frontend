@@ -11,9 +11,10 @@
                     CREATE AN ACCOUNT
                     </v-btn>
                 </div>
-                <div v-if="active">
+                <!-- I THINK I CAN DELETE THIS -->
+                <!-- <div v-if="active">
                     <UserSignup/>
-                </div>
+                </div> -->
                 <div class="featuredContainer">
                     <FeaturedMovies/>
                 </div>
