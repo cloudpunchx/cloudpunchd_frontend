@@ -2,8 +2,6 @@
     <div>
         <SignedInHeader/>
 
-        <!-- LEAVING OFF STYLING PROFILE -->
-
         <section class="profileContainer">
             <v-avatar size="150"><v-img :src="profile_img"></v-img></v-avatar>
             <div class="userInfo">
@@ -17,18 +15,22 @@
             </div>
         </section>
 
+        <UserTopFour/>
     </div>
 </template>
 
 <script>
 import axios from "axios";
 import cookies from 'vue-cookies';
+// import router from '@/router';
 import SignedInHeader from '@/components/SignedInHeader.vue'
+import UserTopFour from '@/components/UserTopFour.vue'
 
     export default {
         name: "UserProfile",
         components: {
             SignedInHeader,
+            UserTopFour
         },
         data() {
             return {
