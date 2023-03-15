@@ -30,6 +30,7 @@
                 </v-col>
             </v-row>
         </div>
+
     </div>
 </template>
 
@@ -54,11 +55,9 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
             getToken(){
                 this.token = cookies.get(`sessionToken`);
             },
-            // FUNCTION NOT WORKING
             getUserWatchList() {
                 axios.request({
-                    // url: this.apiUrl+"/watchlist",
-                    url: "http://127.0.0.1:5000/api/user-watchlist",
+                    url: this.apiUrl+"/user-watchlist",
                     method: "GET",
                     headers: {
                         token: this.token
@@ -72,7 +71,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
         },
         mounted () {
             this.getToken();
-            this.getUserWatchList;
+            this.getUserWatchList();
         },
     }
 </script>

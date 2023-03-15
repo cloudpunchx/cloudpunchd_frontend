@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pageContainer">
         <PageHeader/>
         <div>
             <ImageFadeTemplate/>
