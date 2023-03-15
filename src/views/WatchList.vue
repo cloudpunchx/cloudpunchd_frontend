@@ -2,8 +2,15 @@
     <div>
         <SignedInHeader/>
 
-        <!-- API CALL NOT WORKING -->
-        <div>
+        <section class="profileContainer">
+            <v-avatar size="80"><v-img :src="profile_img"></v-img></v-avatar>
+            <div class="userInfo">
+                <h4>{{ username }}</h4>
+                <h4>you want to watch {{ watchListCount }} films</h4>
+            </div>
+        </section>
+        
+        <div class="watchlistContainer">
             <v-row dense align-content="center" justify="center">
                 <v-col
                 v-for="movie in watchList"
@@ -48,12 +55,29 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
                 token: "",
-                watchList: []
+                username: "",
+                profile_img: "",
+                watchList: [],
+                watchListCount: null
             }
         },
         methods: {
             getToken(){
                 this.token = cookies.get(`sessionToken`);
+            },
+            getUserProfile(){
+                axios.request({
+                    url: "http://127.0.0.1:5000/api/user",
+                    method: "GET",
+                    headers: {
+                        token: this.token
+                    },
+                }).then((response)=>{
+                    this.username = response.data.username;
+                    this.profile_img = response.data.profile_img;
+                }).catch((error)=>{
+                    this.errorMsg = error;
+                })
             },
             getUserWatchList() {
                 axios.request({
@@ -68,16 +92,48 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
                     console.log(error);
                 })
             },
+            getWatchListCount() {
+                axios.request({
+                    url: this.apiUrl+"/user-watchlist-count",
+                    method: "GET",
+                    headers: {
+                        token: this.token
+                    }
+                }).then((response)=>{
+                    this.watchListCount = response.data;
+                }).catch((error)=>{
+                    console.log(error);
+                })
+            }
         },
         mounted () {
             this.getToken();
             this.getUserWatchList();
+            this.getUserProfile();
+            this.getWatchListCount();
         },
     }
 </script>
 
 <style scoped>
+.profileContainer{
+    color: white;
+    background-color: #212120;
+    padding: 10px;
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.userInfo{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 30px;
+}
 .poster{
     height: 100%;
+}
+.watchlistContainer{
+    margin-top: 50px;
 }
 </style>

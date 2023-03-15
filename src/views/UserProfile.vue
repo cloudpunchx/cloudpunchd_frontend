@@ -48,7 +48,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
             getToken(){
                 this.token = cookies.get(`sessionToken`);
             },
-            get_user_profile(){
+            getUserProfile(){
                 axios.request({
                     url: "http://127.0.0.1:5000/api/user",
                     method: "GET",
@@ -69,7 +69,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
         },
         created (){
             this.getToken();
-            this.get_user_profile();
+            this.getUserProfile();
         }
     }
 </script>
@@ -77,7 +77,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
 <style scoped>
 .profileContainer{
     color: white;
-    background-color: #212529;
+    background-color: #212120;
     padding: 10px;
     width: 50%;
     position: relative;
