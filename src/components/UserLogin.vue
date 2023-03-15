@@ -1,41 +1,5 @@
 <template>
     <div>
-        <!-- <v-form>
-            <v-container class="signUpForm">
-                <h3>Sign In</h3>
-                <v-row>
-                    <v-col
-                        cols="12"
-                        md="4"
-                    >
-                        <v-text-field
-                        v-model="email"
-                        :rules="emailRules"
-                        label="E-mail"
-                        required
-                        ></v-text-field>
-                    </v-col>
-
-                    <v-col
-                        cols="12"
-                        md="4"
-                    >
-                        <v-text-field
-                        v-model="password"
-                        label="Password"
-                        required
-                        ></v-text-field>
-                    </v-col>
-                </v-row>
-                <v-btn @click="userLogin" variant="tonal">
-                    SUBMIT
-                </v-btn>
-                <div v-if="feedbackMsg">
-                    <p class="feedbackContainer">{{ feedbackMsg }}</p>
-                </div>
-            </v-container>
-        </v-form> -->
-
         <v-card class="mx-auto px-6 py-8" max-width="400">
             <h3>Sign In</h3>
             <v-form
@@ -102,7 +66,7 @@ import router from '@/router';
         methods: {
             userLogin(){
                 axios.request({
-                    url: this.apiUrl+"user-login",
+                    url: this.apiUrl+"/user-login",
                     method: "POST",
                     data: {
                         email: this.email,

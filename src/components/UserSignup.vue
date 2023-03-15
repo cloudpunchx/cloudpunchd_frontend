@@ -51,7 +51,11 @@
                     color="rgb(1, 139, 139)"
                     label="I agree to site terms and conditions"
                 ></v-checkbox>
-                <v-btn @click="userSignUp" variant="tonal">
+                <v-btn
+                block
+                variant="tonal"
+                @click="userSignUp"
+                >
                     SUBMIT
                 </v-btn>
                 <div v-if="errorMsg">
@@ -152,13 +156,11 @@ h3{
 }
 .v-btn{
     margin-top: 15px;
-    width: 150px;
 }
 .v-btn:hover{
     color: white;
     background-color: rgb(1, 139, 139);
     margin-top: 15px;
-    width: 150px;
 }
 .errorText{
     margin-top: 30px;

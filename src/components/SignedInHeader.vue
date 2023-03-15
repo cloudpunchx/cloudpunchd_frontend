@@ -12,13 +12,12 @@
                 <label for="checkbox_toggle" class="hamburger">&#9776;</label>
                 <!-- NAVIGATION MENUS -->
                 <div class="menu">
-                    <!-- <li><router-link :to="'/user/'+username">{{ username }}</router-link></li> -->
-                    <!-- <li><router-link :to="username+'/watchlist'">WATCHLIST</router-link></li> -->
                     <li class="services">
                         <router-link :to="'/user/'+username">{{ username }}</router-link>
                         <!-- DROPDOWN MENU -->
                         <ul class="dropdown">
                             <li><router-link :to="username+'/watchlist'">WATCHLIST</router-link></li>
+                            <li><UserLogout/></li>
                         </ul>
                     </li>
                 </div>
@@ -30,9 +29,13 @@
 <script>
 import axios from "axios";
 import cookies from 'vue-cookies';
+import UserLogout from '@/components/UserLogout.vue'
 
     export default {
         name: "SignedInHeader",
+        components: {
+            UserLogout,
+        },
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
