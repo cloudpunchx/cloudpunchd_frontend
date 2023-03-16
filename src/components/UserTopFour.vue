@@ -1,5 +1,8 @@
 <template>
     <div>
+
+            <!-- LEAVING OFF MAKING CHECK CONSTRAINT OR SOMETHING TO LIMIT TOP 4 -->
+
         <v-row dense align-content="center" justify="center">
             <v-col
             v-for="movie in movies"

@@ -1,4 +1,4 @@
-<template>
++-<template>
     <div>
         <SignedInHeader/>
 
@@ -17,23 +17,28 @@
                 :key="movie.id"
                 cols="1"
                 >
-                    <v-img
-                        :src="movie.poster"
-                        class="poster"
+                    <router-link
+                    :to="'/movie/' + movie.MovieName + '/' + movie.ID"
+                    
                     >
-                        <template v-slot:placeholder>
-                            <v-row
-                                class="fill-height ma-0"
-                                align-content="center"
-                                justify="center"
-                            >
-                                <v-progress-circular
-                                indeterminate
-                                color="grey-lighten-5"
-                                ></v-progress-circular>
-                            </v-row>
-                        </template>
-                    </v-img>
+                        <v-img
+                            :src="movie.poster"
+                            class="poster"
+                        >
+                            <template v-slot:placeholder>
+                                <v-row
+                                    class="fill-height ma-0"
+                                    align-content="center"
+                                    justify="center"
+                                >
+                                    <v-progress-circular
+                                    indeterminate
+                                    color="grey-lighten-5"
+                                    ></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
+                    </router-link>
                 </v-col>
             </v-row>
         </div>
@@ -132,6 +137,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
 }
 .poster{
     height: 100%;
+    border: 1px rgb(97, 97, 97) solid;
 }
 .watchlistContainer{
     margin-top: 50px;
