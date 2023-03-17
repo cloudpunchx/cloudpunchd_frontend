@@ -6,6 +6,8 @@
         <div class="titleContainer">
             <h1>Welcome back {{ username }}, let's find something to watch.</h1>
         </div>
+
+        <PageFooter/>
     </div>
 </template>
 
@@ -13,17 +15,19 @@
 import axios from "axios";
 import cookies from 'vue-cookies';
 import SignedInHeader from '@/components/SignedInHeader.vue'
+import PageFooter from '@/components/PageFooter.vue'
 
     export default {
         name: "SignedInHome",
         components: {
-            SignedInHeader
+            SignedInHeader,
+            PageFooter
         },
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
                 token: "",
-                username: ""
+                username: "",
             }
         },
         methods: {
@@ -53,7 +57,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
 
 <style scoped>
 .header{
-    background-color: #212120;
+    background-color: #252422;
 }
 .titleContainer{
     color: white;

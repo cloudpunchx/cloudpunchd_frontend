@@ -123,6 +123,9 @@ import cookies from 'vue-cookies';
 .poster{
     border: 1px rgb(97, 97, 97) solid;
 }
+.poster:hover{
+    transform: scale(1.05);
+}
 .infoContainer{
     color: white;
     position: fixed;

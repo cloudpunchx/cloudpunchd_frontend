@@ -24,7 +24,7 @@
             <v-divider class="divider" color="#adb5bd"></v-divider>
             <RecentlyWatched/>
         </section>
-        
+        <PageFooter/>
     </div>
 </template>
 
@@ -35,13 +35,15 @@ import cookies from 'vue-cookies';
 import SignedInHeader from '@/components/SignedInHeader.vue'
 import UserTopFour from '@/components/UserTopFour.vue'
 import RecentlyWatched from '@/components/RecentlyWatched.vue'
+import PageFooter from '@/components/PageFooter.vue'
 
     export default {
         name: "UserProfile",
         components: {
             SignedInHeader,
             UserTopFour,
-            RecentlyWatched
+            RecentlyWatched,
+            PageFooter
         },
         data() {
             return {
@@ -90,7 +92,6 @@ import RecentlyWatched from '@/components/RecentlyWatched.vue'
 <style scoped>
 .profileContainer{
     color: white;
-    background-color: #212120;
     padding: 10px;
     width: 50%;
     position: relative;

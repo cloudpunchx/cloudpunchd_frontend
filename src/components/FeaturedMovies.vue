@@ -66,6 +66,9 @@ import axios from "axios";
     height: 100%;
     border: 1px rgb(97, 97, 97) solid;
 }
+.poster:hover{
+    transform: scale(1.05);
+}
 .boxContainer{
     background-color: #212120;
     padding: 30px;

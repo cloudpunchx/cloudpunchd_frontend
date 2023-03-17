@@ -14,6 +14,7 @@
                 <div class="featuredContainer">
                     <FeaturedMovies/>
                 </div>
+                <PageFooter/>
             </section>
 
             <transition name="fade" appear>
@@ -30,8 +31,6 @@
                 </div>
             </transition>
         </div>
-
-        <PageFooter/>
     </div>
 </template>
 
@@ -72,6 +71,7 @@ h1{
     font-size: 30pt;
 }
 .description{
+    background-color: #252422;
     text-align: center;
     position: absolute;
     top: 50%;
@@ -145,4 +145,5 @@ h1{
     opacity: 0;
     transform: scale(0.3) translateY(-50%);
 }
+
 </style>
