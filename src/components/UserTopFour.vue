@@ -1,6 +1,5 @@
 <template>
     <div>
-            <!-- LEAVING OFF MAKING CHECK CONSTRAINT OR SOMETHING TO LIMIT TOP 4 -->
         <div class="container">
             <v-row dense justify="start">
                 <v-col
