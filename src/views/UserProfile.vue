@@ -19,6 +19,11 @@
             <v-divider class="divider" color="#adb5bd"></v-divider>
             <UserTopFour/>
         </section>
+        <section class="recentlyWatchedContainer">
+            <h4>RECENTLY WATCHED</h4>
+            <v-divider class="divider" color="#adb5bd"></v-divider>
+            <RecentlyWatched/>
+        </section>
         
     </div>
 </template>
@@ -29,12 +34,14 @@ import cookies from 'vue-cookies';
 // import router from '@/router';
 import SignedInHeader from '@/components/SignedInHeader.vue'
 import UserTopFour from '@/components/UserTopFour.vue'
+import RecentlyWatched from '@/components/RecentlyWatched.vue'
 
     export default {
         name: "UserProfile",
         components: {
             SignedInHeader,
-            UserTopFour
+            UserTopFour,
+            RecentlyWatched
         },
         data() {
             return {
@@ -117,5 +124,11 @@ import UserTopFour from '@/components/UserTopFour.vue'
 }
 .divider{
     width: 34%;
+}
+.recentlyWatchedContainer{
+    color: #adb5bd;
+    margin-top: 300px;
+    position: fixed;
+    left: 500px;
 }
 </style>
