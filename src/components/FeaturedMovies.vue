@@ -8,7 +8,6 @@
             >   
                 <router-link
                 :to="'/movie/' + movie.MovieName + '/' + movie.ID"
-                
                 >
                     <v-img
                     :src="movie.Poster"

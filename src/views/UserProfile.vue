@@ -14,8 +14,12 @@
                 </router-link>
             </div>
         </section>
-
-        <UserTopFour/>
+        <section class="topFourContainer">
+            <h4>FAVOURITE FILMS</h4>
+            <v-divider class="divider" color="#adb5bd"></v-divider>
+            <UserTopFour/>
+        </section>
+        
     </div>
 </template>
 
@@ -52,7 +56,7 @@ import UserTopFour from '@/components/UserTopFour.vue'
             },
             getUserProfile(){
                 axios.request({
-                    url: "http://127.0.0.1:5000/api/user",
+                    url: this.apiUrl+"/user",
                     method: "GET",
                     headers: {
                         token: this.token
@@ -85,6 +89,7 @@ import UserTopFour from '@/components/UserTopFour.vue'
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    margin-top: 20px;
 }
 .userInfo{
     display: inline-block;
@@ -99,10 +104,18 @@ import UserTopFour from '@/components/UserTopFour.vue'
     width: 100px;
 }
 .v-btn:hover {
-    background-color: #ffc300;
+    background-color: #4c9e9e;
 }
 .settingsLink{
     text-decoration: none;
 }
-
+.topFourContainer{
+    color: #adb5bd;
+    margin-top: 30px;
+    position: fixed;
+    left: 500px;
+}
+.divider{
+    width: 34%;
+}
 </style>

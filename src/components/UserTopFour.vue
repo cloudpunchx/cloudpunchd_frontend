@@ -1,38 +1,44 @@
 <template>
     <div>
-
             <!-- LEAVING OFF MAKING CHECK CONSTRAINT OR SOMETHING TO LIMIT TOP 4 -->
-
-        <v-row dense align-content="center" justify="center">
-            <v-col
-            v-for="movie in movies"
-            :key="movie.id"
-            cols="1"
-            >
-                <v-img
-                    :src="movie.poster"
-                    class="poster"
+        <div class="container">
+            <v-row dense justify="start">
+                <v-col
+                v-for="movie in movies"
+                :key="movie.ID"
+                cols="1"
                 >
-                    <template v-slot:placeholder>
-                        <v-row
-                            class="fill-height ma-0"
-                            align-content="center"
-                            justify="center"
+                    <router-link
+                    :to="'/movie/' + movie.MovieName + '/' + movie.ID"
+                    >
+                        <v-img
+                            :src="movie.Poster"
+                            :width="2000"
+                            class="poster"
                         >
-                            <v-progress-circular
-                            indeterminate
-                            color="grey-lighten-5"
-                            ></v-progress-circular>
-                        </v-row>
-                    </template>
-                </v-img>
-            </v-col>
-        </v-row>
+                            <template v-slot:placeholder>
+                                <v-row
+                                    class="fill-height ma-0"
+                                    align-content="center"
+                                    justify="center"
+                                >
+                                    <v-progress-circular
+                                    indeterminate
+                                    color="grey-lighten-5"
+                                    ></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
+                    </router-link>
+                </v-col>
+            </v-row>
+        </div>
     </div>
 </template>
 
 <script>
 import axios from "axios";
+import cookies from 'vue-cookies';
 
     export default {
         name: "UserTopFour",
@@ -40,13 +46,20 @@ import axios from "axios";
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
                 movies: [],
+                token: ""
             }
         },
         methods: {
+            getToken(){
+                this.token = cookies.get(`sessionToken`);
+            },
             getUserTopFour() {
                 axios.request({
                     url: this.apiUrl+"/user-top-four",
                     method: "GET",
+                    headers: {
+                        token: this.token
+                    }
                 }).then((response)=>{
                     this.movies = response.data;
                 }).catch((error)=>{
@@ -54,21 +67,23 @@ import axios from "axios";
                 })
             },
         },
-        mounted () {
+        created () {
+            this.getToken();
             this.getUserTopFour();
         },
     }
 </script>
 
 <style scoped>
+.container{
+    overflow: visible;
+}
 .poster{
     height: 100%;
+    border: 1px rgb(97, 97, 97) solid;
+    transition: transform 0.5s;
 }
-.boxContainer{
-    background-color: #212120;
-    padding: 30px;
-    width: 100vw;
-    margin-top: 150px;
-    margin-bottom: 500px;
+.poster:hover{
+    transform: scale(1.05);
 }
 </style>
