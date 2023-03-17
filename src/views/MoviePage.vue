@@ -10,13 +10,12 @@
             <div class="grad1">
                 <img class="backdropFade" :src="movie.coverImg">
             </div>
-            <v-row dense align-content="center" justify="center" class="posterContainer">
+            <v-row class="posterContainer">
                 <v-col
-                cols="2"
                 >
                     <v-img
                     :src="movie.Poster"
-                    :width="230"
+                    :width="300"
                     class="poster"
                     >
                         <template v-slot:placeholder>
@@ -37,6 +36,9 @@
             <div class="infoContainer">
                 <h1>{{ movie.MovieName }}</h1>
                 <p>{{ movie.Release_Date }}</p>
+                <h5>{{ movie.Tagline }}</h5>
+                <p>{{ movie.Description }}</p>
+                <h5>Directed By {{ movie.Director }}</h5>
             </div>
         </div>
 
@@ -91,52 +93,18 @@ import cookies from 'vue-cookies';
 </script>
 
 <style scoped>
-/* .parentContainer{
-    position: relative;
-    
-}
-.backdropFade{
-    height: 65vh;
-    position: absolute;
-    left: 50%;
-    top: -100%;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
-.grad1 img {
-    -webkit-mask-image: linear-gradient(black, transparent);
-    mask-image: linear-gradient(black, transparent);
-}
-.posterContainer{
-    position: relative;
-    z-index: 2;
-    left: -18%;
-    top: 80px;
-    margin-top: 250px;
-}
-.poster{
-    border: 1px rgb(97, 97, 97) solid;
-}
-.infoContainer{
-    color: white;
-    position: absolute;
-    left: 39%;
-    top: 85px;
-    z-index: 2;
-} */
-
 .parentContainer{
-    position: relative;
+    position: fixed;
     left: 50%;
     transform: translateX(-50%);
     
 }
 .backdropFade{
+    width: 100%;
     height: 65vh;
-    position: absolute;
+    position: relative;
     left: 50%;
-    top: -100%;
+    top: -100px;
     transform: translateX(-50%);
     z-index: 1;
 }
@@ -146,20 +114,23 @@ import cookies from 'vue-cookies';
     mask-image: linear-gradient(black, transparent);
 }
 .posterContainer{
-    position: relative;
+    position: fixed;
     z-index: 2;
-    left: -18%;
-    top: 80px;
-    margin-top: 250px;
+    left: 30px;
+    top: 380px;
+    width: 100%;
 }
 .poster{
     border: 1px rgb(97, 97, 97) solid;
 }
 .infoContainer{
     color: white;
-    position: absolute;
-    left: 39%;
-    top: 85px;
+    position: fixed;
     z-index: 2;
+    left: 350px;
+    top: 380px;
+}
+h5{
+    margin-block: 20px;
 }
 </style>

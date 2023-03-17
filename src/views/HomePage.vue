@@ -4,17 +4,13 @@
         <div>
             <ImageFadeTemplate/>
             <section class="description">
-                <h1>Track Your Films</h1>
+                <h1>Track Your Love For Movies</h1>
                 <h1>Share With Friends</h1>
                 <div class="buttonContainer">
                     <v-btn @click="showModal = true" variant="tonal">
                     CREATE AN ACCOUNT
                     </v-btn>
                 </div>
-                <!-- I THINK I CAN DELETE THIS -->
-                <!-- <div v-if="active">
-                    <UserSignup/>
-                </div> -->
                 <div class="featuredContainer">
                     <FeaturedMovies/>
                 </div>

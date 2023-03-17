@@ -6,7 +6,6 @@ import UserProfile from '../views/UserProfile.vue'
 import EditProfile from '../views/EditProfile.vue'
 import WatchList from '../views/WatchList.vue'
 import MoviePage from '../views/MoviePage.vue'
-import MyPage from '../views/MyPage.vue'
 
 Vue.use(VueRouter)
 
@@ -21,7 +20,7 @@ const routes = [
       },
       {
         name: "description",
-        content: "Welcome to Cloudpunchd, watch, track, and share films."
+        content: "Cloudpunchd, track your love for movies."
       },
       {
         name: "keywords",
@@ -43,7 +42,7 @@ const routes = [
       },
       {
         name: "description",
-        content: "Welcome to Cloudpunchd, watch, track, and share films."
+        content: "Cloudpunchd, track your love for movies."
       },
       {
         name: "keywords",
@@ -125,28 +124,6 @@ const routes = [
     path: '/movie/:movieName/:movieId',
     name: 'MoviePage',
     component: MoviePage,
-    meta: [
-      {
-        title: "Cloudpunchd | "
-      },
-      {
-        name: "description",
-        content: "Detailed Movie Page, add to watchlist, add to watched."
-      },
-      {
-        name: "keywords",
-        content: "cloudpunchd, movies, movie, social, track, watchlist, watched, film, films"
-      },
-      {
-        name: "author",
-        content: "Siobhan Bonardi"
-      }
-    ]
-  },
-  {
-    path: '/mypage',
-    name: 'MyPage',
-    component: MyPage,
     meta: [
       {
         title: "Cloudpunchd | "
