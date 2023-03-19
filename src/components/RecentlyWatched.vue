@@ -28,6 +28,16 @@
                                 </v-row>
                             </template>
                         </v-img>
+                        <v-rating
+                        :value="parseFloat(movie.Rating)"
+                        align="center"
+                        half-increments
+                        color="grey"
+                        size="15"
+                        dense
+                        readonly
+                        empty-icon
+                        />
                     </router-link>
                 </v-col>
             </v-row>
@@ -79,5 +89,9 @@ import cookies from 'vue-cookies';
 }
 .poster:hover{
     transform: scale(1.05);
+}
+.v-application a {
+    color: grey;
+    text-decoration: none;
 }
 </style>
