@@ -8,11 +8,11 @@
                 cols="1"
                 >
                     <router-link
-                    :to="'/movie/' + movie.MovieName + '/' + movie.ID"
+                    :to="username+'/watchlist'"
                     >
                         <v-img
                             :src="movie.Poster"
-                            :width="2000"
+                            :width="100"
                             class="poster"
                         >
                             <template v-slot:placeholder>
@@ -35,12 +35,14 @@
     </div>
 </template>
 
+<!-- WANT TO LIMIT THIS TO 4 - slice? -->
+
 <script>
 import axios from "axios";
 import cookies from 'vue-cookies';
 
     export default {
-        name: "UserTopFour",
+        name: "UserWatchlistMini",
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
@@ -48,9 +50,9 @@ import cookies from 'vue-cookies';
             }
         },
         methods: {
-            getUserTopFour() {
+            getUserWatchList() {
                 axios.request({
-                    url: this.apiUrl+"/user-top-four",
+                    url: this.apiUrl+"/user-watchlist",
                     method: "GET",
                     headers: {
                         token: cookies.get(`sessionToken`)
@@ -63,21 +65,20 @@ import cookies from 'vue-cookies';
             },
         },
         created () {
-            this.getUserTopFour();
+            this.getUserWatchList();
         },
     }
 </script>
 
 <style scoped>
-.container{
-    overflow: visible;
-}
 .poster{
     height: 100%;
     border: 1px rgb(97, 97, 97) solid;
-    transition: transform 0.5s;
 }
 .poster:hover{
     transform: scale(1.05);
+}
+.watchlistContainer{
+    margin-top: 50px;
 }
 </style>

@@ -31,6 +31,11 @@
                     <v-divider class="divider" color="#adb5bd"></v-divider>
                     <UserFilmLog/>
                 </div>
+                <div class="watchlistContainer">
+                    <h4>WATCHLIST</h4>
+                    <v-divider class="divider" color="#adb5bd"></v-divider>
+                    <UserWatchlistMini/>
+                </div>
             </div>
         </section>
 
@@ -46,6 +51,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
 import UserTopFour from '@/components/UserTopFour.vue'
 import RecentlyWatched from '@/components/RecentlyWatched.vue'
 import UserFilmLog from '@/components/UserFilmLog.vue'
+import UserWatchlistMini from '@/components/UserWatchlistMini.vue'
 import PageFooter from '@/components/PageFooter.vue'
 
     export default {
@@ -55,6 +61,7 @@ import PageFooter from '@/components/PageFooter.vue'
             UserTopFour,
             RecentlyWatched,
             UserFilmLog,
+            UserWatchlistMini,
             PageFooter
         },
         data() {
@@ -148,5 +155,8 @@ import PageFooter from '@/components/PageFooter.vue'
     width: 50%;
     position: absolute;
     left: 60%;
+}
+.watchlistContainer{
+    margin-top: 80px;
 }
 </style>

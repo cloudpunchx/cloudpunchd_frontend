@@ -43,4 +43,7 @@ import cookies from 'vue-cookies';
 .filmLog{
     color: white;
 }
+ol{
+    margin-top: 10px;
+}
 </style>

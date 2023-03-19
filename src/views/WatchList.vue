@@ -59,7 +59,6 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
-                token: "",
                 username: "",
                 profile_img: "",
                 watchList: [],
@@ -67,15 +66,12 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
             }
         },
         methods: {
-            getToken(){
-                this.token = cookies.get(`sessionToken`);
-            },
             getUserProfile(){
                 axios.request({
                     url: "http://127.0.0.1:5000/api/user",
                     method: "GET",
                     headers: {
-                        token: this.token
+                        token: cookies.get(`sessionToken`)
                     },
                 }).then((response)=>{
                     this.username = response.data.username;
@@ -89,7 +85,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
                     url: this.apiUrl+"/user-watchlist",
                     method: "GET",
                     headers: {
-                        token: this.token
+                        token: cookies.get(`sessionToken`)
                     }
                 }).then((response)=>{
                     this.watchList = response.data;
@@ -102,7 +98,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
                     url: this.apiUrl+"/user-watchlist-count",
                     method: "GET",
                     headers: {
-                        token: this.token
+                        token: cookies.get(`sessionToken`)
                     }
                 }).then((response)=>{
                     this.watchListCount = response.data;
@@ -112,7 +108,6 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
             }
         },
         mounted () {
-            this.getToken();
             this.getUserWatchList();
             this.getUserProfile();
             this.getWatchListCount();
