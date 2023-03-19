@@ -14,16 +14,26 @@
                 </router-link>
             </div>
         </section>
-        <section class="topFourContainer">
-            <h4>FAVOURITE FILMS</h4>
-            <v-divider class="divider" color="#adb5bd"></v-divider>
-            <UserTopFour/>
+        <section class="container">
+            <div class="topFourContainer">
+                <h4>FAVOURITE FILMS</h4>
+                <v-divider class="divider" color="#adb5bd"></v-divider>
+                <UserTopFour/>
+            </div>
+            <div class="recentlyWatchedContainer">
+                <h4>RECENTLY WATCHED</h4>
+                <v-divider class="divider" color="#adb5bd"></v-divider>
+                <RecentlyWatched/>
+            </div>
+            <div class="sideSection">
+                <div>
+                    <h4>FILM LOG</h4>
+                    <v-divider class="divider" color="#adb5bd"></v-divider>
+                    <UserFilmLog/>
+                </div>
+            </div>
         </section>
-        <section class="recentlyWatchedContainer">
-            <h4>RECENTLY WATCHED</h4>
-            <v-divider class="divider" color="#adb5bd"></v-divider>
-            <RecentlyWatched/>
-        </section>
+
         <PageFooter/>
     </div>
 </template>
@@ -35,6 +45,7 @@ import cookies from 'vue-cookies';
 import SignedInHeader from '@/components/SignedInHeader.vue'
 import UserTopFour from '@/components/UserTopFour.vue'
 import RecentlyWatched from '@/components/RecentlyWatched.vue'
+import UserFilmLog from '@/components/UserFilmLog.vue'
 import PageFooter from '@/components/PageFooter.vue'
 
     export default {
@@ -43,12 +54,12 @@ import PageFooter from '@/components/PageFooter.vue'
             SignedInHeader,
             UserTopFour,
             RecentlyWatched,
+            UserFilmLog,
             PageFooter
         },
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
-                token: "",
                 username: "",
                 firstName: "",
                 lastName: "",
@@ -60,15 +71,12 @@ import PageFooter from '@/components/PageFooter.vue'
             }
         },
         methods: {
-            getToken(){
-                this.token = cookies.get(`sessionToken`);
-            },
             getUserProfile(){
                 axios.request({
                     url: this.apiUrl+"/user",
                     method: "GET",
                     headers: {
-                        token: this.token
+                        token: cookies.get(`sessionToken`)
                     },
                 }).then((response)=>{
                     this.username = response.data.username;
@@ -83,7 +91,6 @@ import PageFooter from '@/components/PageFooter.vue'
             },
         },
         created (){
-            this.getToken();
             this.getUserProfile();
         }
     }
@@ -93,11 +100,10 @@ import PageFooter from '@/components/PageFooter.vue'
 .profileContainer{
     color: white;
     padding: 10px;
-    width: 50%;
     position: relative;
+    width: 50%;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 20px;
 }
 .userInfo{
     display: inline-block;
@@ -117,19 +123,30 @@ import PageFooter from '@/components/PageFooter.vue'
 .settingsLink{
     text-decoration: none;
 }
-.topFourContainer{
-    color: #adb5bd;
-    margin-top: 30px;
-    position: fixed;
-    left: 500px;
+.container{
+    position: relative;
+    width: 100%;
 }
 .divider{
     width: 34%;
 }
+.topFourContainer{
+    color: #adb5bd;
+    margin-top: 30px;
+    position: absolute;
+    left: 20%;
+}
 .recentlyWatchedContainer{
     color: #adb5bd;
     margin-top: 300px;
-    position: fixed;
-    left: 500px;
+    position: absolute;
+    left: 20%;
+    flex: 1;
+}
+.sideSection{
+    color: #adb5bd;
+    width: 50%;
+    position: absolute;
+    left: 60%;
 }
 </style>

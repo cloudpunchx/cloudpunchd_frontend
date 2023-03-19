@@ -139,6 +139,9 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
     height: 100%;
     border: 1px rgb(97, 97, 97) solid;
 }
+.poster:hover{
+    transform: scale(1.05);
+}
 .watchlistContainer{
     margin-top: 50px;
 }

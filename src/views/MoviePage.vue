@@ -35,7 +35,7 @@
             </v-row>
             <div class="infoContainer">
                 <h1>{{ movie.MovieName }}</h1>
-                <p>{{ movie.Release_Date }}</p>
+                <p>{{ movie.Release_Date }} {{ movie.Certification }}</p>
                 <h5>{{ movie.Tagline }}</h5>
                 <p>{{ movie.Description }}</p>
                 <h5>Directed By {{ movie.Director }}</h5>
@@ -100,7 +100,7 @@ import cookies from 'vue-cookies';
     
 }
 .backdropFade{
-    width: 100%;
+    /* width: 100%; */
     height: 65vh;
     position: relative;
     left: 50%;

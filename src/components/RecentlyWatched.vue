@@ -45,19 +45,15 @@ import cookies from 'vue-cookies';
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
                 movies: [],
-                token: ""
             }
         },
         methods: {
-            getToken(){
-                this.token = cookies.get(`sessionToken`);
-            },
             getRecentlyWatched() {
                 axios.request({
                     url: this.apiUrl+"/user-recently-watched",
                     method: "GET",
                     headers: {
-                        token: this.token
+                        token: cookies.get(`sessionToken`)
                     }
                 }).then((response)=>{
                     this.movies = response.data;
@@ -67,7 +63,6 @@ import cookies from 'vue-cookies';
             },
         },
         created () {
-            this.getToken();
             this.getRecentlyWatched();
         },
     }
