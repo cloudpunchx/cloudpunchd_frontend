@@ -7,7 +7,9 @@
             <div class="title">
                 <h2>Welcome back {{ username }}, let's find something to watch.</h2>
             </div>
-            <div>
+            <div class="featured">
+                <h4 class="heading">DISCOVER SOMETHING NEW</h4>
+                <v-divider class="divider" color="#adb5bd"></v-divider>
                 <FeaturedMovies/>
             </div>
             
@@ -75,6 +77,20 @@ import FeaturedMovies from '@/components/FeaturedMovies.vue'
     margin-top: 150px;
 }
 .title{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.heading{
+    margin-left: 35%;
+}
+.featured{
+    color: #adb5bd;
+    width: 50%;
+    margin-top: 70px;
+}
+.divider{
+    width: 65%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);

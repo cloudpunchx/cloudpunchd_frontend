@@ -49,6 +49,7 @@
 import SignedInHeader from '@/components/SignedInHeader.vue'
 import PageHeader from '@/components/PageHeader.vue'
 import axios from "axios";
+import cookies from 'vue-cookies';
 
     export default {
         name: "MoviePage",
@@ -59,6 +60,7 @@ import axios from "axios";
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
+                token: "",
                 movieName: this.$route.params.movieName,
                 movieId: this.$route.params.movieId,
                 movie: [],
@@ -79,8 +81,12 @@ import axios from "axios";
                     console.log(error);
                 })
             },
+            getToken(){
+                this.token = cookies.get(`sessionToken`);
+            },
         },
         mounted () {
+            this.getToken();
             this.getSelectedMovie();
         },
     }
