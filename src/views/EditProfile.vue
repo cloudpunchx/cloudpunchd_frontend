@@ -256,6 +256,7 @@ import PageFooter from '@/components/PageFooter.vue'
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
+    margin-top: 80px;
 }
 .editProfile{
     margin-top: 20px;
@@ -286,6 +287,9 @@ h3{
     color: #adb5bd;
     margin-top: 30px;
     position: fixed;
+}
+.divider1{
+    margin-bottom: 10px;
 }
 .divider2{
     width: 34%;

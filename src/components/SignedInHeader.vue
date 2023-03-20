@@ -11,7 +11,16 @@
                 </router-link>
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-text-field v-model="search" hide-details clearable append-icon="mdi-magnify" background-color="rgba(148, 148, 148, 0.63)" class="textField"></v-text-field>
+            <v-text-field 
+                v-model="movieName" 
+                hide-details 
+                clearable 
+                append-icon="mdi-magnify" 
+                @click:append="search_movies"
+                background-color="rgba(148, 148, 148, 0.63)" 
+                class="textField"
+                >
+            </v-text-field>
             <v-avatar size="35"><v-img :src="profileImg"></v-img></v-avatar>
             <v-menu offset-y class="my-menu">
                 <template v-slot:activator="{ on, attrs }">
@@ -41,6 +50,7 @@
 <script>
 import axios from "axios";
 import cookies from 'vue-cookies';
+import router from '@/router';
 import UserLogout from '@/components/UserLogout.vue'
 
     export default {
@@ -54,7 +64,8 @@ import UserLogout from '@/components/UserLogout.vue'
                 username: "",
                 usernameUppercase: "",
                 profileImg: "",
-                showDropdown: false
+                showDropdown: false,
+                movieName: ""
             }
         },
         methods: {
@@ -78,7 +89,10 @@ import UserLogout from '@/components/UserLogout.vue'
             },
             handleItemClick(item) {
                 console.log(item);
-            }
+            },
+            search_movies(){
+                router.push({name: 'SearchResults', params: {query: this.movieName}});
+            },
         },
         created (){
             this.get_user_profile();

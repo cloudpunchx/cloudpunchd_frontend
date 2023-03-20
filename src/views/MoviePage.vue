@@ -49,7 +49,6 @@
 import SignedInHeader from '@/components/SignedInHeader.vue'
 import PageHeader from '@/components/PageHeader.vue'
 import axios from "axios";
-import cookies from 'vue-cookies';
 
     export default {
         name: "MoviePage",
@@ -60,16 +59,12 @@ import cookies from 'vue-cookies';
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
-                token: "",
                 movieName: this.$route.params.movieName,
                 movieId: this.$route.params.movieId,
                 movie: [],
             }
         },
         methods: {
-            getToken(){
-                this.token = cookies.get(`sessionToken`);
-            },
             getSelectedMovie() {
                 axios.request({
                     url: this.apiUrl+"/movie",
@@ -86,7 +81,6 @@ import cookies from 'vue-cookies';
             },
         },
         mounted () {
-            this.getToken();
             this.getSelectedMovie();
         },
     }
@@ -94,7 +88,7 @@ import cookies from 'vue-cookies';
 
 <style scoped>
 .header{
-    margin-bottom: 160px;
+    margin-bottom: 100px;
 }
 .parentContainer{
     position: fixed;
@@ -104,7 +98,7 @@ import cookies from 'vue-cookies';
 }
 .backdropFade{
     /* width: 100%; */
-    height: 65vh;
+    height: 50vh;
     position: relative;
     left: 50%;
     top: -100px;

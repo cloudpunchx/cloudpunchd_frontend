@@ -6,6 +6,7 @@ import UserProfile from '../views/UserProfile.vue'
 import EditProfile from '../views/EditProfile.vue'
 import WatchList from '../views/WatchList.vue'
 import MoviePage from '../views/MoviePage.vue'
+import SearchResults from '../views/SearchResults.vue'
 
 Vue.use(VueRouter)
 
@@ -131,6 +132,28 @@ const routes = [
       {
         name: "description",
         content: "Detailed Movie Page, add to watchlist, add to watched."
+      },
+      {
+        name: "keywords",
+        content: "cloudpunchd, movies, movie, social, track, watchlist, watched, film, films"
+      },
+      {
+        name: "author",
+        content: "Siobhan Bonardi"
+      }
+    ]
+  },
+  {
+    path: '/search/:query',
+    name: 'SearchResults',
+    component: SearchResults,
+    meta: [
+      {
+        title: "Cloudpunchd | Search"
+      },
+      {
+        name: "description",
+        content: "Search Results for Cloudpunchd"
       },
       {
         name: "keywords",
