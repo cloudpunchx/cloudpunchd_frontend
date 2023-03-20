@@ -64,6 +64,6 @@ import PageFooter from '@/components/PageFooter.vue'
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 30px;
+    margin-top: 300px;
 }
 </style>

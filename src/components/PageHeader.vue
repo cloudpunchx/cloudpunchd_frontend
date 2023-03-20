@@ -1,6 +1,9 @@
 <template>
     <div>
-        <v-app-bar  dark elevation="5" absolute class="nav-bar">
+        <v-app-bar color="transparent" dark elevation="0" absolute class="nav-bar">
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
         <v-toolbar-title>
@@ -10,8 +13,11 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-spacer></v-spacer>
-            <v-text-field v-model="search" label="Search" hide-details clearable append-icon="mdi-magnify"></v-text-field>
+            <v-text-field v-model="search" hide-details clearable append-icon="mdi-magnify" background-color="rgba(148, 148, 148, 0.63)" class="textField"></v-text-field>
             <button class="signIn" @click="showModal = true">SIGN IN</button>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
         <v-spacer></v-spacer>
         <v-spacer></v-spacer>
         </v-app-bar>
@@ -61,6 +67,7 @@ import UserLogin from '@/components/UserLogin.vue'
 }
 .logo {
     height: 32px;
+    margin-top: 5px;
     cursor: pointer;
 }
 .v-app-bar{
@@ -78,6 +85,9 @@ button:hover{
 }
 .signIn{
     margin-left: 20px;
+}
+.textField{
+    border-radius: 5px;
 }
 
 /* CHECKBOX HACK */

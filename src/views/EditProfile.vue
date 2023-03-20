@@ -190,7 +190,6 @@ import PageFooter from '@/components/PageFooter.vue'
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
-                token: "",
                 username: "",
                 firstName: "",
                 lastName: "",
@@ -204,15 +203,12 @@ import PageFooter from '@/components/PageFooter.vue'
             }
         },
         methods: {
-            getToken(){
-                this.token = cookies.get(`sessionToken`);
-            },
             get_user_profile(){
                 axios.request({
                     url: this.apiUrl+"/user",
                     method: "GET",
                     headers: {
-                        token: this.token
+                        token: cookies.get(`sessionToken`)
                     },
                 }).then((response)=>{
                     this.username = response.data.username;
@@ -250,7 +246,6 @@ import PageFooter from '@/components/PageFooter.vue'
             }
         },
         created (){
-            this.getToken();
             this.get_user_profile();
         }
     }

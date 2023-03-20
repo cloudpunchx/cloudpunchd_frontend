@@ -46,7 +46,6 @@
 <script>
 import axios from "axios";
 import cookies from 'vue-cookies';
-// import router from '@/router';
 import SignedInHeader from '@/components/SignedInHeader.vue'
 import UserTopFour from '@/components/UserTopFour.vue'
 import RecentlyWatched from '@/components/RecentlyWatched.vue'
@@ -91,7 +90,7 @@ import PageFooter from '@/components/PageFooter.vue'
                     this.lastName = response.data.lastName;
                     this.email = response.data.email;
                     this.bio = response.data.bio;
-                    this.profile_img = response.data.profile_img;
+                    this.profile_img = response.data.profileImg;
                 }).catch((error)=>{
                     this.errorMsg = error;
                 })
@@ -111,6 +110,7 @@ import PageFooter from '@/components/PageFooter.vue'
     width: 50%;
     left: 50%;
     transform: translateX(-50%);
+    margin-top: 100px;
 }
 .userInfo{
     display: inline-block;

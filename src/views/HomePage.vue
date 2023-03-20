@@ -1,6 +1,6 @@
 <template>
     <div class="pageContainer">
-        <div class="header">
+        <div>
             <PageHeader/>
         </div>
         <div>
@@ -68,9 +68,6 @@ import PageFooter from '@/components/PageFooter.vue'
 </script>
 
 <style scoped>
-.header{
-    margin-top: 2%;
-}
 h1{
     color: white;
     font-size: 30pt;
