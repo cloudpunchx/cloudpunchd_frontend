@@ -7,41 +7,42 @@
             <PageHeader class="header"/>
         </div>
 
+        <!-- LEAVING OFF STYLING SEARCH RESULTS -->
+
         <div class="resultsContainer">
             <h3>FOUND MATCHES</h3>
             <v-divider class="divider" color="#adb5bd"></v-divider>
-            <div class="container">
-                <v-row dense justify="start">
-                    <v-col
-                    v-for="movie in movies"
-                    :key="movie.ID"
-                    cols="1"
+            <section class="profileContainer"                
+            v-for="movie in movies"
+            :key="movie.ID">
+                <router-link
+                    :to="'/movie/' + movie.MovieName + '/' + movie.ID"
                     >
-                        <router-link
-                        :to="'/movie/' + movie.MovieName + '/' + movie.ID"
+                        <v-img
+                            :src="movie.Poster"
+                            :width="125"
+                            class="poster"
                         >
-                            <v-img
-                                :src="movie.Poster"
-                                :width="1000"
-                                class="poster"
-                            >
-                                <template v-slot:placeholder>
-                                    <v-row
-                                        class="fill-height ma-0"
-                                        align-content="center"
-                                        justify="center"
-                                    >
-                                        <v-progress-circular
-                                        indeterminate
-                                        color="grey-lighten-5"
-                                        ></v-progress-circular>
-                                    </v-row>
-                                </template>
-                            </v-img>
-                        </router-link>
-                    </v-col>
-                </v-row>
-            </div>
+                            <template v-slot:placeholder>
+                                <v-row
+                                    class="fill-height ma-0"
+                                    align-content="center"
+                                    justify="center"
+                                >
+                                    <v-progress-circular
+                                    indeterminate
+                                    color="grey-lighten-5"
+                                    ></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
+                </router-link>
+                <div class="movieInfo">
+                    <h2>{{ movie.MovieName }}</h2>
+                    <p ></p>
+                </div>
+            </section>
+        
         </div>
     </div>
 </template>
@@ -69,9 +70,9 @@ import cookies from 'vue-cookies';
         methods: {
             search_movies(){
                 axios.request({
-                    url: "http://127.0.0.1:5000/api/movie-search",
+                    url: this.apiUrl+"/movie-search",
                     method: "GET",
-                    data: {
+                    params: {
                         movieName: this.movieName
                     },
                 }).then((response)=>{
@@ -85,7 +86,7 @@ import cookies from 'vue-cookies';
                 this.token = cookies.get(`sessionToken`);
             },
         },
-        mounted (){
+        created (){
             this.getToken();
             this.search_movies();
         }
@@ -101,5 +102,19 @@ import cookies from 'vue-cookies';
 }
 .divider{
     width: 800px;
+}
+.profileContainer{
+    color: white;
+    padding: 10px;
+    position: relative;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    /* margin-top: 100px; */
+}
+.userInfo{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 30px;
 }
 </style>

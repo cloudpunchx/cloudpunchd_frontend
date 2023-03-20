@@ -19,6 +19,7 @@
                             :rules="usernameRules"
                             label="Username"
                             required
+                            dark
                             class="textField"
                             >
                                 <template v-slot:label>
@@ -37,6 +38,7 @@
                             :rules="nameRules"
                             label="First Name"
                             required
+                            dark
                             class="textField"
                             >
                                 <template v-slot:label>
@@ -55,6 +57,7 @@
                             :rules="nameRules"
                             label="Last Name"
                             required
+                            dark
                             class="textField"
                             >
                                 <template v-slot:label>
@@ -73,6 +76,7 @@
                             :rules="emailRules"
                             label="E-mail"
                             required
+                            dark
                             class="textField"
                             >
                                 <template v-slot:label>
@@ -90,6 +94,7 @@
                             v-model="password"
                             label="Password"
                             required
+                            dark
                             class="textField"
                             >
                                 <template v-slot:label>
@@ -107,6 +112,7 @@
                             v-model="bio"
                             label="Bio"
                             required
+                            dark
                             class="textField"
                             >
                                 <template v-slot:label>
@@ -118,8 +124,18 @@
                         <v-col
                             cols="12"
                             md="4"
+                        >   
+                        <v-file-input 
+                        prepend-icon="mdi-camera"
+                        label="Profile Image" 
+                        v-model="profile_img"
+                        accept="image/*"
+                        variant="underlined"
+                        color="#495057"
+                        dark
                         >
-                            <v-text-field
+                        </v-file-input>
+                            <!-- <v-text-field
                             background-color="#495057"
                             v-model="profile_img"
                             label="Profile Image URL"
@@ -129,7 +145,7 @@
                                 <template v-slot:label>
                                     <span class="label">Profile Image Url</span>
                                 </template>
-                            </v-text-field>
+                            </v-text-field> -->
                         </v-col>
                     </v-row>
                     <div>

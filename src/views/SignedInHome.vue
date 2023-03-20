@@ -4,7 +4,13 @@
             <SignedInHeader/>
         </div>
         <div class="titleContainer">
-            <h1>Welcome back {{ username }}, let's find something to watch.</h1>
+            <div class="title">
+                <h2>Welcome back {{ username }}, let's find something to watch.</h2>
+            </div>
+            <div>
+                <FeaturedMovies/>
+            </div>
+            
         </div>
 
         <PageFooter/>
@@ -16,11 +22,13 @@ import axios from "axios";
 import cookies from 'vue-cookies';
 import SignedInHeader from '@/components/SignedInHeader.vue'
 import PageFooter from '@/components/PageFooter.vue'
+import FeaturedMovies from '@/components/FeaturedMovies.vue'
 
     export default {
         name: "SignedInHome",
         components: {
             SignedInHeader,
+            FeaturedMovies,
             PageFooter
         },
         data() {
@@ -61,9 +69,14 @@ import PageFooter from '@/components/PageFooter.vue'
 }
 .titleContainer{
     color: white;
-    position: fixed;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 300px;
+    margin-top: 150px;
+}
+.title{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 </style>
