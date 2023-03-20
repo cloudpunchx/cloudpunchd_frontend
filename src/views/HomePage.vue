@@ -1,8 +1,10 @@
 <template>
     <div class="pageContainer">
-        <PageHeader/>
+        <div class="header">
+            <PageHeader/>
+        </div>
         <div>
-            <ImageFadeTemplate/>
+            <FrontPageImg/>
             <section class="description">
                 <h1>Track Your Love For Movies</h1>
                 <h1>Share With Friends</h1>
@@ -36,7 +38,7 @@
 
 <script>
 import PageHeader from '@/components/PageHeader.vue'
-import ImageFadeTemplate from '@/components/ImageFadeTemplate.vue'
+import FrontPageImg from '@/components/FrontPageImg.vue'
 import FeaturedMovies from '@/components/FeaturedMovies.vue'
 import UserSignup from '@/components/UserSignup.vue'
 import PageFooter from '@/components/PageFooter.vue'
@@ -45,7 +47,7 @@ import PageFooter from '@/components/PageFooter.vue'
         name: "HomePage",
         components: {
             PageHeader,
-            ImageFadeTemplate,
+            FrontPageImg,
             FeaturedMovies,
             UserSignup,
             PageFooter
@@ -66,6 +68,9 @@ import PageFooter from '@/components/PageFooter.vue'
 </script>
 
 <style scoped>
+.header{
+    margin-top: 2%;
+}
 h1{
     color: white;
     font-size: 30pt;

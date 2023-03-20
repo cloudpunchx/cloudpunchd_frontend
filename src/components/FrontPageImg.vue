@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div  v-for="movie in movie" :key="movie.id"> 
+    <div class="grad1">
+        <div v-for="movie in movie" :key="movie.id"> 
             <img class="backdropFade" :src="movie.coverImg">
         </div>
     </div>
@@ -10,7 +10,7 @@
 import axios from "axios";
 
     export default {
-        name: "ImageFadeTemplate",
+        name: "FrontPageImg",
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
@@ -37,11 +37,14 @@ import axios from "axios";
 
 <style scoped>
 .backdropFade{
-    height: 65vh;
+    height: 50vh;
     position: absolute;
     left: 50%;
-    top: 0%;
     transform: translateX(-50%);
     z-index: 1;
+}
+.grad1 img {
+    -webkit-mask-image: linear-gradient(rgb(0, 0, 0), transparent);
+    mask-image: linear-gradient(black, transparent);
 }
 </style>

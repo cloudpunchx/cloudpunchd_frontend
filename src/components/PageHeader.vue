@@ -1,21 +1,20 @@
 <template>
     <div>
-        <nav class="navbar">
-            <!-- LOGO -->
-            <router-link class="logo" to="/">
-                <img class="logo" src="../assets/cloudpunchdLogo.png" alt="Cloudpunchd Logo">
+        <v-app-bar  dark elevation="5" absolute class="nav-bar">
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
+        <v-toolbar-title>
+            <router-link to="/">
+            <img src="../assets/cloudpunchdLogo.png" alt="Logo" class="logo">
             </router-link>
-            <!-- NAVIGATION MENU -->
-            <ul class="nav-links">
-            <!-- USING CHECKBOX HACK -->
-                <input type="checkbox" id="checkbox_toggle"/>
-                <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-                <!-- NAVIGATION MENUS -->
-                <div class="menu">
-                    <li><button @click="showModal = true">SIGN IN</button></li>
-                </div>
-            </ul>   
-        </nav>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+            <v-text-field v-model="search" label="Search" hide-details clearable append-icon="mdi-magnify"></v-text-field>
+            <button class="signIn" @click="showModal = true">SIGN IN</button>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+        </v-app-bar>
 
         <transition name="fade" appear>
                 <div class="modal-overlay" 
@@ -30,7 +29,6 @@
                     <UserLogin/>
                 </div>
             </transition>
-        
     </div>
 </template>
 
@@ -57,88 +55,30 @@ import UserLogin from '@/components/UserLogin.vue'
 </script>
 
 <style scoped>
-.logo{
-    width: 14vw;
-    left: 22%;
-    position: relative;
+
+.nav-bar {
+    border: none !important;
+}
+.logo {
+    height: 32px;
+    cursor: pointer;
+}
+.v-app-bar{
     z-index: 2;
 }
-/* NAVBAR STYLING STARTS */
-
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: transparent;
-    color: #fff;
+.search-box {
+    margin-right: -200px;
 }
-.nav-links{
-    margin-right: 25%;
-    position: relative;
-    z-index: 2;
-}
-
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-}
-
-li{
-    list-style-type: none;
-}
-
-/* NAVBAR MENU */
-
-.menu {
-    display: flex;
-    gap: 1em;
-    font-size: 22px;
-}
-
-.menu li:hover {
-    background-color: #4c9e9e;
+button{
+    padding: 5px;
     border-radius: 5px;
-    transition: 0.3s ease;
 }
-
-.menu li {
-    padding: 5px 14px;
-}
-
-/* DROPDOWN MENU */
-
-.services {
-    position: relative; 
-}
-
-.dropdown {
-    background-color: rgb(1, 139, 139);
-    padding: 1em 0;
-    position: absolute; /*WITH RESPECT TO PARENT*/
-    display: none;
-    border-radius: 8px;
-    top: 35px;
-}
-
-.dropdown li + li {
-    margin-top: 10px;
-}
-
-.dropdown li {
-    padding: 0.5em 1em;
-    width: 8em;
-    text-align: center;
-}
-
-.dropdown li:hover {
+button:hover{
     background-color: #4c9e9e;
 }
-
-.services:hover .dropdown {
-    display: block;
+.signIn{
+    margin-left: 20px;
 }
-/*RESPONSIVE NAVBAR MENU STARTS*/
 
 /* CHECKBOX HACK */
 
@@ -195,56 +135,5 @@ input[type=checkbox]{
 .pop-leave-to {
     opacity: 0;
     transform: scale(0.3) translateY(-50%);
-}
-
-/*HAMBURGER MENU*/
-
-.hamburger {
-    display: none;
-    font-size: 24px;
-    user-select: none;
-}
-
-/* APPLYING MEDIA QUERIES */
-
-@media (max-width: 1120px) {
-    .menu { 
-        display:none;
-        position: absolute;
-        background-color:teal;
-        right: 0;
-        left: 0;
-        text-align: center;
-        padding: 16px 0;
-    }
-
-.menu li:hover {
-    display: inline-block;
-    background-color:#4c9e9e;
-    transition: 0.3s ease;
-}
-
-.menu li + li {
-    margin-top: 12px;
-}
-
-input[type=checkbox]:checked ~ .menu{
-    display: block;
-}
-
-.hamburger {
-    display: block;
-}
-
-.dropdown {
-    left: 50%;
-    top: 30px;
-    transform: translateX(35%);
-}
-
-.dropdown li:hover {
-    background-color: #4c9e9e;
-}
-
 }
 </style>

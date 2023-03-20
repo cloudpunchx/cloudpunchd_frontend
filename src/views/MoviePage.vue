@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div v-if="token">
+        <div v-if="token" class="header">
             <SignedInHeader/>
         </div>
         <div v-else>
-            <PageHeader/>
+            <PageHeader class="header"/>
         </div>
         <div v-for="movie in movie" :key="movie.id" class="parentContainer">
             <div class="grad1">
@@ -93,6 +93,9 @@ import cookies from 'vue-cookies';
 </script>
 
 <style scoped>
+.header{
+    margin-bottom: 160px;
+}
 .parentContainer{
     position: fixed;
     left: 50%;
