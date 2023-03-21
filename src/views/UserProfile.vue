@@ -25,6 +25,11 @@
                 <v-divider class="divider" color="#adb5bd"></v-divider>
                 <RecentlyWatched/>
             </div>
+            <div class="reviewContainer">
+                <h4>RECENT REVIEWS</h4>
+                <v-divider class="divider3" color="#adb5bd"></v-divider>
+                <UserReviews/>
+            </div>
             <div class="sideSection">
                 <div>
                     <h4>FILM LOG</h4>
@@ -38,8 +43,10 @@
                 </div>
             </div>
         </section>
-
-        <PageFooter/>
+        <div class="footer">
+            <PageFooter/>
+        </div>
+        
     </div>
 </template>
 
@@ -49,6 +56,7 @@ import cookies from 'vue-cookies';
 import SignedInHeader from '@/components/SignedInHeader.vue'
 import UserTopFour from '@/components/UserTopFour.vue'
 import RecentlyWatched from '@/components/RecentlyWatched.vue'
+import UserReviews from '@/components/UserReviews.vue'
 import UserFilmLog from '@/components/UserFilmLog.vue'
 import UserWatchlistMini from '@/components/UserWatchlistMini.vue'
 import PageFooter from '@/components/PageFooter.vue'
@@ -59,6 +67,7 @@ import PageFooter from '@/components/PageFooter.vue'
             SignedInHeader,
             UserTopFour,
             RecentlyWatched,
+            UserReviews,
             UserFilmLog,
             UserWatchlistMini,
             PageFooter
@@ -130,33 +139,49 @@ import PageFooter from '@/components/PageFooter.vue'
 .settingsLink{
     text-decoration: none;
 }
+h4{
+    color: #adb5bd;
+}
 .container{
     position: relative;
     width: 100%;
+    background-color: #252422;
 }
 .divider{
     width: 34%;
 }
+.divider3{
+    width: 100%;
+}
 .topFourContainer{
-    color: #adb5bd;
     margin-top: 30px;
     position: absolute;
     left: 20%;
 }
 .recentlyWatchedContainer{
-    color: #adb5bd;
     margin-top: 300px;
     position: absolute;
     left: 20%;
     flex: 1;
 }
+.reviewContainer{
+    width: 600px;
+    margin-top: 615px;
+    position: absolute;
+    left: 20%;
+}
 .sideSection{
-    color: #adb5bd;
     width: 50%;
     position: absolute;
     left: 60%;
 }
 .watchlistContainer{
     margin-top: 80px;
+}
+.footer{
+    position: absolute;
+    bottom: -100vh;
+    width: 100%;
+    background-color: #252422;
 }
 </style>

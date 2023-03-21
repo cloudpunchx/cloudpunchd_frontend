@@ -1,7 +1,5 @@
 <template>
-    <v-footer
-        class="text-center d-flex flex-column"
-    >
+    <v-footer class="text-center d-flex flex-column">
         <div>
             <img src="../assets/cloudpunchMedia.png" alt="Cloudpunch Media">
         </div>
@@ -9,23 +7,21 @@
 </template>
 
 <script>
-
     export default {
         name: "PageFooter",
-    }
+    };
 </script>
 
 <style scoped>
-.v-footer{
+.v-footer {
     color: white;
-    background-color: #252422;  
+    background-color: #252422;
     text-align: center;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     padding: 5px;
+    margin-top: auto;
 }
-img{
+img {
     width: 200px;
 }
 </style>

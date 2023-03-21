@@ -63,7 +63,7 @@ import cookies from 'vue-cookies';
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
                 token: "",
-                movieName: this.$route.params.query,
+                query: this.$route.params.query,
                 movies: [],
             }
         },
@@ -73,7 +73,7 @@ import cookies from 'vue-cookies';
                     url: this.apiUrl+"/movie-search",
                     method: "GET",
                     params: {
-                        movieName: this.movieName
+                        query: this.query
                     },
                 }).then((response)=>{
                     this.movies = response.data;

@@ -12,7 +12,7 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-text-field 
-                v-model="movieName" 
+                v-model="query" 
                 hide-details 
                 clearable 
                 append-icon="mdi-magnify" 
@@ -65,7 +65,7 @@ import UserLogout from '@/components/UserLogout.vue'
                 usernameUppercase: "",
                 profileImg: "",
                 showDropdown: false,
-                movieName: ""
+                query: ""
             }
         },
         methods: {
@@ -91,7 +91,7 @@ import UserLogout from '@/components/UserLogout.vue'
                 console.log(item);
             },
             search_movies(){
-                router.push({name: 'SearchResults', params: {query: this.movieName}});
+                router.push({name: 'SearchResults', params: {query: this.query}});
             },
         },
         created (){

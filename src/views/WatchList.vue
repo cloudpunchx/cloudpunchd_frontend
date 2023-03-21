@@ -22,7 +22,7 @@
                     
                     >
                         <v-img
-                            :src="movie.poster"
+                            :src="movie.Poster"
                             class="poster"
                         >
                             <template v-slot:placeholder>
@@ -75,7 +75,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
                     },
                 }).then((response)=>{
                     this.username = response.data.username;
-                    this.profile_img = response.data.profile_img;
+                    this.profile_img = response.data.profileImg;
                 }).catch((error)=>{
                     this.errorMsg = error;
                 })
@@ -124,6 +124,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    margin-top: 100px;
 }
 .userInfo{
     display: inline-block;
