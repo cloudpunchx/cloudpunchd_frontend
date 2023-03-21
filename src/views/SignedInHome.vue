@@ -14,8 +14,10 @@
             </div>
             
         </div>
-
-        <PageFooter/>
+        <div class="footer">
+            <PageFooter/>
+        </div>
+    
     </div>
 </template>
 
@@ -94,5 +96,13 @@ import FeaturedMovies from '@/components/FeaturedMovies.vue'
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+}
+.footer{
+    padding-top: 100%;
+    position: absolute;
+    bottom: -100vh;
+    width: 100%;
+    background-color: #252422;
+    z-index: -1;
 }
 </style>

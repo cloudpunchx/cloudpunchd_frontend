@@ -40,22 +40,35 @@
                 <p>{{ movie.Description }}</p>
                 <h5>Directed By {{ movie.Director }}</h5>
             </div>
+            <div class="container">
+                <h4>REVIEWS</h4>
+                <v-divider class="divider" color="#adb5bd"></v-divider>
+                <GetMovieReviews/>
+            </div>
         </div>
 
+        <div class="footer">
+            <PageFooter/>
+        </div>
     </div>
 </template>
 
 <script>
 import SignedInHeader from '@/components/SignedInHeader.vue'
 import PageHeader from '@/components/PageHeader.vue'
+import GetMovieReviews from '@/components/GetMovieReviews.vue'
+import PageFooter from '@/components/PageFooter.vue'
 import axios from "axios";
 import cookies from 'vue-cookies';
+
 
     export default {
         name: "MoviePage",
         components: {
             SignedInHeader,
-            PageHeader
+            PageHeader,
+            GetMovieReviews,
+            PageFooter
         },
         data() {
             return {
@@ -64,6 +77,7 @@ import cookies from 'vue-cookies';
                 movieName: this.$route.params.movieName,
                 movieId: this.$route.params.movieId,
                 movie: [],
+                reviews: []
             }
         },
         methods: {
@@ -97,13 +111,11 @@ import cookies from 'vue-cookies';
     margin-bottom: 100px;
 }
 .parentContainer{
-    position: fixed;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    
 }
 .backdropFade{
-    /* width: 100%; */
     height: 50vh;
     position: relative;
     left: 50%;
@@ -117,7 +129,7 @@ import cookies from 'vue-cookies';
     mask-image: linear-gradient(black, transparent);
 }
 .posterContainer{
-    position: fixed;
+    position: absolute;
     z-index: 2;
     left: 30px;
     top: 380px;
@@ -131,12 +143,29 @@ import cookies from 'vue-cookies';
 }
 .infoContainer{
     color: white;
-    position: fixed;
+    position: absolute;
     z-index: 2;
     left: 350px;
     top: 380px;
 }
 h5{
     margin-block: 20px;
+}
+/* ----------------------------------- */
+.container{
+    margin-top: 250px;
+    color: #adb5bd;
+    background-color: #252422;
+    position: relative;
+    left: 42%;
+}
+/* --------------------------------- */
+.footer{
+    padding-top: 100%;
+    position: absolute;
+    bottom: -100vh;
+    width: 100%;
+    background-color: #252422;
+    z-index: -1;
 }
 </style>

@@ -4,7 +4,7 @@
             <v-row no-gutters>
                 <v-col cols="auto">
                     <router-link
-                    :to="'/movie/' + movie.MovieName + '/' + movie.ID"
+                    :to="'/movie/' + movie.MovieName + '/' + movie.movieId"
                     >
                         <v-img
                             :src="movie.Poster"
