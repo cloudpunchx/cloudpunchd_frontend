@@ -34,7 +34,7 @@
                 </v-col>
             </v-row>
             <div class="infoContainer">
-                <h1>{{ movie.MovieName }}</h1>
+                <h1>{{ movie.MovieName }} <span class="logBtn"><v-btn variant="tonal" @click="showModal = true">Log Movie</v-btn></span></h1>
                 <p>{{ movie.Release_Date }} {{ movie.Certification }}</p>
                 <h5>{{ movie.Tagline }}</h5>
                 <p>{{ movie.Description }}</p>
@@ -47,6 +47,21 @@
             </div>
         </div>
 
+        <transition name="fade" appear>
+            <div class="modal-overlay" 
+                v-if="showModal" 
+                @click="showModal = false">
+            </div>
+        </transition>
+        <transition name="pop" appear>
+            <div class="modal" 
+            role="dialog" 
+            v-if="showModal"
+            >
+                <AddToWatched/>
+            </div>
+        </transition>
+
         <div class="footer">
             <PageFooter/>
         </div>
@@ -56,6 +71,7 @@
 <script>
 import SignedInHeader from '@/components/SignedInHeader.vue'
 import PageHeader from '@/components/PageHeader.vue'
+import AddToWatched from '@/components/AddToWatched.vue'
 import GetMovieReviews from '@/components/GetMovieReviews.vue'
 import PageFooter from '@/components/PageFooter.vue'
 import axios from "axios";
@@ -67,6 +83,7 @@ import cookies from 'vue-cookies';
         components: {
             SignedInHeader,
             PageHeader,
+            AddToWatched,
             GetMovieReviews,
             PageFooter
         },
@@ -77,7 +94,8 @@ import cookies from 'vue-cookies';
                 movieName: this.$route.params.movieName,
                 movieId: this.$route.params.movieId,
                 movie: [],
-                reviews: []
+                active: false,
+                showModal: false,
             }
         },
         methods: {
@@ -141,6 +159,24 @@ import cookies from 'vue-cookies';
 .poster:hover{
     transform: scale(1.05);
 }
+.logBtn{
+    margin-left: 150px;
+}
+.v-btn{
+    margin-top: 25px;
+    width: 150px;
+}
+.v-btn:hover {
+    color: white;
+    background-color: rgb(1, 139, 139);
+}
+.v-btn:active {
+    color: white;
+    background-color: rgb(1, 139, 139);
+}
+.feedbackContainer{
+    margin-top: 30px;
+}
 .infoContainer{
     color: white;
     position: absolute;
@@ -157,7 +193,8 @@ h5{
     color: #adb5bd;
     background-color: #252422;
     position: relative;
-    left: 42%;
+    left: 30%;
+    width: 70%;
 }
 /* --------------------------------- */
 .footer{
@@ -167,5 +204,55 @@ h5{
     width: 100%;
     background-color: #252422;
     z-index: -1;
+}
+/* Pop Up for Sign In */
+.modal {
+    position: fixed;
+    top: 20%;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    text-align: center;
+    border-radius: 1rem;
+    z-index: 999;
+}
+
+.modal-overlay {
+    content: '';
+    position: absolute;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 998;
+    background: #505153;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+/* Modal Overlay Transition */
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .4s linear;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.pop-enter-active,
+.pop-leave-active {
+    transition: transform 0.4s cubic-bezier(0.5, 0, 0.5, 1), opacity 0.4s linear;
+}
+
+.pop-enter,
+.pop-leave-to {
+    opacity: 0;
+    transform: scale(0.3) translateY(-50%);
 }
 </style>

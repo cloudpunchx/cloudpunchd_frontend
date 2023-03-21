@@ -44,6 +44,7 @@
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
         </v-app-bar>
+        
     </div>
 </template>
 
@@ -65,7 +66,7 @@ import UserLogout from '@/components/UserLogout.vue'
                 usernameUppercase: "",
                 profileImg: "",
                 showDropdown: false,
-                query: ""
+                query: "",
             }
         },
         methods: {

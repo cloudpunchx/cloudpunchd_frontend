@@ -64,4 +64,7 @@ import axios from "axios";
 .contentBox{
     margin-left: 20px;
 }
+.divider{
+    width: 500px;
+}
 </style>

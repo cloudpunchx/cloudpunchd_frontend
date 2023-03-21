@@ -23,18 +23,19 @@
         </v-app-bar>
 
         <transition name="fade" appear>
-                <div class="modal-overlay" 
-                    v-if="showModal" 
-                    @click="showModal = false"></div>
-            </transition>
-            <transition name="pop" appear>
-                <div class="modal" 
-                role="dialog" 
-                v-if="showModal"
-                >
-                    <UserLogin/>
-                </div>
-            </transition>
+            <div class="modal-overlay" 
+                v-if="showModal" 
+                @click="showModal = false">
+            </div>
+        </transition>
+        <transition name="pop" appear>
+            <div class="modal" 
+            role="dialog" 
+            v-if="showModal"
+            >
+                <UserLogin/>
+            </div>
+        </transition>
     </div>
 </template>
 
