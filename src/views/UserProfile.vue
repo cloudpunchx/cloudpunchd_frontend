@@ -107,7 +107,7 @@ import PageFooter from '@/components/PageFooter.vue'
         },
         created (){
             this.getUserProfile();
-        }
+        },
     }
 </script>
 
@@ -178,10 +178,13 @@ h4{
 .watchlistContainer{
     margin-top: 80px;
 }
+
 .footer{
+    padding-top: 1000px;
     position: absolute;
     bottom: -100vh;
     width: 100%;
     background-color: #252422;
+    z-index: -1;
 }
 </style>

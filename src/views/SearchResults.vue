@@ -6,43 +6,36 @@
         <div v-else>
             <PageHeader class="header"/>
         </div>
-
-        <!-- LEAVING OFF STYLING SEARCH RESULTS -->
-
-        <div class="resultsContainer">
+        <div class="container">
             <h3>FOUND MATCHES</h3>
             <v-divider class="divider" color="#adb5bd"></v-divider>
-            <section class="profileContainer"                
-            v-for="movie in movies"
-            :key="movie.ID">
-                <router-link
-                    :to="'/movie/' + movie.MovieName + '/' + movie.ID"
-                    >
-                        <v-img
-                            :src="movie.Poster"
-                            :width="125"
-                            class="poster"
+            <v-container v-for="movie in movies" :key="movie.ID">
+                <v-row no-gutters>
+                    <v-col cols="auto">
+                        <router-link
+                        :to="'/movie/' + movie.MovieName + '/' + movie.ID"
                         >
-                            <template v-slot:placeholder>
-                                <v-row
-                                    class="fill-height ma-0"
-                                    align-content="center"
-                                    justify="center"
-                                >
-                                    <v-progress-circular
-                                    indeterminate
-                                    color="grey-lighten-5"
-                                    ></v-progress-circular>
-                                </v-row>
-                            </template>
-                        </v-img>
-                </router-link>
-                <div class="movieInfo">
-                    <h2>{{ movie.MovieName }}</h2>
-                    <p ></p>
-                </div>
-            </section>
-        
+                            <v-img
+                                :src="movie.Poster"
+                                :width="100"
+                                class="poster"
+                            >
+                            </v-img>
+                        </router-link>
+                    </v-col>
+                    <v-col class="textBox">
+                        <router-link
+                        :to="'/movie/' + movie.MovieName + '/' + movie.ID"
+                        class="noUnderline"
+                        >
+                            <h1 class="title">{{movie.MovieName }} <span class="dateSpan">{{ movie.Release_Date }}</span></h1>
+                        </router-link>
+                        <p>Directed By {{ movie.Director }}</p>
+                        <p>Genre: {{ movie.Genres }}</p>
+                    </v-col>
+                </v-row>
+                <v-divider class="divider2" color="#adb5bd"></v-divider>
+            </v-container>
         </div>
     </div>
 </template>
@@ -94,27 +87,40 @@ import cookies from 'vue-cookies';
 </script>
 
 <style scoped>
-.resultsContainer{
-    color: #adb5bd;
-    margin-top: 150px;
-    position: absolute;
-    left: 27%;
+.header{
+    margin-bottom: 100px;
 }
-.divider{
-    width: 800px;
-}
-.profileContainer{
-    color: white;
-    padding: 10px;
+.container{
+    width: 600px;
     position: relative;
-    width: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-    /* margin-top: 100px; */
+    color: #adb5bd;
+    background-color: #252422;
 }
-.userInfo{
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 30px;
+.title{
+    color: whitesmoke;
+}
+.textBox{
+    margin-left: 15px;
+}
+.v-rating{
+    margin-top: -5px;
+}
+.poster{
+    height: 100%;
+    border: 1px rgb(97, 97, 97) solid;
+    transition: transform 0.5s;
+}
+.poster:hover{
+    transform: scale(1.05);
+}
+.dateSpan{
+    color: #adb5bd;
+    font-size: 11pt;
+}
+.noUnderline{
+    text-decoration: none;
+}
+.divider2{
+    margin-top: 15px;
 }
 </style>
