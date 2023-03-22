@@ -69,7 +69,7 @@ import FeaturedMovies from '@/components/FeaturedMovies.vue'
 
 <style scoped>
 .header{
-    background-color: #252422;
+    background-color: #212529;
 }
 .titleContainer{
     color: white;
@@ -102,7 +102,7 @@ import FeaturedMovies from '@/components/FeaturedMovies.vue'
     position: absolute;
     bottom: -100vh;
     width: 100%;
-    background-color: #252422;
+    background-color: #212529;
     z-index: -1;
 }
 </style>

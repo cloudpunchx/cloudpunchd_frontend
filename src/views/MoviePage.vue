@@ -191,7 +191,7 @@ h5{
 .container{
     margin-top: 250px;
     color: #adb5bd;
-    background-color: #252422;
+    background-color: #212529;
     position: relative;
     left: 30%;
     width: 70%;
@@ -202,7 +202,7 @@ h5{
     position: absolute;
     bottom: -100vh;
     width: 100%;
-    background-color: #252422;
+    background-color: #212529;
     z-index: -1;
 }
 /* Pop Up for Sign In */

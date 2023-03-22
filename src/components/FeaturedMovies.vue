@@ -70,10 +70,9 @@ import axios from "axios";
     transform: scale(1.05);
 }
 .boxContainer{
-    background-color: #353535;
+    background-color: #212529;
     padding: 50px;
     width: 100vw;
-    /* margin-top: 150px; */
     margin-bottom: 500px;
 }
 </style>

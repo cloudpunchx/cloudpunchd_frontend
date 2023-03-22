@@ -87,7 +87,7 @@ import cookies from 'vue-cookies';
 
 <style scoped>
 .form {
-    color: #252422;
+    color: #212529;
     width: 50%;
     margin-top: 50px;
     padding: 20px;

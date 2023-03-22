@@ -81,7 +81,7 @@ import cookies from 'vue-cookies';
 <style scoped>
 .container{
     color: #adb5bd;
-    background-color: #252422;
+    background-color: #212529;
 }
 .title{
     color: whitesmoke;

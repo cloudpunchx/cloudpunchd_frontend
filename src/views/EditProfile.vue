@@ -128,14 +128,14 @@
                         <v-file-input 
                         prepend-icon="mdi-camera"
                         label="Profile Image" 
-                        v-model="profile_img"
-                        accept="image/*"
+                        v-model="selectedFile"
+                        accept=".jpg,.jpeg,.png,.gif"
                         variant="underlined"
                         color="#495057"
                         dark
                         >
                         </v-file-input>
-                            <!-- <v-text-field
+                            <v-text-field
                             background-color="#495057"
                             v-model="profile_img"
                             label="Profile Image URL"
@@ -145,7 +145,7 @@
                                 <template v-slot:label>
                                     <span class="label">Profile Image Url</span>
                                 </template>
-                            </v-text-field> -->
+                            </v-text-field>
                         </v-col>
                     </v-row>
                     <div>
@@ -183,7 +183,9 @@
                 </div>
         </transition>
 
-        <PageFooter/>
+        <div class="footer">
+            <PageFooter/>
+        </div>
     </div>
 </template>
 
@@ -213,6 +215,7 @@ import PageFooter from '@/components/PageFooter.vue'
                 password: "",
                 bio: "",
                 profile_img: "",
+                selectedFile: "",
                 feedbackMsg: "",
                 active: false,
                 showModal: false,
@@ -269,7 +272,7 @@ import PageFooter from '@/components/PageFooter.vue'
 
 <style scoped>
 .pageContainer{
-    position: fixed;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
     margin-top: 80px;
@@ -302,13 +305,22 @@ h3{
 .topFourContainer{
     color: #adb5bd;
     margin-top: 30px;
-    position: fixed;
+    position: absolute;
 }
 .divider1{
     margin-bottom: 10px;
 }
 .divider2{
     width: 34%;
+}
+
+.footer{
+    padding-top: 1000px;
+    position: absolute;
+    bottom: -100vh;
+    width: 100%;
+    background-color: #212529;
+    z-index: -1;
 }
 /* Pop Up for Delete Account */
 .modal {

@@ -118,7 +118,7 @@ import SignedInHeader from '@/components/SignedInHeader.vue'
 <style scoped>
 .profileContainer{
     color: white;
-    background-color: #212120;
+    background-color: #212529;
     padding: 10px;
     width: 50%;
     position: relative;

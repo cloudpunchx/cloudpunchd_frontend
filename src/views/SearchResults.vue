@@ -94,7 +94,7 @@ import cookies from 'vue-cookies';
     width: 600px;
     position: relative;
     color: #adb5bd;
-    background-color: #252422;
+    background-color: #212529;
 }
 .title{
     color: whitesmoke;

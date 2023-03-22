@@ -73,7 +73,7 @@ h1{
     font-size: 30pt;
 }
 .description{
-    background-color: #252422;
+    background-color: #212529;
     text-align: center;
     position: absolute;
     top: 50%;

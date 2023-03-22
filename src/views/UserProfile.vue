@@ -145,7 +145,7 @@ h4{
 .container{
     position: relative;
     width: 100%;
-    background-color: #252422;
+    background-color: #212529;
 }
 .divider{
     width: 34%;
@@ -180,11 +180,11 @@ h4{
 }
 
 .footer{
-    padding-top: 1000px;
+    padding-top: 1500px;
     position: absolute;
     bottom: -100vh;
     width: 100%;
-    background-color: #252422;
+    background-color: #212529;
     z-index: -1;
 }
 </style>
