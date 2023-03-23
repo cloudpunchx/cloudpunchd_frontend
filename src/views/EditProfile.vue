@@ -22,9 +22,9 @@
                             dark
                             class="textField"
                             >
-                                <template v-slot:label>
+                                <!-- <template v-slot:label>
                                     <span class="label">Username</span>
-                                </template>
+                                </template> -->
                             </v-text-field>
                         </v-col>
 
@@ -41,9 +41,9 @@
                             dark
                             class="textField"
                             >
-                                <template v-slot:label>
+                                <!-- <template v-slot:label>
                                     <span class="label">First Name</span>
-                                </template>
+                                </template> -->
                             </v-text-field>
                         </v-col>
                 
@@ -60,9 +60,9 @@
                             dark
                             class="textField"
                             >
-                                <template v-slot:label>
+                                <!-- <template v-slot:label>
                                     <span class="label">Last Name</span>
-                                </template>
+                                </template> -->
                             </v-text-field>
                         </v-col>
                 
@@ -79,9 +79,9 @@
                             dark
                             class="textField"
                             >
-                                <template v-slot:label>
+                                <!-- <template v-slot:label>
                                     <span class="label">Email</span>
-                                </template>
+                                </template> -->
                             </v-text-field>
                         </v-col>
 
@@ -97,9 +97,9 @@
                             dark
                             class="textField"
                             >
-                                <template v-slot:label>
+                                <!-- <template v-slot:label>
                                     <span class="label">Password</span>
-                                </template>
+                                </template> -->
                             </v-text-field>
                         </v-col>
 
@@ -115,9 +115,9 @@
                             dark
                             class="textField"
                             >
-                                <template v-slot:label>
+                                <!-- <template v-slot:label>
                                     <span class="label">Bio</span>
-                                </template>
+                                </template> -->
                             </v-text-field>
                         </v-col>
 
@@ -125,7 +125,7 @@
                             cols="12"
                             md="4"
                         >   
-                        <v-file-input 
+                        <!-- <v-file-input 
                         prepend-icon="mdi-camera"
                         label="Profile Image" 
                         v-model="selectedFile"
@@ -134,7 +134,7 @@
                         color="#495057"
                         dark
                         >
-                        </v-file-input>
+                        </v-file-input> -->
                             <v-text-field
                             background-color="#495057"
                             v-model="profile_img"
@@ -142,9 +142,9 @@
                             required
                             class="textField"
                             >
-                                <template v-slot:label>
+                                <!-- <template v-slot:label>
                                     <span class="label">Profile Image Url</span>
-                                </template>
+                                </template> -->
                             </v-text-field>
                         </v-col>
                     </v-row>
@@ -215,37 +215,36 @@ import PageFooter from '@/components/PageFooter.vue'
                 password: "",
                 bio: "",
                 profile_img: "",
-                selectedFile: "",
                 feedbackMsg: "",
                 active: false,
                 showModal: false,
             }
         },
         methods: {
-            get_user_profile(){
-                axios.request({
-                    url: this.apiUrl+"/user",
-                    method: "GET",
-                    headers: {
-                        token: cookies.get(`sessionToken`)
-                    },
-                }).then((response)=>{
-                    this.username = response.data.username;
-                    this.firstName = response.data.firstName;
-                    this.lastName = response.data.lastName;
-                    this.email = response.data.email;
-                    this.bio = response.data.bio;
-                    this.profile_img = response.data.profile_img;
-                }).catch((error)=>{
-                    this.feedbackMsg = error;
-                })
-            },
+            // get_user_profile(){
+            //     axios.request({
+            //         url: this.apiUrl+"/user",
+            //         method: "GET",
+            //         headers: {
+            //             token: cookies.get(`sessionToken`)
+            //         },
+            //     }).then((response)=>{
+            //         this.username = response.data.username;
+            //         this.firstName = response.data.firstName;
+            //         this.lastName = response.data.lastName;
+            //         this.email = response.data.email;
+            //         this.bio = response.data.bio;
+            //         this.profile_img = response.data.profile_img;
+            //     }).catch((error)=>{
+            //         this.feedbackMsg = error;
+            //     })
+            // },
             edit_user_profile(){
                 axios.request({
                     url: this.apiUrl+"/user",
                     method: "PATCH",
                     headers: {
-                        token: this.token
+                        token: cookies.get(`sessionToken`)
                     },
                     data: {
                         username: this.username,
@@ -256,17 +255,27 @@ import PageFooter from '@/components/PageFooter.vue'
                         bio: this.bio,
                         profileImg: this.profile_img
                     }
-                }).then(()=>{
+                }).then((response)=>{
+                    console.log(response);
                     this.feedbackMsg = "Successfully edited profile";
-                    this.password = ""
+                    this.clearTextBox();
                 }).catch((error)=>{
                     this.feedbackMsg = error;
+                    this.clearTextBox();
                 })
-            }
+            },
+            clearTextBox(){
+                this.username = "";
+                this.firstName = "";
+                this.lastName = "";
+                this.email = "";
+                this.username = "";
+                this.password = "";
+            },
         },
-        created (){
-            this.get_user_profile();
-        }
+        // created (){
+        //     this.get_user_profile();
+        // }
     }
 </script>
 
@@ -279,6 +288,9 @@ import PageFooter from '@/components/PageFooter.vue'
 }
 .editProfile{
     margin-top: 20px;
+}
+.feedback{
+    color: #adb5bd;
 }
 h3{
     color: #adb5bd;

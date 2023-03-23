@@ -15,13 +15,18 @@
                     label="Email"
                 ></v-text-field>
 
+                <!-- this is not working -->
                 <v-text-field
                     v-model="password"
-                    :readonly="loading"
+                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                    :type="show1 ? 'text' : 'password'"
+                    color="rgb(1, 139, 139)"
                     :rules="[required]"
-                    clearable
                     label="Password"
+                    clearable
                     placeholder="Enter your password"
+                    variant="underlined"
+                    @click="togglePassword"
                 ></v-text-field>
 
                 <br>
@@ -61,6 +66,7 @@ import router from '@/router';
                 feedbackMsg: "",
                 form: false,
                 loading: false,
+                show1: false
             }
         },
         methods: {
@@ -90,6 +96,9 @@ import router from '@/router';
             required (v) {
                 return !!v || 'Field is required'
             },
+            togglePassword() {
+                this.show = !this.show;
+            }
         }
     }
 </script>

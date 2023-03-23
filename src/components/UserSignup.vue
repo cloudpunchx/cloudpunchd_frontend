@@ -39,11 +39,15 @@
                     variant="underlined"
                 ></v-text-field>
 
+                <!-- Not working -->
                 <v-text-field
                     v-model="password"
+                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                    :type="show1 ? 'text' : 'password'"
                     color="rgb(1, 139, 139)"
                     label="Password"
                     variant="underlined"
+                    @click="togglePassword"
                 ></v-text-field>
 
                 <v-checkbox
@@ -58,8 +62,8 @@
                 >
                     SUBMIT
                 </v-btn>
-                <div v-if="errorMsg">
-                    <p class="errorText">{{ errorMsg }}</p>
+                <div v-if="feedbackMsg">
+                    <p class="feedbackMsg">{{ feedbackMsg }}</p>
                 </div>
             </v-container>
         </v-card>
@@ -108,11 +112,12 @@ import router from '@/router';
         ],
         }),
         password: '',
-        errorMsg: '',
-        terms: false,
         methods: {
             userSignUp() {
-                axios.request({
+                if (this.terms == false){
+                    this.feedbackMsg = "Please click check box to agree to terms and conditions."
+                } else if (this.terms == true){
+                    axios.request({
                     url: "http://127.0.0.1:5000/api/user",
                     method: "POST",
                     data: {
@@ -127,9 +132,10 @@ import router from '@/router';
                     cookies.set(`sessionToken`, response.data[1]);
                     router.push({name: 'UserProfile', params: {username: this.username}})
                 }).catch((error)=>{
-                    this.errorMsg = error;
+                    this.feedbackMsg = error;
                     this.clearTextBox();
                 })
+                }
             },
             clearTextBox(){
                 this.username = "";
@@ -138,6 +144,9 @@ import router from '@/router';
                 this.email = "";
                 this.username = "";
                 this.password = "";
+            },
+            togglePassword() {
+                this.show = !this.show;
             }
         }
     }
@@ -162,7 +171,7 @@ h3{
     background-color: rgb(1, 139, 139);
     margin-top: 15px;
 }
-.errorText{
+.feedbackMsg{
     margin-top: 30px;
 }
 </style>
