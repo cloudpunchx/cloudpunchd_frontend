@@ -45,6 +45,33 @@
                 <v-divider class="divider" color="#adb5bd"></v-divider>
                 <GetMovieReviews/>
             </div>
+            <div>
+                <!-- <img :src="unwatched" @click="AddToWatched" alt="Image" /> -->
+                <!-- <span v-if="token"><v-btn class="watchlistBtn" variant="tonal" @click="addToWatchlist">Add to Watchlist</v-btn></span> -->
+                <!-- <v-container>
+                    
+                    <v-row dense>
+                        <v-col cols="4">
+                            <v-icon>mdi-home</v-icon>
+                        </v-col>
+                        <v-col cols="4">
+                            <v-icon>mdi-account</v-icon>
+                        </v-col>
+                        </v-row>
+
+                        <v-row dense>
+                        <v-col cols="12">
+                            <v-btn variant="tonal" @click="addToWatchlist">Add to Watchlist</v-btn>
+                        </v-col>
+                        <v-col cols="12">
+                            <v-btn variant="tonal" @click="showModal = true">Log Movie</v-btn>
+                        </v-col>
+                        <v-col cols="12">
+                            <v-btn>Button</v-btn>
+                        </v-col>
+                    </v-row>
+                </v-container> -->
+            </div>
         </div>
 
         <transition name="fade" appear>
@@ -96,6 +123,8 @@ import cookies from 'vue-cookies';
                 movie: [],
                 active: false,
                 showModal: false,
+                // unwatched: "../assets/cat2.png",
+                // watched: "../assets/cat1.png"
             }
         },
         methods: {
@@ -112,6 +141,25 @@ import cookies from 'vue-cookies';
                 }).catch((error)=>{
                     console.log(error);
                 })
+            },
+            addToWatchlist() {
+                axios.request({
+                    url: this.apiUrl+"/user-watchlist",
+                    method: "POST",
+                    headers: {
+                        token: this.token = cookies.get(`sessionToken`)
+                    },
+                    data: {
+                        movieId: this.$route.params.movieId,
+                    }
+                }).then(()=>{
+                    this.markWatched();
+                }).catch((error)=>{
+                    console.log(error);
+                })
+            },
+            markWatched(){
+                this.unwatched = this.watched;
             },
             getToken(){
                 this.token = cookies.get(`sessionToken`);
@@ -161,6 +209,9 @@ import cookies from 'vue-cookies';
 }
 .logBtn{
     margin-left: 150px;
+}
+.watchlistBtn{
+    margin-left: 235px;
 }
 .v-btn{
     margin-top: 25px;
