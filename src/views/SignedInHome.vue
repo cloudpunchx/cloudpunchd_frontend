@@ -12,6 +12,11 @@
                 <v-divider class="divider" color="#adb5bd"></v-divider>
                 <FeaturedMovies/>
             </div>
+            <!-- <div class="horrorCategory">
+                <h4 class="heading">HORROR</h4>
+                <v-divider class="divider" color="#adb5bd"></v-divider>
+                <MovieDisplay/>
+            </div> -->
             
         </div>
         <div class="footer">
@@ -25,14 +30,18 @@
 import axios from "axios";
 import cookies from 'vue-cookies';
 import SignedInHeader from '@/components/SignedInHeader.vue'
-import PageFooter from '@/components/PageFooter.vue'
 import FeaturedMovies from '@/components/FeaturedMovies.vue'
+// import MovieDisplay from '@/components/MovieDisplay.vue'
+import PageFooter from '@/components/PageFooter.vue'
+
+
 
     export default {
         name: "SignedInHome",
         components: {
             SignedInHeader,
             FeaturedMovies,
+            // MovieDisplay,
             PageFooter
         },
         data() {
@@ -90,6 +99,12 @@ import FeaturedMovies from '@/components/FeaturedMovies.vue'
     color: #adb5bd;
     width: 50%;
     margin-top: 70px;
+}
+.horrorCategory{
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .divider{
     width: 65%;

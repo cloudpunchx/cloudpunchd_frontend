@@ -34,7 +34,7 @@
                 </v-col>
             </v-row>
             <div class="infoContainer">
-                <h1>{{ movie.MovieName }} <span class="logBtn"><v-btn variant="tonal" @click="showModal = true">Log Movie</v-btn></span></h1>
+                <h1>{{ movie.MovieName }} <span v-if="token" class="logBtn"><v-btn variant="tonal" @click="showModal = true">Log Movie</v-btn></span></h1>
                 <p>{{ movie.Release_Date }} {{ movie.Certification }}</p>
                 <h5>{{ movie.Tagline }}</h5>
                 <p>{{ movie.Description }}</p>

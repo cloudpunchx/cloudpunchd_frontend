@@ -71,7 +71,6 @@ import cookies from 'vue-cookies';
                 }).then((response)=>{
                     this.movies = response.data;
                 }).catch((error)=>{
-                    // need to update this
                     this.errorMsg = error;
                 })
             },
