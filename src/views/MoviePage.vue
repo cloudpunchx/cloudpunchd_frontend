@@ -39,6 +39,8 @@
                 <h5>{{ movie.Tagline }}</h5>
                 <p>{{ movie.Description }}</p>
                 <h5>Directed By {{ movie.Director }}</h5>
+                <!-- NOT STYLED BUT IT WORKS -->
+                <v-btn @click="addToWatchlist" variant="tonal">Add to Watchlist</v-btn>
             </div>
             <div class="container">
                 <h4>REVIEWS</h4>
