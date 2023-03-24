@@ -15,7 +15,7 @@
                     label="Email"
                 ></v-text-field>
 
-                <!-- this is not working -->
+                <!-- this is not working with the eye icon!  -->
                 <v-text-field
                     v-model="password"
                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"

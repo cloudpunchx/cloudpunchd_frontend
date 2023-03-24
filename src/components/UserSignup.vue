@@ -118,7 +118,7 @@ import router from '@/router';
                     this.feedbackMsg = "Please click check box to agree to terms and conditions."
                 } else if (this.terms == true){
                     axios.request({
-                    url: "http://127.0.0.1:5000/api/user",
+                    url: this.apiUrl+"/user",
                     method: "POST",
                     data: {
                         username: this.username,

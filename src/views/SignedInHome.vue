@@ -57,7 +57,7 @@ import PageFooter from '@/components/PageFooter.vue'
             },
             get_user_profile(){
                 axios.request({
-                    url: "http://127.0.0.1:5000/api/user",
+                    url: this.apiUrl+"/user",
                     method: "GET",
                     headers: {
                         token: this.token
