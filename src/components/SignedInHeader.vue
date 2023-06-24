@@ -11,6 +11,9 @@
                 </router-link>
             </v-toolbar-title>
             <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
             <v-text-field 
                 v-model="query" 
                 hide-details 
