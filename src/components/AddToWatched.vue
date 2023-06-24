@@ -1,17 +1,23 @@
+<!-- need to remove writing from imgs -->
+<!-- add text here and make it bigger/color on hover -->
+<!-- connect button to img -->
+
 <template>
     <div>
         <v-card
         elevation="2"
-        max-width="250px"
         class="container"
         >
-            <v-row align="center" justify="center">
-                <v-img max-width="50" class="img" src="../assets/watchIcon.png"></v-img>
-                <v-img max-width="50" class="img" src="../assets/likeIcon.png"></v-img>
-                <v-img max-width="50" class="img" src="../assets/watchlistIcon.png"></v-img>
+            <v-row justify="center">
+                <v-img class="img" src="../assets/watchIcon.png"></v-img>
+                <v-img class="img" src="../assets/likeIcon.png"></v-img>
+                <v-img class="img" src="../assets/watchlistIcon.png"></v-img>
+            </v-row>
+            <v-row>
+                <v-divider class="divider" color="#adb5bd"></v-divider>
             </v-row>
             <v-card-text>
-                <v-row align="center" justify="center">
+                <v-row justify="center">
                     <v-rating
                     v-model="rating"
                     hover
@@ -25,7 +31,7 @@
                     >
                     </v-rating>
                 </v-row>
-                <v-row align="center" justify="center">
+                <v-row justify="center">
                     <v-checkbox 
                     color="#adb5bd"
                     background-color="whitesmoke"
@@ -35,7 +41,7 @@
                     >
                     </v-checkbox>
                 </v-row>
-                <v-row align="center" justify="center">
+                <v-row justify="center">
                     <v-btn 
                     type="submit" 
                     variant="tonal"
@@ -43,7 +49,7 @@
                     >SUBMIT
                     </v-btn>
                 </v-row>
-                <v-row align="center" justify="center">
+                <v-row justify="center">
                     <div v-if="feedbackMsg">
                         <p class="feedbackContainer">{{ feedbackMsg }}</p>
                     </div>
@@ -69,7 +75,7 @@ import cookies from 'vue-cookies';
                 rating: null,
                 loved: false,
                 feedbackMsg: "",
-                date: new Date().toISOString().substr(0, 10),
+                date: "",
             }
         },
         methods: {
@@ -101,14 +107,20 @@ import cookies from 'vue-cookies';
 
 <style scoped>
 .img{
+    width: 65px;
     margin: 10px;
 }
 .container {
+    width: 300px;
     background-color: #2f3337;
-    padding: 20px;
+    padding: 30px;
+}
+.divider{
+    width: 100%;
+    margin: 20px auto;
 }
 .rating{
-    margin-top: 25px;
+    margin-top: 15px;
 }
 .v-btn{
     width: 100px;

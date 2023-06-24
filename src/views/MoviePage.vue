@@ -44,11 +44,6 @@
                             <h5>{{ movie.Tagline }}</h5>
                             <p>{{ movie.Description }}</p>
                             <h5>Directed By {{ movie.Director }}</h5>
-                            <!-- NOT STYLED BUT IT WORKS -->
-                            <!-- only show Add To Watchlist button if logged in -->
-                            <div v-show="token">
-                                <v-btn @click="addToWatchlist" variant="tonal">Add to Watchlist</v-btn>
-                            </div>
                         </div>
                     </v-col>
                     <v-col cols="12" md="2">
