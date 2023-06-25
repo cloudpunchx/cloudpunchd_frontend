@@ -11,9 +11,13 @@
             <div class="grad1">
                 <img class="backdropFade" :src="movie.coverImg">
             </div>
-            <v-container>
+            <v-container class="contentContainer">
                 <v-row>
-                    <v-col cols="12" md="4">
+                    <v-col 
+                    cols="12" 
+                    md="3"
+                    lg="4"
+                    >
                         <v-row class="posterContainer">
                             <v-col>
                                 <v-img
@@ -37,7 +41,11 @@
                             </v-col>
                         </v-row>
                     </v-col>
-                    <v-col cols="12" md="6">
+                    <v-col 
+                    cols="12" 
+                    md="5"
+                    lg="5"
+                    >
                         <div class="infoContainer">
                             <h1>{{ movie.MovieName }}</h1>
                             <p>{{ movie.Release_Date }} {{ movie.Certification }}</p>
@@ -46,14 +54,22 @@
                             <h5>Directed By {{ movie.Director }}</h5>
                         </div>
                     </v-col>
-                    <v-col cols="12" md="2">
+                    <v-col 
+                    cols="12" 
+                    md="3"
+                    lg="2"
+                    >
                         <div class="logContainer">
                             <AddToWatched/>
                         </div>
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="12">
+                    <v-col 
+                    cols="12"
+                    md="6"
+                    lg="6"
+                    >
                         <div class="container">
                             <h4>REVIEWS</h4>
                             <v-divider class="divider" color="#adb5bd"></v-divider>
@@ -154,11 +170,18 @@ import cookies from 'vue-cookies';
     left: 50%;
     transform: translateX(-50%);
 }
+.contentContainer{
+    margin-top: -200px;
+}
 .v-row {
     align-items: stretch;
 }
 .infoContainer {
     color: white;
+    width: 350px;
+}
+.logContainer{
+    margin-top: 50px;
 }
 .container {
     color: #adb5bd;
@@ -166,10 +189,10 @@ import cookies from 'vue-cookies';
 
 /* Styling for cover img */
 .backdropFade{
-    height: 50vh;
+    height: 60vh;
     position: relative;
-    left: 50%;
     top: -100px;
+    left: 50%;
     transform: translateX(-50%);
     z-index: 1;
 }

@@ -1,6 +1,8 @@
-<!-- need to remove writing from imgs -->
 <!-- add text here and make it bigger/color on hover -->
 <!-- connect button to img -->
+
+<!-- why is sign in not working? -->
+<!-- fix movie page sizing -->
 
 <template>
     <div>
@@ -9,9 +11,18 @@
         class="container"
         >
             <v-row justify="center">
-                <v-img class="img" src="../assets/watchIcon.png"></v-img>
-                <v-img class="img" src="../assets/likeIcon.png"></v-img>
-                <v-img class="img" src="../assets/watchlistIcon.png"></v-img>
+                <div class="textBox">
+                    <v-img class="img" src="../assets/watchIcon.png"></v-img>
+                    <p class="buttonText">Watch</p>
+                </div>
+                <div class="textBox">
+                    <v-img class="img" src="../assets/likeIcon.png"></v-img>
+                    <p class="buttonText">Like</p>
+                </div>
+                <div class="textBox">
+                    <v-img class="img" src="../assets/watchlistIcon.png"></v-img>
+                    <p class="buttonText">Watchlist</p>
+                </div>
             </v-row>
             <v-row>
                 <v-divider class="divider" color="#adb5bd"></v-divider>
@@ -115,9 +126,22 @@ import cookies from 'vue-cookies';
     background-color: #2f3337;
     padding: 30px;
 }
+.textBox{
+    text-align: center;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+.buttonText{
+    color: rgb(192, 192, 192);
+}
+.buttonText:hover{
+    color: whitesmoke;
+    cursor: pointer;
+}
 .divider{
     width: 100%;
-    margin: 20px auto;
+    margin: 5px auto;
 }
 .rating{
     margin-top: 15px;
