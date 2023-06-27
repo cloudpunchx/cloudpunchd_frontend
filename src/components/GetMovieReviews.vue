@@ -1,29 +1,37 @@
 <template>
     <div>
-        <v-container v-for="review in reviews" :key="review.ID">
-            <v-row no-gutters>
-                <v-col cols="auto">
-                    <v-avatar size="50">
-                        <v-img :src="review.profileImg"></v-img>
-                    </v-avatar>
-                </v-col>
-                <v-col cols class="contentBox">
-                    <h5>Reviewed by {{ review.Username }}<span class="dateSpan"> on {{ review.watchedOn }}</span></h5>
-                    <v-rating
-                        :value="parseFloat(review.Rating)"
-                        half-increments
-                        color="red"
-                        size="15"
-                        dense
-                        readonly
-                        empty-icon
-                    />
-                    <p>Watched {{ review.watchedOn }}</p>
-                    <p class="bodyText">{{ review.Review }}</p>
-                </v-col>
-            </v-row>
-            <v-divider class="divider" color="#adb5bd"></v-divider>
-        </v-container>
+        <!-- change depending on if movie has reviews or not -->
+        <div v-if="reviews.length > 0">
+            <v-container v-for="review in reviews" :key="review.ID">
+                <v-row no-gutters>
+                    <v-col cols="auto">
+                        <v-avatar size="50">
+                            <v-img :src="review.profileImg"></v-img>
+                        </v-avatar>
+                    </v-col>
+                    <v-col cols class="contentBox">
+                        <h5>Review by {{ review.Username }}<span class="dateSpan"> on {{ review.watchedOn }}</span></h5>
+                        <v-rating
+                            :value="parseFloat(review.Rating)"
+                            half-increments
+                            color="red"
+                            size="15"
+                            dense
+                            readonly
+                            empty-icon
+                        />
+                        <p>Watched {{ review.watchedOn }}</p>
+                        <p class="bodyText">{{ review.Review }}</p>
+                    </v-col>
+                </v-row>
+                <v-divider class="divider" color="#adb5bd"></v-divider>
+            </v-container>
+        </div>
+
+        <div v-else>
+            <p class="altText">Be the first to review this!</p>
+        </div>
+
     </div>
 </template>
 
@@ -66,5 +74,9 @@ import axios from "axios";
 }
 .divider{
     width: 500px;
+}
+.altText{
+    font-size: 15pt;
+    margin: 15px;
 }
 </style>

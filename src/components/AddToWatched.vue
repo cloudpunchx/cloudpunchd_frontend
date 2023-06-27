@@ -1,7 +1,4 @@
-<!-- add text here and make it bigger/color on hover -->
 <!-- connect button to img -->
-
-<!-- why is sign in not working? -->
 <!-- fix movie page sizing -->
 
 <template>
@@ -74,6 +71,12 @@
 import axios from "axios";
 import cookies from 'vue-cookies';
 
+// when you click on Watch - api send log movie with no date
+// when you click log movie - api send log movie with chosen date
+
+// Like movie - api send movie to Like or remove from 
+// watchlist - api send movie to watchlist or remove from 
+
     export default {
         name: "AddToWatched",
         data() {
@@ -123,7 +126,7 @@ import cookies from 'vue-cookies';
 }
 .container {
     width: 300px;
-    background-color: #2f3337;
+    background-color: #545a60;
     padding: 30px;
 }
 .textBox{
