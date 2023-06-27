@@ -70,10 +70,11 @@ import PageFooter from '@/components/PageFooter.vue'
 <style scoped>
 h1{
     color: white;
-    font-size: 30pt;
+    font-size: 35pt;
+    font-family: lobster;
 }
 .description{
-    background-color: #212529;
+    background-color: #22333b;
     text-align: center;
     position: absolute;
     top: 50%;
@@ -88,12 +89,12 @@ h1{
     transform: translateX(-50%);
 }
 .v-btn{
-    width: 270px;
+    width: 200px;
 }
 
 .v-btn:hover {
-    /* background-color: #4c9e9e; */
-    background-color: yellow;
+    color: whitesmoke;
+    background-color: #DD1C1A;
 }
 
 .featuredContainer{

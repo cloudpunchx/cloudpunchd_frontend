@@ -85,7 +85,7 @@ import router from '@/router';
                 }).catch((error)=>{
                     this.email = "";
                     this.password = "";
-                    this.feedbackMsg = error;
+                    this.feedbackMsg = error.response.data;
                 })
             },
             onSubmit () {

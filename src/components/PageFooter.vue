@@ -15,7 +15,7 @@
 <style scoped>
 .v-footer {
     color: white;
-    background-color: #212529;
+    background-color: #22333b;
     text-align: center;
     width: 100%;
     padding: 5px;

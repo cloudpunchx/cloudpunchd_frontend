@@ -5,17 +5,15 @@
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
-            <v-spacer></v-spacer>
         <v-toolbar-title>
             <router-link to="/">
-            <img src="../assets/cloudpunchdLogo.png" alt="Logo" class="logo">
+                <img src="../assets/cloudpunchdLogo.png" alt="Logo" class="logo">
             </router-link>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-spacer></v-spacer>
-            <v-text-field v-model="search" hide-details clearable append-icon="mdi-magnify" background-color="rgba(148, 148, 148, 0.63)" class="textField"></v-text-field>
             <button class="signIn" @click="showModal = true">SIGN IN</button>
-        <v-spacer></v-spacer>
+            <button class="signIn" @click="showModal2 = true">CREATE ACCOUNT</button>
+            <v-text-field v-model="search" hide-details clearable append-icon="mdi-magnify" background-color="rgba(148, 148, 148, 0.63)" class="textField"></v-text-field>
         <v-spacer></v-spacer>
         <v-spacer></v-spacer>
         <v-spacer></v-spacer>
@@ -36,21 +34,40 @@
                 <UserLogin/>
             </div>
         </transition>
+
+        <transition name="fade" appear>
+            <div class="modal-overlay" 
+                v-if="showModal2" 
+                @click="showModal2 = false">
+            </div>
+        </transition>
+        <transition name="pop" appear>
+            <div class="modal" 
+            role="dialog" 
+            v-if="showModal2"
+            >
+                <UserSignup/>
+            </div>
+        </transition>
+        
     </div>
 </template>
 
 <script>
 import UserLogin from '@/components/UserLogin.vue'
+import UserSignup from '@/components/UserSignup.vue'
 
     export default {
         name: "PageHeader",
         components: {
             UserLogin,
+            UserSignup
         },
         data() {
             return {
                 active: false,
                 showModal: false,
+                showModal2: false,
             }
         },
         methods: {
@@ -62,10 +79,6 @@ import UserLogin from '@/components/UserLogin.vue'
 </script>
 
 <style scoped>
-
-.nav-bar {
-    border: none !important;
-}
 .logo {
     height: 32px;
     margin-top: 5px;
@@ -73,9 +86,6 @@ import UserLogin from '@/components/UserLogin.vue'
 }
 .v-app-bar{
     z-index: 2;
-}
-.search-box {
-    margin-right: -200px;
 }
 button{
     padding: 5px;
@@ -85,10 +95,10 @@ button:hover{
     background-color: #4c9e9e;
 }
 .signIn{
-    margin-left: 20px;
+    margin-right: 20px;
 }
 .textField{
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 /* CHECKBOX HACK */
