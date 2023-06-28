@@ -12,8 +12,35 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
-            <v-spacer></v-spacer>
-            <v-spacer></v-spacer>
+            <v-avatar size="45"><v-img :src="profileImg"></v-img></v-avatar>
+            <v-menu offset-y>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn 
+                    text 
+                    v-bind="attrs" 
+                    v-on="on" 
+                    @mouseover="showDropdown = true"
+                    class="listItemBtn"
+                    >
+                        {{ usernameUppercase }}
+                        <v-icon right>mdi-menu-down</v-icon>
+                    </v-btn>
+                </template>
+                <v-list 
+                v-show="showDropdown" 
+                @mouseover="showDropdown = true" 
+                @mouseout="showDropdown = false"
+                class="listItem"
+                >
+                    <v-list-item><router-link :to="'/user/'+username" tag="div" class="listItem">PROFILE</router-link></v-list-item>
+                    <v-list-item><router-link :to="username+'/watchlist'" tag="div" class="listItem">WATCHLIST</router-link></v-list-item>
+                    <v-list-item>
+                        <v-list-item-title class="listItem">
+                            <UserLogout/>
+                        </v-list-item-title>
+                    </v-list-item>
+                </v-list>
+            </v-menu>
             <v-text-field 
                 v-model="query" 
                 hide-details 
@@ -24,24 +51,6 @@
                 class="textField"
                 >
             </v-text-field>
-            <v-avatar size="35"><v-img :src="profileImg"></v-img></v-avatar>
-            <v-menu offset-y class="my-menu">
-                <template v-slot:activator="{ on, attrs }">
-                    <v-btn text v-bind="attrs" v-on="on" @mouseover="showDropdown = true">
-                        {{ usernameUppercase }}
-                        <v-icon right>mdi-menu-down</v-icon>
-                    </v-btn>
-                </template>
-                <v-list v-show="showDropdown" @mouseover="showDropdown = true" @mouseout="showDropdown = false">
-                    <v-list-item><router-link :to="'/user/'+username" tag="div">PROFILE</router-link></v-list-item>
-                    <v-list-item><router-link :to="username+'/watchlist'" tag="div">WATCHLIST</router-link></v-list-item>
-                    <v-list-item>
-                        <v-list-item-title>
-                        <UserLogout/>
-                        </v-list-item-title>
-                    </v-list-item>
-                </v-list>
-            </v-menu>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
@@ -105,21 +114,28 @@ import UserLogout from '@/components/UserLogout.vue'
 </script>
 
 <style scoped>
-.my-menu .v-list {
-    background-color: #f5f5f5;
+.listItemBtn{
+    color: whitesmoke;
 }
-.v-list-item:hover{
+.listItemBtn:hover{
+    color: rgb(157, 157, 157);
+}
+.listItem{
+    color: whitesmoke;
+    background-color: #052938;
+}
+.listItem:hover{
+    color: rgb(157, 157, 157);
     cursor: pointer;
-    background-color: #4c9e9e;
 }
 .nav-bar {
-    border: none !important;
+    border: none;
     padding: 10px;
 }
 .logo {
+    width: 250px;
     margin-top: 5px;
     cursor: pointer;
-    width: 300px;
 }
 .v-app-bar{
     z-index: 2;
@@ -128,14 +144,7 @@ import UserLogout from '@/components/UserLogout.vue'
     margin-right: -200px;
 }
 button{
-    padding: 5px;
-    border-radius: 5px;
-}
-button:hover{
-    background-color: #4c9e9e;
-}
-.signIn{
-    margin-left: 20px;
+    margin: 10px;
 }
 .textField{
     border-radius: 5px;

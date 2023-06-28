@@ -1,3 +1,5 @@
+<!-- need to add section with default images then choose one for profile pic -->
+
 <template>
     <div>
         <div class="header">

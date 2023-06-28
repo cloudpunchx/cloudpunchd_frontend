@@ -118,15 +118,9 @@ import router from '@/router';
                         password: this.password,
                     }
                 }).then((response)=>{
-                    this.userId = response.data[0];
                     cookies.set(`userId`, response.data[0]);
                     cookies.set(`sessionToken`, response.data[1]);
-                    if (typeof userId === 'number') {
-                        router.push({name: 'UserProfile', params: {username: this.username}})
-                    }
-                    else {
-                        this.feedbackMsg = "This user already exists."
-                    }
+                    router.push({name: 'UserProfile', params: {username: this.username}})
                 }).catch((error)=>{
                     this.feedbackMsg = error.response.data;
                     this.clearTextBox();

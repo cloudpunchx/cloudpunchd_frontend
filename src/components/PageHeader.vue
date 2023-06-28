@@ -5,19 +5,32 @@
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
-        <v-toolbar-title>
+            <v-toolbar-title>
             <router-link to="/">
                 <img src="../assets/cloudpunchdLogo.png" alt="Logo" class="logo">
             </router-link>
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-            <button class="signIn" @click="showModal = true">SIGN IN</button>
-            <button class="signIn" @click="showModal2 = true">CREATE ACCOUNT</button>
-            <v-text-field v-model="search" hide-details clearable append-icon="mdi-magnify" background-color="rgba(148, 148, 148, 0.63)" class="textField"></v-text-field>
-        <v-spacer></v-spacer>
-        <v-spacer></v-spacer>
-        <v-spacer></v-spacer>
-        <v-spacer></v-spacer>
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+            <button 
+            class="signIn" 
+            @click="showModal = true"
+            >SIGN IN</button>
+            <button 
+            class="signIn" 
+            @click="showModal2 = true"
+            >CREATE ACCOUNT</button>
+            <v-text-field 
+            v-model="search" 
+            hide-details 
+            clearable 
+            append-icon="mdi-magnify" 
+            background-color="rgba(148, 148, 148, 0.63)" 
+            class="textField"
+            ></v-text-field>
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
         </v-app-bar>
 
         <transition name="fade" appear>
@@ -34,7 +47,7 @@
                 <UserLogin/>
             </div>
         </transition>
-
+        
         <transition name="fade" appear>
             <div class="modal-overlay" 
                 v-if="showModal2" 
