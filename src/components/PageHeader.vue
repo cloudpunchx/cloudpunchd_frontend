@@ -88,11 +88,12 @@ import UserSignup from '@/components/UserSignup.vue'
     z-index: 2;
 }
 button{
+    color: rgb(224, 224, 224);
     padding: 5px;
     border-radius: 5px;
 }
 button:hover{
-    background-color: #4c9e9e;
+    color: white;
 }
 .signIn{
     margin-right: 20px;
@@ -101,7 +102,7 @@ button:hover{
     border-radius: 15px;
 }
 
-/* CHECKBOX HACK */
+/* CHECKBOX */
 
 input[type=checkbox]{
     display: none;

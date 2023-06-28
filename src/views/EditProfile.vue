@@ -331,7 +331,7 @@ h3{
     position: absolute;
     bottom: -100vh;
     width: 100%;
-    background-color: #212529;
+    background-color: #001219;
     z-index: -1;
 }
 /* Pop Up for Delete Account */

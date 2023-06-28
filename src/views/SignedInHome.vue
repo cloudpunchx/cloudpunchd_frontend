@@ -78,7 +78,7 @@ import PageFooter from '@/components/PageFooter.vue'
 
 <style scoped>
 .header{
-    background-color: #212529;
+    background-color: #001219;
 }
 .titleContainer{
     color: white;
@@ -117,7 +117,7 @@ import PageFooter from '@/components/PageFooter.vue'
     position: absolute;
     bottom: -100vh;
     width: 100%;
-    background-color: #212529;
+    background-color: #001219;
     z-index: -1;
 }
 </style>

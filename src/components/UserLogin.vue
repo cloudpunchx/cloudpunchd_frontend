@@ -1,52 +1,54 @@
 <template>
     <div>
-        <v-card class="mx-auto px-6 py-8" max-width="400">
-            <h3>Sign In</h3>
-            <v-form
-            v-model="form"
-            @submit.prevent="onSubmit"
-            >
-                <v-text-field
+        <v-card 
+        class="mx-auto"
+        max-width="600"
+        title="User Sign In"
+        shaped
+        >
+            <v-container class="loginForm">
+                <h3>Sign In</h3>
+                <v-form
+                v-model="form"
+                @submit.prevent="onSubmit"
+                >
+                    <v-text-field
                     v-model="email"
-                    :readonly="loading"
                     :rules="[required]"
-                    class="mb-2"
+                    color="secondary"
                     clearable
                     label="Email"
-                ></v-text-field>
+                    filled
+                    shaped
+                    ></v-text-field>
 
-                <!-- this is not working with the eye icon!  -->
-                <v-text-field
+                    <v-text-field
                     v-model="password"
-                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                    :type="show1 ? 'text' : 'password'"
-                    color="rgb(1, 139, 139)"
+                    :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                    :type="show ? 'text' : 'password'"
+                    color="secondary"
                     :rules="[required]"
                     label="Password"
-                    clearable
                     placeholder="Enter your password"
-                    variant="underlined"
+                    filled
+                    shaped
                     @click="togglePassword"
-                ></v-text-field>
+                    class="passwordField"
+                    ></v-text-field>
 
-                <br>
+                    <v-btn
+                    :disabled="!form"
+                    type="submit"
+                    @click="userLogin" 
+                    >
+                    SIGN IN
+                    </v-btn>
 
-                <v-btn
-                :disabled="!form"
-                :loading="loading"
-                block
-                size="large"
-                type="submit"
-                variant="tonal"
-                @click="userLogin" 
-                >
-                Sign In
-                </v-btn>
-
-                <div v-if="feedbackMsg">
-                    <p class="feedbackContainer">{{ feedbackMsg }}</p>
-                </div>
-            </v-form>
+                    <div v-if="feedbackMsg">
+                        <p class="feedbackMsg">{{ feedbackMsg }}</p>
+                    </div>
+                </v-form>
+            </v-container>
         </v-card>
     </div>
 </template>
@@ -65,8 +67,7 @@ import router from '@/router';
                 password: "",
                 feedbackMsg: "",
                 form: false,
-                loading: false,
-                show1: false
+                show: false
             }
         },
         methods: {
@@ -88,11 +89,6 @@ import router from '@/router';
                     this.feedbackMsg = error.response.data;
                 })
             },
-            onSubmit () {
-                if (!this.form) return
-                this.loading = true
-                setTimeout(() => (this.loading = false), 2000)
-            },
             required (v) {
                 return !!v || 'Field is required'
             },
@@ -104,19 +100,26 @@ import router from '@/router';
 </script>
 
 <style scoped>
-.v-btn{
-    margin-top: 25px;
-    width: 150px;
+.loginForm{
+    background-color: #A2A3BB;  
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 25px;
+    padding: 40px;
 }
-.v-btn:hover {
+h3{
+    color: whitesmoke;
+    font-size: 25pt;
+    font-family: lobster;
+    margin-bottom: 20px;
+}
+.passwordField:hover { 
+    cursor: pointer;
+}
+.v-btn:hover{
     color: white;
-    background-color: rgb(1, 139, 139);
+    background-color: #DD1C1A;
 }
-.v-btn:active {
-    color: white;
-    background-color: rgb(1, 139, 139);
-}
-.feedbackContainer{
-    margin-top: 30px;
+.feedbackMsg{
+    margin-top: 20px;
 }
 </style>

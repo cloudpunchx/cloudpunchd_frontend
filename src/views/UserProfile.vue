@@ -145,7 +145,7 @@ h4{
 .container{
     position: relative;
     width: 100%;
-    background-color: #212529;
+    background-color: #001219;
 }
 .divider{
     width: 34%;
@@ -184,7 +184,7 @@ h4{
     position: absolute;
     bottom: -100vh;
     width: 100%;
-    background-color: #212529;
+    background-color: #001219;
     z-index: -1;
 }
 </style>

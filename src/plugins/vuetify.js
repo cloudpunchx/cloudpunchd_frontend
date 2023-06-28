@@ -13,9 +13,9 @@ const vuetify = new Vuetify({
                 primary: '#DD1C1A',
                 // secondary is yellow
                 secondary: '#ffd60a',
-                accent: '#FFFBFE',
+                // accent is purple
+                accent: '#A2A3BB',
                 error: '#b71c1c',
-                yellow: '#ffd819',
             },
         },
     },
