@@ -9,7 +9,13 @@
                 <h1>Track Your Love For Movies</h1>
                 <h1>Share With Friends</h1>
                 <div class="buttonContainer">
-                    <v-btn @click="showModal = true" variant="tonal">
+                    <v-btn 
+                    @click="showModal = true"
+                    color="white"
+                    text
+                    rounded
+                    large
+                    >
                     CREATE AN ACCOUNT
                     </v-btn>
                 </div>
@@ -69,12 +75,12 @@ import PageFooter from '@/components/PageFooter.vue'
 
 <style scoped>
 h1{
-    color: white;
+    color: whitesmoke;
     font-size: 35pt;
     font-family: lobster;
 }
 .description{
-    background-color: #22333b;
+    background-color: #001219;
     text-align: center;
     position: absolute;
     top: 50%;
@@ -89,11 +95,11 @@ h1{
     transform: translateX(-50%);
 }
 .v-btn{
-    width: 200px;
+    font-size: 1rem;
+    background-color: #ffd60a;
 }
 
 .v-btn:hover {
-    color: whitesmoke;
     background-color: #DD1C1A;
 }
 

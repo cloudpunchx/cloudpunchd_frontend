@@ -87,7 +87,7 @@ import axios from "axios";
     transform: scale(1.05);
 }
 .boxContainer{
-    background-color: #22333b;
+    background-color: #001219;
     padding: 50px;
     width: 100vw;
     margin-bottom: 500px;

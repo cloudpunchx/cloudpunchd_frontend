@@ -80,7 +80,7 @@ import UserSignup from '@/components/UserSignup.vue'
 
 <style scoped>
 .logo {
-    height: 32px;
+    width: 250px;
     margin-top: 5px;
     cursor: pointer;
 }
