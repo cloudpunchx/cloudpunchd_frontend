@@ -8,7 +8,7 @@
                     >
                         <v-img
                             :src="movie.Poster"
-                            :width="100"
+                            :width="80"
                             class="poster"
                         >
                             <template v-slot:placeholder>
@@ -37,7 +37,7 @@
                         readonly
                         empty-icon
                         />
-                    <p>Watched {{ movie.WatchedOn }}</p>
+                    <p>Watched {{ movie.watchedOn }}</p>
                     <p class="bodyText">{{ movie.Review }}</p>
                 </v-col>
             </v-row>
@@ -81,7 +81,7 @@ import cookies from 'vue-cookies';
 <style scoped>
 .container{
     color: #adb5bd;
-    background-color: #212529;
+    background-color: #242730e3;
 }
 .title{
     color: whitesmoke;

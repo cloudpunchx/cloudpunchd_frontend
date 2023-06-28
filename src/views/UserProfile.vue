@@ -1,48 +1,112 @@
+<!-- leaving off styling profile -->
+
 <template>
     <div>
-        <SignedInHeader/>
+        <div v-if="token" class="header">
+            <SignedInHeader/>
+        </div>
+        <div v-else>
+            <PageHeader class="header"/>
+        </div>
+        
+        <div class="parentContainer">
+            <v-container class="profileContainer">
+                <v-row 
+                dense
+                >
+                    <v-col
+                    cols="2"
+                    md="3"
+                    lg="3"
+                    >
+                        <v-avatar size="150"><v-img :src="profile_img"></v-img></v-avatar>
+                    </v-col>
 
-        <section class="profileContainer">
-            <v-avatar size="150"><v-img :src="profile_img"></v-img></v-avatar>
-            <div class="userInfo">
-                <h2>{{ username }}</h2>
-                <p class="bio">{{ bio }}</p>
-                <router-link to="/settings" class="settingsLink">
-                    <v-btn variant="tonal">
-                    EDIT PROFILE
-                    </v-btn>
-                </router-link>
-            </div>
-        </section>
-        <section class="container">
-            <div class="topFourContainer">
-                <h4>FAVOURITE FILMS</h4>
-                <v-divider class="divider" color="#adb5bd"></v-divider>
-                <UserTopFour/>
-            </div>
-            <div class="recentlyWatchedContainer">
-                <h4>RECENTLY WATCHED</h4>
-                <v-divider class="divider" color="#adb5bd"></v-divider>
-                <RecentlyWatched/>
-            </div>
-            <div class="reviewContainer">
-                <h4>RECENT REVIEWS</h4>
-                <v-divider class="divider3" color="#adb5bd"></v-divider>
-                <UserReviews/>
-            </div>
-            <div class="sideSection">
-                <div>
-                    <h4>FILM LOG</h4>
-                    <v-divider class="divider" color="#adb5bd"></v-divider>
-                    <UserFilmLog/>
-                </div>
-                <div class="watchlistContainer">
-                    <h4>WATCHLIST</h4>
-                    <v-divider class="divider" color="#adb5bd"></v-divider>
-                    <UserWatchlistMini/>
-                </div>
-            </div>
-        </section>
+                    <v-col
+                    cols="2"
+                    md="2"
+                    lg="2"
+                    >
+                        <div class="userInfo">
+                            <h2>{{ username }}</h2>
+                            <p class="bio">{{ bio }}</p>
+                        </div>
+                    </v-col>
+
+                    <v-col
+                    cols="2"
+                    md="1"
+                    lg="1"
+                    >
+                        <div>
+                            <router-link to="/settings">
+                                <v-btn
+                                small
+                                >
+                                EDIT PROFILE
+                                </v-btn>
+                            </router-link>
+                        </div>
+                    </v-col>
+                </v-row>
+            </v-container>
+        </div>
+        <div class="parentContainer">
+            <v-container class="contentContainer">
+                <v-row>
+                    <v-col cols="12" md="12" lg="8">
+                    <div class="favFilmContainer">
+                        <h4>FAVOURITE FILMS</h4>
+                        <v-divider class="divider" color="#adb5bd"></v-divider>
+                        <UserTopFour/>
+                    </div>
+                    </v-col>
+                    <v-col cols="12" md="12" lg="4">
+                    <v-row>
+                        <v-col cols="12">
+                        <div class="sideSection">
+                            <h4>FILM LOG</h4>
+                            <v-divider class="divider" color="#adb5bd"></v-divider>
+                            <UserFilmLog/>
+                        </div>
+                        </v-col>
+                        <v-col cols="12">
+                        <div class="watchlistContainer">
+                            <h4>WATCHLIST</h4>
+                            <v-divider class="divider" color="#adb5bd"></v-divider>
+                            <UserWatchlistMini/>
+                        </div>
+                        </v-col>
+                    </v-row>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="12" md="12" lg="8">
+                    <div class="recentlyWatchedContainer">
+                        <h4>RECENTLY WATCHED</h4>
+                        <v-divider class="divider" color="#adb5bd"></v-divider>
+                        <RecentlyWatched/>
+                    </div>
+                    </v-col>
+                    <v-col cols="12" md="12" lg="4">
+                    <!-- Placeholder column for spacing -->
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col cols="12" md="12" lg="8">
+                    <div class="reviewContainer">
+                        <h4>RECENT REVIEWS</h4>
+                        <v-divider class="divider3" color="#adb5bd"></v-divider>
+                        <UserReviews/>
+                    </div>
+                    </v-col>
+                    <v-col cols="12" md="12" lg="4">
+                    <!-- Placeholder column for spacing -->
+                    </v-col>
+                </v-row>
+            </v-container>
+        </div>
+
         <div class="footer">
             <PageFooter/>
         </div>
@@ -54,6 +118,7 @@
 import axios from "axios";
 import cookies from 'vue-cookies';
 import SignedInHeader from '@/components/SignedInHeader.vue'
+import PageHeader from '@/components/PageHeader.vue'
 import UserTopFour from '@/components/UserTopFour.vue'
 import RecentlyWatched from '@/components/RecentlyWatched.vue'
 import UserReviews from '@/components/UserReviews.vue'
@@ -65,6 +130,7 @@ import PageFooter from '@/components/PageFooter.vue'
         name: "UserProfile",
         components: {
             SignedInHeader,
+            PageHeader,
             UserTopFour,
             RecentlyWatched,
             UserReviews,
@@ -75,6 +141,7 @@ import PageFooter from '@/components/PageFooter.vue'
         data() {
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
+                token: "",
                 username: "",
                 firstName: "",
                 lastName: "",
@@ -104,87 +171,67 @@ import PageFooter from '@/components/PageFooter.vue'
                     this.errorMsg = error;
                 })
             },
+            getToken(){
+                this.token = cookies.get(`sessionToken`);
+            },
         },
         created (){
             this.getUserProfile();
+            this.getToken();
         },
     }
 </script>
 
 <style scoped>
-.profileContainer{
+.parentContainer{
     color: white;
-    padding: 10px;
-    position: relative;
-    width: 50%;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 100px;
+}
+.profileContainer{
+    border-radius: 10px;
+    margin-top: 150px;
+}
+.contentContainer{
+    width: 50%;
+    background-color: #242730e3;
+    border-radius: 10px;
+    margin-top: 380px;
+}
+.parentContainer2 {
+    position: absolute;
+    right: 23%;
+    top: 150px;
+    margin-top: 230px;
+}
+
+.contentContainer2 {
+    background-color: #242730e3;
+    border-radius: 10px;
+    padding: 20px;
 }
 .userInfo{
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 30px;
-}
-.bio{
-    margin-top: 10px;
+    width: 500px;
 }
 .v-btn{
-    font-size: 8pt;
+    font-size: .7rem;
     width: 100px;
 }
-.v-btn:hover {
-    background-color: #4c9e9e;
-}
-.settingsLink{
-    text-decoration: none;
+.v-btn:hover{
+    color: white;
+    background-color: #ffd60a;
 }
 h4{
     color: #adb5bd;
 }
-.container{
-    position: relative;
-    width: 100%;
-    background-color: #001219;
-}
-.divider{
-    width: 34%;
-}
-.divider3{
-    width: 100%;
-}
-.topFourContainer{
-    margin-top: 30px;
-    position: absolute;
-    left: 20%;
-}
-.recentlyWatchedContainer{
-    margin-top: 300px;
-    position: absolute;
-    left: 20%;
-    flex: 1;
-}
-.reviewContainer{
-    width: 600px;
-    margin-top: 615px;
-    position: absolute;
-    left: 20%;
-}
-.sideSection{
-    width: 50%;
-    position: absolute;
-    left: 60%;
-}
-.watchlistContainer{
-    margin-top: 80px;
-}
-
 .footer{
-    padding-top: 1500px;
+    padding-top: 1000px;
     position: absolute;
     bottom: -100vh;
     width: 100%;
     background-color: #001219;
     z-index: -1;
 }
+
 </style>

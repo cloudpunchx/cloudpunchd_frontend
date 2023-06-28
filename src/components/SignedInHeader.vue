@@ -12,7 +12,7 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
-            <v-avatar size="45"><v-img :src="profileImg"></v-img></v-avatar>
+            <v-avatar size="40"><v-img :src="profileImg"></v-img></v-avatar>
             <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn 
@@ -32,8 +32,8 @@
                 @mouseout="showDropdown = false"
                 class="listItem"
                 >
-                    <v-list-item><router-link :to="'/user/'+username" tag="div" class="listItem">PROFILE</router-link></v-list-item>
-                    <v-list-item><router-link :to="username+'/watchlist'" tag="div" class="listItem">WATCHLIST</router-link></v-list-item>
+                    <v-list-item><router-link :to="'/user/'+username" tag="div" class="listItem">Profile</router-link></v-list-item>
+                    <v-list-item><router-link :to="username+'/watchlist'" tag="div" class="listItem">Watchlist</router-link></v-list-item>
                     <v-list-item>
                         <v-list-item-title class="listItem">
                             <UserLogout/>

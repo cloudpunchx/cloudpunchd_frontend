@@ -5,14 +5,15 @@
                 <v-col
                 v-for="movie in movies"
                 :key="movie.ID"
-                cols="1"
+                cols="2"
+                lg="3"
                 >
                     <router-link
                     :to="'/movie/' + movie.MovieName + '/' + movie.ID"
                     >
                         <v-img
                             :src="movie.Poster"
-                            :width="2000"
+                            :width="200"
                             class="poster"
                         >
                             <template v-slot:placeholder>
