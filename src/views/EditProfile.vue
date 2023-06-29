@@ -1,3 +1,5 @@
+<!-- not done with api for edit profile -->
+
 <template>
     <div>
         <div 
@@ -24,10 +26,10 @@
                             <v-text-field
                             background-color="#495057"
                             v-model="username"
-                            :rules="usernameRules"
                             label="Username"
                             dark
-                            class="textField"
+                            filled
+                            shaped
                             >
                             </v-text-field>
                         </v-col>
@@ -43,7 +45,8 @@
                             :rules="nameRules"
                             label="First Name"
                             dark
-                            class="textField"
+                            filled
+                            shaped
                             >
                             </v-text-field>
                         </v-col>
@@ -59,7 +62,8 @@
                             :rules="nameRules"
                             label="Last Name"
                             dark
-                            class="textField"
+                            filled
+                            shaped
                             >
                             </v-text-field>
                         </v-col>
@@ -75,7 +79,8 @@
                             :rules="emailRules"
                             label="E-mail"
                             dark
-                            class="textField"
+                            filled
+                            shaped
                             >
                             </v-text-field>
                         </v-col>
@@ -90,7 +95,8 @@
                             v-model="password"
                             label="Password"
                             dark
-                            class="textField"
+                            filled
+                            shaped
                             >
                             </v-text-field>
                         </v-col>
@@ -105,7 +111,8 @@
                             v-model="bio"
                             label="Bio"
                             dark
-                            class="textField"
+                            filled
+                            shaped
                             >
                             </v-text-field>
                         </v-col>
@@ -115,22 +122,13 @@
                         md="4"
                         lg="6"
                         >   
-                        <!-- <v-file-input 
-                        prepend-icon="mdi-camera"
-                        label="Profile Image" 
-                        v-model="selectedFile"
-                        accept=".jpg,.jpeg,.png,.gif"
-                        variant="underlined"
-                        color="#495057"
-                        dark
-                        >
-                        </v-file-input> -->
                             <v-text-field
                             background-color="#495057"
                             v-model="profile_img"
                             label="Profile Image URL"
-                            required
-                            class="textField"
+                            dark
+                            filled
+                            shaped
                             >
                             </v-text-field>
                         </v-col>
@@ -273,9 +271,6 @@ import PageFooter from '@/components/PageFooter.vue'
     transform: translateX(-50%);
     margin-top: 100px;
 }
-/* .editProfile{
-    margin-top: 20px;
-} */
 .feedback{
     color: #adb5bd;
 }
@@ -284,9 +279,6 @@ h3{
 }
 .divider1{
     width: 100%;
-}
-.textField{
-    border-radius: 5px;
 }
 .v-btn{
     margin: 0 10px;

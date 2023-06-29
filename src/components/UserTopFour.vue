@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container">
+        <div v-if="movies.length > 0" class="container">
             <v-row dense justify="start">
                 <v-col
                 v-for="movie in movies"
@@ -12,24 +12,35 @@
                     :to="'/movie/' + movie.MovieName + '/' + movie.ID"
                     >
                         <v-img
-                            :src="movie.Poster"
-                            :width="200"
-                            class="poster"
+                        :src="movie.Poster"
+                        :width="200"
+                        class="poster"
                         >
-                            <template v-slot:placeholder>
-                                <v-row
-                                    class="fill-height ma-0"
-                                    align-content="center"
-                                    justify="center"
-                                >
-                                    <v-progress-circular
-                                    indeterminate
-                                    color="grey-lighten-5"
-                                    ></v-progress-circular>
-                                </v-row>
-                            </template>
                         </v-img>
                     </router-link>
+                </v-col>
+
+                <!-- Placeholder content -->
+                <v-col v-for="index in 4 - movies.length" :key="index" cols="2" lg="3">
+                    <div class="placeholderDiv">
+
+                    </div>
+                </v-col>
+            </v-row>
+        </div>
+
+        <!-- Show 2nd container if there is no data for user (eg. new user) -->
+        <div v-else class="container">
+            <v-row dense justify="start">
+                <v-col
+                v-for="n in 4"
+                :key="n"
+                cols="2"
+                lg="3"
+                >  
+                    <div class="placeholderDiv">
+
+                    </div>
                 </v-col>
             </v-row>
         </div>
@@ -80,5 +91,12 @@ import cookies from 'vue-cookies';
 }
 .poster:hover{
     transform: scale(1.05);
+}
+.placeholderDiv{
+    width: 140px;
+    height: 200px;
+    margin: 5px;
+    background-color: #101b1fc9;
+    border: 1px rgb(97, 97, 97) solid;
 }
 </style>

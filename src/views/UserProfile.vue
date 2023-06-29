@@ -1,6 +1,8 @@
 <!-- still need to fix sizing -->
 <!-- on resize the recently watched moves down from fav films, could be placeholders -->
 
+<!-- when no data is there have placeholder for size -->
+
 <template>
     <div class="pageContainer">
         <div v-if="token" class="header">
