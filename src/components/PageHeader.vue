@@ -33,6 +33,7 @@
             <v-spacer></v-spacer>
         </v-app-bar>
 
+        <!-- Pop Out for Log In -->
         <transition name="fade" appear>
             <div class="modal-overlay" 
                 v-if="showModal" 
@@ -48,6 +49,7 @@
             </div>
         </transition>
         
+        <!-- Pop Out for Sign Up -->
         <transition name="fade" appear>
             <div class="modal-overlay" 
                 v-if="showModal2" 
@@ -78,16 +80,11 @@ import UserSignup from '@/components/UserSignup.vue'
         },
         data() {
             return {
-                active: false,
+                // active: false,
                 showModal: false,
                 showModal2: false,
             }
         },
-        methods: {
-            signUpPopOut() {
-                this.active = !this.active;
-            }
-        }
     }
 </script>
 

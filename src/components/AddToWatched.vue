@@ -1,69 +1,117 @@
-<!-- connect button to img -->
 <!-- fix movie page sizing -->
 
 <template>
     <div>
-        <v-card
-        elevation="2"
-        class="container"
-        >
-            <v-row justify="center">
-                <div class="textBox">
-                    <v-img class="img" src="../assets/watchIcon.png"></v-img>
-                    <p class="buttonText">Watch</p>
-                </div>
-                <div class="textBox">
-                    <v-img class="img" src="../assets/likeIcon.png"></v-img>
-                    <p class="buttonText">Like</p>
-                </div>
-                <div class="textBox">
-                    <v-img class="img" src="../assets/watchlistIcon.png"></v-img>
-                    <p class="buttonText">Watchlist</p>
-                </div>
-            </v-row>
-            <v-row>
-                <v-divider class="divider" color="#adb5bd"></v-divider>
-            </v-row>
-            <v-card-text>
-                <v-row justify="center">
-                    <v-rating
-                    v-model="rating"
-                    hover
-                    align="center"
-                    half-increments
-                    color="red"
-                    background-color="amber"
-                    size="25"
-                    dense
-                    class="rating"
+        <!-- If Logged In show this v-card -->
+        <div v-if="token">
+            <v-card
+            elevation="2"
+            class="container"
+            >
+                <v-row 
+                justify="center"
+                >
+                    <div 
+                    class="textBox"
                     >
-                    </v-rating>
-                </v-row>
-                <v-row justify="center">
-                    <v-checkbox 
-                    color="#adb5bd"
-                    background-color="whitesmoke"
-                    v-model="loved" 
-                    label="Loved"
-                    @click="toggleLoved"
+                        <v-img 
+                        class="img"
+                        @click="addToWatched" 
+                        :src="watchedImg"
+                        ></v-img>
+                        <p 
+                        class="buttonText"
+                        @click="addToWatched"
+                        >Watch</p>
+                    </div>
+                    <div 
+                    class="textBox">
+                        <v-img 
+                        class="img" 
+                        src="../assets/likeIcon.png"
+                        ></v-img>
+                        <p 
+                        class="buttonText"
+                        >Like</p>
+                    </div>
+                    <div 
+                    class="textBox"
                     >
-                    </v-checkbox>
-                </v-row>
-                <v-row justify="center">
-                    <v-btn 
-                    type="submit" 
-                    variant="tonal"
-                    @click="addToWatched"
-                    >SUBMIT
-                    </v-btn>
-                </v-row>
-                <v-row justify="center">
-                    <div v-if="feedbackMsg">
-                        <p class="feedbackContainer">{{ feedbackMsg }}</p>
+                        <v-img 
+                        class="img" 
+                        src="../assets/watchlistIcon.png"
+                        ></v-img>
+                        <p 
+                        class="buttonText"
+                        >Watchlist</p>
                     </div>
                 </v-row>
-            </v-card-text>
-        </v-card>
+                <v-row>
+                    <v-divider class="divider" color="#adb5bd"></v-divider>
+                </v-row>
+                <v-card-text>
+                    <v-row justify="center">
+                        <v-rating
+                        v-model="rating"
+                        hover
+                        align="center"
+                        half-increments
+                        color="red"
+                        background-color="amber"
+                        size="25"
+                        dense
+                        class="rating"
+                        >
+                        </v-rating>
+                    </v-row>
+                    <v-row justify="center">
+                        <v-checkbox 
+                        color="#adb5bd"
+                        background-color="whitesmoke"
+                        v-model="loved" 
+                        label="Loved"
+                        @click="toggleLoved"
+                        >
+                        </v-checkbox>
+                    </v-row>
+                    <v-row justify="center">
+                        <v-btn 
+                        type="submit" 
+                        variant="tonal"
+                        @click="addToWatched"
+                        >SUBMIT
+                        </v-btn>
+                    </v-row>
+                    <v-row justify="center">
+                        <div v-if="feedbackMsg">
+                            <p class="feedbackContainer">{{ feedbackMsg }}</p>
+                        </div>
+                    </v-row>
+                </v-card-text>
+            </v-card>
+        </div>
+
+        <!-- If not logged in show this v-card -->
+        <div v-else>
+            <v-card
+            elevation="2"
+            class="container"
+            >
+                <v-row justify="center">
+                    <!-- Add sign in ability here - just text for now -->
+                    <p class="signIn">Sign in to log, rate or review.</p>
+                </v-row>
+                <v-row>
+                    <v-divider class="divider" color="#adb5bd"></v-divider>
+                </v-row>
+                <v-card-text>
+                    <v-row justify="center">
+                        <img src="../assets/cloudpunchdLogo.png" alt="Logo" class="logo">
+                    </v-row>
+                </v-card-text>
+            </v-card>
+        </div>
+
     </div>
 </template>
 
@@ -71,7 +119,11 @@
 import axios from "axios";
 import cookies from 'vue-cookies';
 
-// when you click on Watch - api send log movie with no date
+// when you click on Watch - api send log movie with no date - DONE
+// need to check if a user has watched film before and if yes, keep Red img
+// add delete function by clicking img again
+
+
 // when you click log movie - api send log movie with chosen date
 
 // Like movie - api send movie to Like or remove from 
@@ -85,6 +137,7 @@ import cookies from 'vue-cookies';
                 token: "",
                 movieName: this.$route.params.movieName,
                 movieId: this.$route.params.movieId,
+                watchedImg: require("../assets/watchIcon.png"),
                 watchedOn: "",
                 rating: null,
                 loved: false,
@@ -93,7 +146,27 @@ import cookies from 'vue-cookies';
             }
         },
         methods: {
+            // add to watched will not have a date, rating or loved (default is false). This is logged by clicking the 'watched' button/icon.
             addToWatched() {
+                axios.request({
+                    url: this.apiUrl+"/user-film-log",
+                    method: "POST",
+                    headers: {
+                        token: cookies.get(`sessionToken`)
+                    },
+                    data: {
+                        movieId: this.$route.params.movieId,
+                        loved: this.loved
+                    }
+                }).then((response)=>{
+                    this.watchedImg = require("../assets/loggedIcon.png");
+                    console.log(response);
+                }).catch((error)=>{
+                    console.log(error);
+                })
+            },
+            // add to log will have a date attached
+            addToLog() {
                 axios.request({
                     url: this.apiUrl+"/user-film-log",
                     method: "POST",
@@ -115,14 +188,26 @@ import cookies from 'vue-cookies';
             toggleLoved() {
                 this.loved = !this.loved;
             },
+            getToken(){
+                this.token = cookies.get(`sessionToken`);
+            },
+        },
+        mounted () {
+            this.getToken();
         },
     }
 </script>
 
 <style scoped>
+
+.logo {
+    width: 200px;
+    margin-top: 25px;
+}
 .img{
     width: 65px;
     margin: 10px;
+    cursor: pointer;
 }
 .container {
     width: 300px;
@@ -144,22 +229,28 @@ import cookies from 'vue-cookies';
 }
 .divider{
     width: 100%;
-    margin: 5px auto;
 }
 .rating{
     margin-top: 15px;
+}
+.signIn{
+    color: rgb(192, 192, 192);
+}
+.signIn:hover{
+    color: whitesmoke;
+    cursor: pointer;
 }
 .v-btn{
     width: 100px;
     background-color: whitesmoke;
 }
-.v-btn:hover {
+.v-btn:hover{
     color: white;
-    background-color: rgb(1, 139, 139);
+    background-color: #ffd60a;
 }
 .v-btn:active {
     color: white;
-    background-color: rgb(1, 139, 139);
+    background-color: #ffd60a;
 }
 .feedbackContainer{
     margin-top: 30px;

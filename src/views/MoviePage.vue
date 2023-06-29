@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pageContainer">
         <div v-if="token" class="header">
             <SignedInHeader/>
         </div>
@@ -7,14 +7,22 @@
             <PageHeader class="header"/>
         </div>
 
-        <div v-for="movie in movie" :key="movie.id" class="parentContainer">
+        <div v-for="movie in movie" :key="movie.id">
             <div class="grad1">
                 <img class="backdropFade" :src="movie.coverImg">
             </div>
-            <v-container class="contentContainer">
-                <v-row>
+        </div>
+
+        <div v-for="movie in movie" :key="movie.id" class="parentContainer">
+            <v-container 
+            class="contentContainer"
+            >
+                <v-row
+                dense
+                no-gutters
+                >
                     <v-col 
-                    cols="12" 
+                    cols="4" 
                     md="3"
                     lg="4"
                     >
@@ -42,7 +50,7 @@
                         </v-row>
                     </v-col>
                     <v-col 
-                    cols="12" 
+                    cols="4" 
                     md="5"
                     lg="5"
                     >
@@ -55,9 +63,9 @@
                         </div>
                     </v-col>
                     <v-col 
-                    cols="12" 
+                    cols="4" 
                     md="3"
-                    lg="2"
+                    lg="3"
                     >
                         <div class="logContainer">
                             <AddToWatched/>
@@ -68,7 +76,7 @@
                     <v-col 
                     cols="12"
                     md="6"
-                    lg="6"
+                    lg="9"
                     >
                         <div class="container">
                             <h4>REVIEWS</h4>
@@ -161,34 +169,44 @@ import cookies from 'vue-cookies';
 </script>
 
 <style scoped>
-.header{
+.header {
     margin-bottom: 100px;
 }
-/* ------------------------------------- */
-.parentContainer{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+
+.pageContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
 }
-.contentContainer{
+.parentContainer {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentContainer {
     margin-top: -200px;
+    max-width: 2000px;
+    width: 100%;
 }
-.v-row {
-    align-items: stretch;
-}
+
 .infoContainer {
     color: white;
     width: 350px;
 }
-.logContainer{
+
+.logContainer {
     margin-top: 50px;
 }
+
 .container {
     color: #adb5bd;
 }
 
-/* Styling for cover img */
-.backdropFade{
+.backdropFade {
     height: 60vh;
     position: relative;
     top: -100px;
@@ -196,46 +214,27 @@ import cookies from 'vue-cookies';
     transform: translateX(-50%);
     z-index: 1;
 }
+
 .grad1 img {
     -webkit-mask-image: linear-gradient(black, transparent);
     mask-image: linear-gradient(black, transparent);
 }
 
-/* Poster Styling */
-.poster{
+.poster {
     border: 1px rgb(97, 97, 97) solid;
 }
-.poster:hover{
+
+.poster:hover {
     transform: scale(1.05);
 }
 
-/* Button Styling */
-.logBtn{
-    margin-left: 150px;
-}
-.v-btn:hover {
-    color: white;
-    background-color: rgb(1, 139, 139);
-}
-.v-btn:active {
-    color: white;
-    background-color: rgb(1, 139, 139);
-}
-
-.feedbackContainer{
-    margin-top: 30px;
-}
-
-/* --------------------------------- */
-.footer{
+.footer {
     padding-top: 100%;
-    position: absolute;
-    bottom: -100vh;
+    position: relative;
     width: 100%;
     background-color: #001219;
-    z-index: -1;
 }
-/* Pop Up for Sign In */
+
 .modal {
     position: fixed;
     top: 20%;
@@ -251,7 +250,6 @@ import cookies from 'vue-cookies';
 
 .modal-overlay {
     content: '';
-    position: absolute;
     position: fixed;
     top: 0;
     right: 0;
@@ -262,8 +260,6 @@ import cookies from 'vue-cookies';
     opacity: 0.6;
     cursor: pointer;
 }
-
-/* Modal Overlay Transition */
 
 .fade-enter-active,
 .fade-leave-active {
