@@ -1,131 +1,119 @@
-<!-- need to add section with default images then choose one for profile pic -->
-
 <template>
     <div>
-        <div class="header">
+        <div 
+        class="header"
+        >
             <SignedInHeader/>
         </div>
-        <div class="pageContainer">
-            <v-form color="#adb5bd">
-                <v-container class="editProfile">
+        
+        <div 
+        class="pageContainer"
+        >
+            <v-form>
+                <v-container 
+                class="editProfile"
+                >
                     <h3>EDIT YOUR PROFILE</h3>
                     <v-divider class="divider1" color="#adb5bd"></v-divider>
                     <v-row>
                         <v-col
-                            cols="12"
-                            md="4"
+                        cols="12"
+                        md="4"
+                        lg="6"
                         >
                             <v-text-field
                             background-color="#495057"
                             v-model="username"
                             :rules="usernameRules"
                             label="Username"
-                            required
                             dark
                             class="textField"
                             >
-                                <!-- <template v-slot:label>
-                                    <span class="label">Username</span>
-                                </template> -->
                             </v-text-field>
                         </v-col>
 
                         <v-col
-                            cols="12"
-                            md="4"
+                        cols="12"
+                        md="4"
+                        lg="6"
                         >
                             <v-text-field
                             background-color="#495057"
                             v-model="firstName"
                             :rules="nameRules"
                             label="First Name"
-                            required
                             dark
                             class="textField"
                             >
-                                <!-- <template v-slot:label>
-                                    <span class="label">First Name</span>
-                                </template> -->
                             </v-text-field>
                         </v-col>
                 
                         <v-col
-                            cols="12"
-                            md="4"
+                        cols="12"
+                        md="4"
+                        lg="6"
                         >
                             <v-text-field
                             background-color="#495057"
                             v-model="lastName"
                             :rules="nameRules"
                             label="Last Name"
-                            required
                             dark
                             class="textField"
                             >
-                                <!-- <template v-slot:label>
-                                    <span class="label">Last Name</span>
-                                </template> -->
                             </v-text-field>
                         </v-col>
                 
                         <v-col
-                            cols="12"
-                            md="4"
+                        cols="12"
+                        md="4"
+                        lg="6"
                         >
                             <v-text-field
                             background-color="#495057"
                             v-model="email"
                             :rules="emailRules"
                             label="E-mail"
-                            required
                             dark
                             class="textField"
                             >
-                                <!-- <template v-slot:label>
-                                    <span class="label">Email</span>
-                                </template> -->
                             </v-text-field>
                         </v-col>
 
                         <v-col
-                            cols="12"
-                            md="4"
+                        cols="12"
+                        md="4"
+                        lg="6"
                         >
                             <v-text-field
                             background-color="#495057"
                             v-model="password"
                             label="Password"
-                            required
                             dark
                             class="textField"
                             >
-                                <!-- <template v-slot:label>
-                                    <span class="label">Password</span>
-                                </template> -->
                             </v-text-field>
                         </v-col>
 
                         <v-col
-                            cols="12"
-                            md="4"
+                        cols="12"
+                        md="4"
+                        lg="6"
                         >
                             <v-text-field
                             background-color="#495057"
                             v-model="bio"
                             label="Bio"
-                            required
                             dark
                             class="textField"
                             >
-                                <!-- <template v-slot:label>
-                                    <span class="label">Bio</span>
-                                </template> -->
                             </v-text-field>
                         </v-col>
 
                         <v-col
-                            cols="12"
-                            md="4"
+                        cols="12"
+                        md="4"
+                        lg="6"
                         >   
                         <!-- <v-file-input 
                         prepend-icon="mdi-camera"
@@ -144,14 +132,11 @@
                             required
                             class="textField"
                             >
-                                <!-- <template v-slot:label>
-                                    <span class="label">Profile Image Url</span>
-                                </template> -->
                             </v-text-field>
                         </v-col>
                     </v-row>
                     <div>
-                        <v-btn @click="edit_user_profile" variant="tonal">
+                        <v-btn @click="edit_user_profile">
                             SUBMIT
                         </v-btn>
                         <v-btn @click="showModal = true" color="#d90429">
@@ -223,24 +208,24 @@ import PageFooter from '@/components/PageFooter.vue'
             }
         },
         methods: {
-            // get_user_profile(){
-            //     axios.request({
-            //         url: this.apiUrl+"/user",
-            //         method: "GET",
-            //         headers: {
-            //             token: cookies.get(`sessionToken`)
-            //         },
-            //     }).then((response)=>{
-            //         this.username = response.data.username;
-            //         this.firstName = response.data.firstName;
-            //         this.lastName = response.data.lastName;
-            //         this.email = response.data.email;
-            //         this.bio = response.data.bio;
-            //         this.profile_img = response.data.profile_img;
-            //     }).catch((error)=>{
-            //         this.feedbackMsg = error;
-            //     })
-            // },
+            get_user_profile(){
+                axios.request({
+                    url: this.apiUrl+"/user",
+                    method: "GET",
+                    headers: {
+                        token: cookies.get(`sessionToken`)
+                    },
+                }).then((response)=>{
+                    this.username = response.data.username;
+                    this.firstName = response.data.firstName;
+                    this.lastName = response.data.lastName;
+                    this.email = response.data.email;
+                    this.bio = response.data.bio;
+                    this.profile_img = response.data.profile_img;
+                }).catch((error)=>{
+                    this.feedbackMsg = error;
+                })
+            },
             edit_user_profile(){
                 axios.request({
                     url: this.apiUrl+"/user",
@@ -275,9 +260,9 @@ import PageFooter from '@/components/PageFooter.vue'
                 this.password = "";
             },
         },
-        // created (){
-        //     this.get_user_profile();
-        // }
+        created (){
+            this.get_user_profile();
+        }
     }
 </script>
 
@@ -286,18 +271,15 @@ import PageFooter from '@/components/PageFooter.vue'
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 80px;
+    margin-top: 100px;
 }
-.editProfile{
+/* .editProfile{
     margin-top: 20px;
-}
+} */
 .feedback{
     color: #adb5bd;
 }
 h3{
-    color: #adb5bd;
-}
-.label{
     color: #adb5bd;
 }
 .divider1{
@@ -307,11 +289,11 @@ h3{
     border-radius: 5px;
 }
 .v-btn{
-    margin: 25px;
-    width: 150px;
+    margin: 0 10px;
 }
-.v-btn:hover {
-    background-color: #4c9e9e;
+.v-btn:hover{
+    color: white;
+    background-color: #ffd60a;
 }
 .feedback{
     margin-top: 30px;

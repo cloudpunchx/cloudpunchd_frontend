@@ -78,7 +78,7 @@
                     cols="12"
                     sm="8"
                     md="7"
-                    lg="9"
+                    lg="7"
                     >
                         <div class="container">
                             <h4>REVIEWS</h4>

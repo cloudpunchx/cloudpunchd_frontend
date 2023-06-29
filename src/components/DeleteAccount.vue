@@ -1,7 +1,12 @@
 <template>
     <div>
-        <v-card class="mx-auto px-6 py-8" max-width="400">
-            <h3>Are you sure you want to delete your account? This action cannot be undone and you will lose access to all your data and account information. Please confirm that you want to proceed with the deletion of your account.</h3>
+        <v-card 
+        class="deleteContainer mx-auto px-6 py-8" 
+        max-width="500"
+        color="accent"
+        >
+            <h1 class="heading">Deactivate Account</h1>
+            <h4>This action cannot be undone and you will lose access to all your data and account information. Please confirm that you want to proceed with the deletion of your account.</h4>
             <v-form
             v-model="form"
             @submit.prevent="onSubmit"
@@ -9,11 +14,13 @@
                 <br>
                 <v-checkbox
                     v-model="confirmDelete"
-                    color="rgb(1, 139, 139)"
-                    label="CONFIRM"
-                ></v-checkbox>
-                <v-btn color="#d90429" @click="delete_account">
-                    DELETE ACCOUNT
+                    color="primary"
+                    label="Confirm Deactivation"
+                    dark
+                >
+                </v-checkbox>
+                <v-btn color="primary" @click="delete_account">
+                    DEACTIVATE ACCOUNT
                 </v-btn>
                 <div v-if="feedbackMsg">
                     <p class="feedbackContainer">{{ feedbackMsg }}</p>
@@ -73,15 +80,20 @@ import router from '@/router';
 </script>
 
 <style scoped>
-.v-btn{
-    margin-top: 25px;
-    width: 150px;
+.heading{
+    font-family: lobster;
+    margin-bottom: 10px;
+}
+.deleteContainer{
+    color: whitesmoke;
+}
+.v-label {
+    color: whitesmoke;
 }
 .v-btn:hover {
     color: #c5c6c7;
-    background-color: #250902;
 }
 .feedbackContainer{
-    margin-top: 15px;
+    margin-top: 10px;
 }
 </style>
