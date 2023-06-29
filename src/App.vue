@@ -14,6 +14,7 @@ export default {
 </script>
 
 <style scoped>
+@import "../src/assets/sass/style.scss";
 .v-application {
     background-color: #001219;
 }

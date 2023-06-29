@@ -18,11 +18,10 @@
             class="contentContainer"
             >
                 <v-row
-                dense
-                no-gutters
                 >
                     <v-col 
-                    cols="4" 
+                    cols="12"
+                    sm="3" 
                     md="3"
                     lg="4"
                     >
@@ -50,8 +49,9 @@
                         </v-row>
                     </v-col>
                     <v-col 
-                    cols="4" 
-                    md="5"
+                    cols="12"
+                    sm="4"
+                    md="4"
                     lg="5"
                     >
                         <div class="infoContainer">
@@ -63,8 +63,9 @@
                         </div>
                     </v-col>
                     <v-col 
-                    cols="4" 
-                    md="3"
+                    cols="12" 
+                    sm="5"
+                    md="5"
                     lg="3"
                     >
                         <div class="logContainer">
@@ -75,7 +76,8 @@
                 <v-row>
                     <v-col 
                     cols="12"
-                    md="6"
+                    sm="8"
+                    md="7"
                     lg="9"
                     >
                         <div class="container">

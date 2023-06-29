@@ -1,3 +1,5 @@
+<!-- Need to design header for resize -->
+
 <template>
     <div>
         <v-app-bar color="transparent" dark elevation="0" absolute class="nav-bar">

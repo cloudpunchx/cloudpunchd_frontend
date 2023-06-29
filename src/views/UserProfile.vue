@@ -1,7 +1,8 @@
-<!-- leaving off styling profile -->
+<!-- still need to fix sizing -->
+<!-- on resize the recently watched moves down from fav films, could be placeholders -->
 
 <template>
-    <div>
+    <div class="pageContainer">
         <div v-if="token" class="header">
             <SignedInHeader/>
         </div>
@@ -11,19 +12,26 @@
         
         <div class="parentContainer">
             <v-container class="profileContainer">
-                <v-row 
-                dense
+                <v-row
                 >
-                    <v-col
-                    cols="2"
+                <v-col
+                    cols="12"
                     md="3"
-                    lg="3"
+                    lg="1"
+                    >
+                        <!-- placeholder for spacing -->
+                    </v-col>
+
+                    <v-col
+                    cols="12"
+                    md="3"
+                    lg="2"
                     >
                         <v-avatar size="150"><v-img :src="profile_img"></v-img></v-avatar>
                     </v-col>
 
                     <v-col
-                    cols="2"
+                    cols="12"
                     md="2"
                     lg="2"
                     >
@@ -34,14 +42,15 @@
                     </v-col>
 
                     <v-col
-                    cols="2"
+                    cols="12"
                     md="1"
-                    lg="1"
+                    lg="3"
                     >
                         <div>
                             <router-link to="/settings">
                                 <v-btn
-                                small
+                                class="editBtn"
+                                x-small
                                 >
                                 EDIT PROFILE
                                 </v-btn>
@@ -51,7 +60,8 @@
                 </v-row>
             </v-container>
         </div>
-        <div class="parentContainer">
+
+        <div class="parentContainer2">
             <v-container class="contentContainer">
                 <v-row>
                     <v-col cols="12" md="12" lg="8">
@@ -185,40 +195,41 @@ import PageFooter from '@/components/PageFooter.vue'
 <style scoped>
 .parentContainer{
     color: white;
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
+    max-width: 900px;
 }
 .profileContainer{
     border-radius: 10px;
     margin-top: 150px;
 }
 .contentContainer{
-    width: 50%;
+    width: 100%;
     background-color: #242730e3;
     border-radius: 10px;
-    margin-top: 380px;
+    margin-top: 50px;
 }
 .parentContainer2 {
+    color: white;
     position: absolute;
-    right: 23%;
-    top: 150px;
-    margin-top: 230px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .contentContainer2 {
     background-color: #242730e3;
     border-radius: 10px;
-    padding: 20px;
 }
 .userInfo{
     width: 500px;
+    padding: 0px 20px;
 }
-.v-btn{
+.editBtn{
     font-size: .7rem;
     width: 100px;
 }
-.v-btn:hover{
+.editBtn:hover{
     color: white;
     background-color: #ffd60a;
 }
@@ -226,12 +237,10 @@ h4{
     color: #adb5bd;
 }
 .footer{
-    padding-top: 1000px;
     position: absolute;
     bottom: -100vh;
     width: 100%;
     background-color: #001219;
-    z-index: -1;
+    z-index: 1;
 }
-
 </style>

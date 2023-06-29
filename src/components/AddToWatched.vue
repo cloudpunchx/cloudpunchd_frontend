@@ -204,16 +204,16 @@ import cookies from 'vue-cookies';
     width: 200px;
     margin-top: 25px;
 }
-.img{
+/* .img{
     width: 65px;
     margin: 10px;
     cursor: pointer;
-}
-.container {
+} */
+/* .container {
     width: 300px;
     background-color: #545a60;
     padding: 30px;
-}
+} */
 .textBox{
     text-align: center;
     display: grid;
@@ -254,5 +254,46 @@ import cookies from 'vue-cookies';
 }
 .feedbackContainer{
     margin-top: 30px;
+}
+
+@media only screen and (min-width: 1px){
+/* Breakpoint for Mobile */
+    .container {
+        width: 300px;
+        background-color: #545a60;
+        padding: 30px;
+    }
+    
+    .img{
+        width: 65px;
+        margin: 10px;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width: 700px){
+/* Breakpoint for Tablet */
+    .container {
+            width: 220px;
+            padding: 10px;
+        }
+
+    .img{
+        width: 50px;
+        margin: 10px;
+    }
+}
+
+@media only screen and (min-width: 1000px){
+/* Breakpoint for Desktop */
+    .container {
+            width: 300px;
+            padding: 30px;
+        }
+
+    .img{
+        width: 65px;
+        margin: 10px;
+    }
 }
 </style>
