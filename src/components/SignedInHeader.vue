@@ -105,9 +105,9 @@ import UserLogout from '@/components/UserLogout.vue'
             toggleDropdown() {
                 this.showDropdown = !this.showDropdown
             },
-            handleItemClick(item) {
-                console.log(item);
-            },
+            // handleItemClick(item) {
+            //     console.log(item);
+            // },
             search_movies(){
                 router.push({name: 'SearchResults', params: {query: this.query}});
             },

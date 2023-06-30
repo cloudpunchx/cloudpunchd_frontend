@@ -13,24 +13,29 @@
             </router-link>
             </v-toolbar-title>
             <v-spacer></v-spacer>
+            
             <button 
             class="signIn" 
             @click="showModal = true"
             >SIGN IN</button>
+            
             <button 
             class="signIn" 
             @click="showModal2 = true"
             >CREATE ACCOUNT</button>
+
             <v-text-field 
-            v-model="search" 
+            v-model="query" 
             hide-details 
             clearable 
             append-icon="mdi-magnify" 
+            @click:append="search_movies"
             background-color="rgba(148, 148, 148, 0.63)" 
-            class="textField"
             filled
             shaped
-            ></v-text-field>
+            >
+            </v-text-field>
+
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
@@ -73,6 +78,7 @@
 </template>
 
 <script>
+import router from '@/router';
 import UserLogin from '@/components/UserLogin.vue'
 import UserSignup from '@/components/UserSignup.vue'
 
@@ -84,11 +90,16 @@ import UserSignup from '@/components/UserSignup.vue'
         },
         data() {
             return {
-                // active: false,
                 showModal: false,
                 showModal2: false,
+                query: "",
             }
         },
+        methods: {
+            search_movies(){
+                router.push({name: 'SearchResults', params: {query: this.query}});
+            },
+        }
     }
 </script>
 
