@@ -71,7 +71,7 @@ export default {
         this.active = !this.active;
         },
     },
-    beforeRouteEnter(next) {
+    beforeRouteEnter(to, from, next) {
         const token = cookies.get('sessionToken');
         if (token) {
         next(vm => {
