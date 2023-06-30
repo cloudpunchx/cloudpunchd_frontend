@@ -1,3 +1,7 @@
+
+<!-- what is this?             handleItemClick(item) {
+                console.log(item);
+            }, -->
 <template>
     <div>
         <v-app-bar color="transparent" dark elevation="0" absolute class="nav-bar">
@@ -48,7 +52,8 @@
                 append-icon="mdi-magnify" 
                 @click:append="search_movies"
                 background-color="rgba(148, 148, 148, 0.63)" 
-                class="textField"
+                filled
+                shaped
                 >
             </v-text-field>
             <v-spacer></v-spacer>
@@ -145,9 +150,5 @@ import UserLogout from '@/components/UserLogout.vue'
 }
 button{
     margin: 10px;
-}
-.textField{
-    border-radius: 5px;
-    margin-right: 25px;
 }
 </style>

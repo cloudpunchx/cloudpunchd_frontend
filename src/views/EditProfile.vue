@@ -36,7 +36,6 @@
                             <v-text-field
                             background-color="#495057"
                             v-model="firstName"
-                            :rules="nameRules"
                             :label="firstnameGet + ' (first name) '"
                             dark
                             filled
@@ -53,7 +52,6 @@
                             <v-text-field
                             background-color="#495057"
                             v-model="lastName"
-                            :rules="nameRules"
                             :label="lastnameGet + ' (last name) '"
                             dark
                             filled
@@ -142,11 +140,12 @@
                 </v-container>
             </v-form>
             
-            <section class="topFourContainer">
-                <h3>FAVOURITE FILMS</h3>
+            <v-container class="topFourContainer">
+                <h3>CHOOSE YOUR FAVOURITE FILMS</h3>
                 <v-divider class="divider2" color="#adb5bd"></v-divider>
+                <AddUserTopFour/>
                 <UserTopFour/>
-            </section>
+            </v-container>
         </div>
 
 
@@ -174,6 +173,7 @@
 import axios from "axios";
 import cookies from 'vue-cookies';
 import SignedInHeader from '@/components/SignedInHeader.vue'
+import AddUserTopFour from "@/components/AddUserTopFour.vue";
 import UserTopFour from '@/components/UserTopFour.vue'
 import DeleteAccount from '@/components/DeleteAccount.vue'
 import PageFooter from '@/components/PageFooter.vue'
@@ -182,6 +182,7 @@ import PageFooter from '@/components/PageFooter.vue'
         name: "EditProfile",
         components: {
             SignedInHeader,
+            AddUserTopFour,
             UserTopFour,
             DeleteAccount,
             PageFooter
@@ -258,8 +259,17 @@ import PageFooter from '@/components/PageFooter.vue'
                 this.password = "";
             },
         },
-        created (){
+        created() {
             this.get_user_profile();
+        },
+        mounted() {
+            setTimeout(() => {
+                this.feedbackMsg = '';
+            }, 60000); // Hide after 1 minute
+        },
+        beforeDestroy() {
+            // Hide message when page is closed
+            this.feedbackMsg = '';
         }
     }
 </script>

@@ -28,6 +28,8 @@
             append-icon="mdi-magnify" 
             background-color="rgba(148, 148, 148, 0.63)" 
             class="textField"
+            filled
+            shaped
             ></v-text-field>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
@@ -109,9 +111,6 @@ button:hover{
 }
 .signIn{
     margin-right: 20px;
-}
-.textField{
-    border-radius: 15px;
 }
 
 /* CHECKBOX */
