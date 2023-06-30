@@ -43,34 +43,45 @@
 </template>
 
 <script>
+import cookies from 'vue-cookies';
 import PageHeader from '@/components/PageHeader.vue'
 import FrontPageImg from '@/components/FrontPageImg.vue'
 import FeaturedMovies from '@/components/FeaturedMovies.vue'
 import UserSignup from '@/components/UserSignup.vue'
 import PageFooter from '@/components/PageFooter.vue'
 
-    export default {
-        name: "HomePage",
-        components: {
-            PageHeader,
-            FrontPageImg,
-            FeaturedMovies,
-            UserSignup,
-            PageFooter
-        },
-        data() {
-            return {
-                active: false,
-                showModal: false,
-            }
-        },
-        methods: {
-            signUpPopOut() {
-                this.active = !this.active;
-            }
+export default {
+    name: "HomePage",
+    components: {
+        PageHeader,
+        FrontPageImg,
+        FeaturedMovies,
+        UserSignup,
+        PageFooter
+    },
+    data() {
+        return {
+        active: false,
+        showModal: false,
+        token: "",
         }
-        
-    }
+    },
+    methods: {
+        signUpPopOut() {
+        this.active = !this.active;
+        },
+    },
+    beforeRouteEnter(to, from, next) {
+        const token = cookies.get('sessionToken');
+        if (token) {
+        next(vm => {
+            vm.$router.replace('/home');
+        });
+        } else {
+        next();
+        }
+    },
+}
 </script>
 
 <style scoped>

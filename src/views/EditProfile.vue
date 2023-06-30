@@ -2,15 +2,11 @@
 
 <template>
     <div>
-        <div 
-        class="header"
-        >
+        <div class="header">
             <SignedInHeader/>
         </div>
         
-        <div 
-        class="pageContainer"
-        >
+        <div class="pageContainer">
             <v-form>
                 <v-container 
                 class="editProfile"
@@ -141,11 +137,14 @@
                             DELETE ACCOUNT
                         </v-btn>
                     </div>
+
+                    <!--Show when there is feedback from button click -->
                     <div v-if="feedbackMsg">
                         <p class="feedback">{{ feedbackMsg }}</p>
                     </div>
                 </v-container>
             </v-form>
+            
             <section class="topFourContainer">
                 <h3>FAVOURITE FILMS</h3>
                 <v-divider class="divider2" color="#adb5bd"></v-divider>
@@ -271,15 +270,11 @@ import PageFooter from '@/components/PageFooter.vue'
     transform: translateX(-50%);
     margin-top: 100px;
 }
-.feedback{
-    color: #adb5bd;
-}
 h3{
     color: #adb5bd;
 }
-.divider1{
-    width: 100%;
-}
+
+/* Button */
 .v-btn{
     margin: 0 10px;
 }
@@ -287,25 +282,29 @@ h3{
     color: white;
     background-color: #ffd60a;
 }
+
 .feedback{
+    color: #adb5bd;
     margin-top: 30px;
 }
+
 .topFourContainer{
-    color: #adb5bd;
     margin-top: 30px;
     position: absolute;
 }
+
+/* Dividers */
 .divider1{
-    margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 15px;
 }
 .divider2{
-    width: 34%;
+    width: 100%;
 }
 
 .footer{
-    padding-top: 1000px;
     position: absolute;
-    bottom: -100vh;
+    bottom: -50vh;
     width: 100%;
     background-color: #001219;
     z-index: -1;

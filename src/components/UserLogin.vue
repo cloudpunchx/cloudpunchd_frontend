@@ -121,5 +121,6 @@ h3{
 }
 .feedbackMsg{
     margin-top: 20px;
+    color: white;
 }
 </style>

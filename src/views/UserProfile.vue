@@ -16,14 +16,6 @@
             <v-container class="profileContainer">
                 <v-row
                 >
-                <v-col
-                    cols="12"
-                    md="3"
-                    lg="1"
-                    >
-                        <!-- placeholder for spacing -->
-                    </v-col>
-
                     <v-col
                     cols="12"
                     md="3"
@@ -35,7 +27,7 @@
                     <v-col
                     cols="12"
                     md="2"
-                    lg="2"
+                    lg="5"
                     >
                         <div class="userInfo">
                             <h2>{{ username }}</h2>
