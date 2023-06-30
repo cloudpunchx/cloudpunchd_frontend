@@ -67,53 +67,46 @@
             <v-container class="contentContainer">
                 <v-row>
                     <v-col cols="12" md="12" lg="8">
-                    <div class="favFilmContainer">
-                        <h4>FAVOURITE FILMS</h4>
-                        <v-divider class="divider" color="#adb5bd"></v-divider>
-                        <UserTopFour/>
-                    </div>
+                        <div class="favFilmContainer">
+                            <h4>FAVOURITE FILMS</h4>
+                            <v-divider class="divider" color="#adb5bd"></v-divider>
+                            <UserTopFour/>
+                        </div>
+                        <div class="recentlyWatchedContainer">
+                            <h4>RECENTLY WATCHED</h4>
+                            <v-divider class="divider" color="#adb5bd"></v-divider>
+                            <RecentlyWatched/>
+                        </div>
                     </v-col>
                     <v-col cols="12" md="12" lg="4">
-                    <v-row>
-                        <v-col cols="12">
-                        <div class="sideSection">
-                            <h4>FILM LOG</h4>
-                            <v-divider class="divider" color="#adb5bd"></v-divider>
-                            <UserFilmLog/>
-                        </div>
-                        </v-col>
-                        <v-col cols="12">
-                        <div class="watchlistContainer">
-                            <h4>WATCHLIST</h4>
-                            <v-divider class="divider" color="#adb5bd"></v-divider>
-                            <UserWatchlistMini/>
-                        </div>
-                        </v-col>
-                    </v-row>
+                        <v-row>
+                            <v-col cols="12">
+                                <div class="sideSection">
+                                    <h4>FILM LOG</h4>
+                                    <v-divider class="divider" color="#adb5bd"></v-divider>
+                                    <UserFilmLog/>
+                                </div>
+                            </v-col>
+                            <v-col cols="12">
+                                <div class="watchlistContainer">
+                                    <h4>WATCHLIST</h4>
+                                    <v-divider class="divider" color="#adb5bd"></v-divider>
+                                    <UserWatchlistMini/>
+                                </div>
+                            </v-col>
+                        </v-row>
                     </v-col>
                 </v-row>
                 <v-row>
                     <v-col cols="12" md="12" lg="8">
-                    <div class="recentlyWatchedContainer">
-                        <h4>RECENTLY WATCHED</h4>
-                        <v-divider class="divider" color="#adb5bd"></v-divider>
-                        <RecentlyWatched/>
-                    </div>
+                        <div class="reviewContainer">
+                            <h4>RECENT REVIEWS</h4>
+                            <v-divider class="divider3" color="#adb5bd"></v-divider>
+                            <UserReviews/>
+                        </div>
                     </v-col>
                     <v-col cols="12" md="12" lg="4">
-                    <!-- Placeholder column for spacing -->
-                    </v-col>
-                </v-row>
-                <v-row>
-                    <v-col cols="12" md="12" lg="8">
-                    <div class="reviewContainer">
-                        <h4>RECENT REVIEWS</h4>
-                        <v-divider class="divider3" color="#adb5bd"></v-divider>
-                        <UserReviews/>
-                    </div>
-                    </v-col>
-                    <v-col cols="12" md="12" lg="4">
-                    <!-- Placeholder column for spacing -->
+                        <!-- Placeholder column for spacing -->
                     </v-col>
                 </v-row>
             </v-container>
@@ -122,7 +115,6 @@
         <div class="footer">
             <PageFooter/>
         </div>
-        
     </div>
 </template>
 
@@ -223,6 +215,7 @@ import PageFooter from '@/components/PageFooter.vue'
     background-color: #242730e3;
     border-radius: 10px;
 }
+
 .userInfo{
     width: 500px;
     padding: 0px 20px;

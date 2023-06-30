@@ -3,9 +3,9 @@
         <div class="container">
             <v-row dense justify="start">
                 <v-col
-                v-for="movie in movies"
+                v-for="movie in movies.slice(0, 9)"
                 :key="movie.ID"
-                cols="1"
+                cols="4"
                 >
                     <router-link
                     :to="username+'/watchlist'"
@@ -15,18 +15,6 @@
                             :width="100"
                             class="poster"
                         >
-                            <template v-slot:placeholder>
-                                <v-row
-                                    class="fill-height ma-0"
-                                    align-content="center"
-                                    justify="center"
-                                >
-                                    <v-progress-circular
-                                    indeterminate
-                                    color="grey-lighten-5"
-                                    ></v-progress-circular>
-                                </v-row>
-                            </template>
                         </v-img>
                     </router-link>
                 </v-col>
@@ -34,8 +22,6 @@
         </div>
     </div>
 </template>
-
-<!-- WANT TO LIMIT THIS TO 4 - slice? -->
 
 <script>
 import axios from "axios";
@@ -78,7 +64,7 @@ import cookies from 'vue-cookies';
 .poster:hover{
     transform: scale(1.05);
 }
-.watchlistContainer{
+/* .watchlistContainer{
     margin-top: 50px;
-}
+} */
 </style>
