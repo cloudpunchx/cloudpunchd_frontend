@@ -1,5 +1,3 @@
-<!-- not done with api for edit profile -->
-
 <template>
     <div>
         <div class="header">
@@ -22,7 +20,7 @@
                             <v-text-field
                             background-color="#495057"
                             v-model="username"
-                            label="Username"
+                            :label="usernameGet + ' (username) '"
                             dark
                             filled
                             shaped
@@ -39,7 +37,7 @@
                             background-color="#495057"
                             v-model="firstName"
                             :rules="nameRules"
-                            label="First Name"
+                            :label="firstnameGet + ' (first name) '"
                             dark
                             filled
                             shaped
@@ -56,7 +54,7 @@
                             background-color="#495057"
                             v-model="lastName"
                             :rules="nameRules"
-                            label="Last Name"
+                            :label="lastnameGet + ' (last name) '"
                             dark
                             filled
                             shaped
@@ -72,8 +70,7 @@
                             <v-text-field
                             background-color="#495057"
                             v-model="email"
-                            :rules="emailRules"
-                            label="E-mail"
+                            label="e-mail"
                             dark
                             filled
                             shaped
@@ -89,7 +86,7 @@
                             <v-text-field
                             background-color="#495057"
                             v-model="password"
-                            label="Password"
+                            label="password"
                             dark
                             filled
                             shaped
@@ -105,7 +102,7 @@
                             <v-text-field
                             background-color="#495057"
                             v-model="bio"
-                            label="Bio"
+                            :label="bioGet + ' (bio)'"
                             dark
                             filled
                             shaped
@@ -193,11 +190,16 @@ import PageFooter from '@/components/PageFooter.vue'
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
                 username: "",
+                usernameGet: "",
                 firstName: "",
+                firstnameGet: "",
                 lastName: "",
+                lastnameGet: "",
                 email: "",
+                emailGet: "",
                 password: "",
                 bio: "",
+                bioGet: "",
                 profile_img: "",
                 feedbackMsg: "",
                 active: false,
@@ -213,12 +215,11 @@ import PageFooter from '@/components/PageFooter.vue'
                         token: cookies.get(`sessionToken`)
                     },
                 }).then((response)=>{
-                    this.username = response.data.username;
-                    this.firstName = response.data.firstName;
-                    this.lastName = response.data.lastName;
-                    this.email = response.data.email;
-                    this.bio = response.data.bio;
-                    this.profile_img = response.data.profile_img;
+                    this.usernameGet = response.data.username;
+                    this.firstnameGet = response.data.firstName;
+                    this.lastnameGet = response.data.lastName;
+                    this.emailGet = response.data.email;
+                    this.bioGet = response.data.bio;
                 }).catch((error)=>{
                     this.feedbackMsg = error;
                 })
@@ -240,11 +241,11 @@ import PageFooter from '@/components/PageFooter.vue'
                         profileImg: this.profile_img
                     }
                 }).then((response)=>{
-                    console.log(response);
-                    this.feedbackMsg = "Successfully edited profile";
+                    this.feedbackMsg = response.data;
                     this.clearTextBox();
+                    this.get_user_profile();
                 }).catch((error)=>{
-                    this.feedbackMsg = error;
+                    this.feedbackMsg = error.response.data;
                     this.clearTextBox();
                 })
             },
