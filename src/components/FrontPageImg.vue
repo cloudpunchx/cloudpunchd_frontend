@@ -40,7 +40,7 @@ import axios from "axios";
 @media (min-width: 1px) {
     /* Mobile / Small size */
     .backdropFade{
-        height: 25vh;
+        height: 30vh;
         position: absolute;
         top: 0%;
         left: 50%;

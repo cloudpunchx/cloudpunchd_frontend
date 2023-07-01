@@ -115,6 +115,10 @@ export default {
 
 @media (min-width: 1px) {
     /* Mobile / Small size */
+    .description{
+        margin-top: -20%;
+    }
+    
     .introText{
         font-size: 2rem;
         color: whitesmoke;
@@ -124,10 +128,18 @@ export default {
 
 @media (min-width: 480px) {
     /* Tablet / Med size */
+
+    .description{
+        margin-top: 0;
+    }
 }
 
 @media (min-width: 800px) {
     /* Desktop / Large size */
+    .description{
+        margin-top: 0;
+    }
+    
     .introText{
         font-size: 3rem;
     }

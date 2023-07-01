@@ -1,8 +1,9 @@
 <template>
     <div>
         <v-card
-        width="400px"
         class="mx-auto"
+        min-width="260"
+        max-width="600"
         title="User Registration"
         shaped
         >
@@ -83,10 +84,6 @@
     </div>
 </template>
 
-
-<!-- FIX EMAIL FORMAT FOR CREATE ACCOUNT -->
-
-
 <script>
 import axios from "axios";
 import cookies from 'vue-cookies';
@@ -159,12 +156,6 @@ import router from '@/router';
 </script>
 
 <style scoped>
-.signUpForm{
-    background-color: #A2A3BB;  
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 25px;
-    padding: 40px;
-}
 h3{
     color: whitesmoke;
     font-size: 25pt;
@@ -181,4 +172,33 @@ h3{
 .feedbackMsg{
     margin-top: 20px;
 }
+
+@media (min-width: 1px) {
+    /* Mobile / Small size */
+    .signUpForm{
+        background-color: #A2A3BB;  
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 25px;
+        padding: 5px;
+    }
+}
+
+
+@media (min-width: 480px) {
+    /* Tablet / Med size */
+    .signUpForm{
+        background-color: #A2A3BB;  
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 25px;
+        padding: 40px;
+    }
+}
+
+
+@media (min-width: 800px) {
+    /* Desktop / Large size */
+    
+
+}
+
 </style>

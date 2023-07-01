@@ -1,5 +1,3 @@
-<!-- Need to fix pop out modal on mobile -->
-
 <template>
     <div>
         <v-app-bar color="transparent" dark elevation="0" absolute class="nav-bar">
@@ -59,7 +57,7 @@
             </div>
         </transition>
         <transition name="pop" appear>
-            <div class="modal modal-mobile" 
+            <div class="modal" 
             role="dialog" 
             v-if="showModal"
             >
@@ -75,7 +73,7 @@
             </div>
         </transition>
         <transition name="pop" appear>
-            <div class="modal modal-mobile" 
+            <div class="modal" 
             role="dialog" 
             v-if="showModal2"
             >
@@ -251,15 +249,6 @@ input[type=checkbox]{
     background: #505153;
     opacity: 0.6;
     cursor: pointer;
-}
-
-.modal-mobile {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%; /* Adjust the width to your preference */
-    max-height: 100%; /* Adjust the max-height to your preference */
 }
 
 

@@ -2,7 +2,8 @@
     <div>
         <v-card 
         class="mx-auto"
-        width="400px"
+        min-width="260"
+        max-width="600"
         title="User Sign In"
         shaped
         >
@@ -102,12 +103,6 @@ import router from '@/router';
 </script>
 
 <style scoped>
-.loginForm{
-    background-color: #A2A3BB;  
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 25px;
-    padding: 40px;
-}
 h3{
     color: whitesmoke;
     font-size: 25pt;
@@ -124,5 +119,32 @@ h3{
 .feedbackMsg{
     margin-top: 20px;
     color: white;
+}
+
+@media (min-width: 1px) {
+    /* Mobile / Small size */
+    .loginForm{
+        background-color: #A2A3BB;  
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 25px;
+        padding: 5px;
+    }
+}
+
+
+@media (min-width: 480px) {
+    /* Tablet / Med size */
+    .loginForm{
+        background-color: #A2A3BB;  
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 25px;
+        padding: 40px;
+    }
+}
+
+
+@media (min-width: 800px) {
+    /* Desktop / Large size */
+    
 }
 </style>

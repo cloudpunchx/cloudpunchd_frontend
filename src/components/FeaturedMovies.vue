@@ -4,30 +4,17 @@
             <v-col
             v-for="movie in movies"
             :key="movie.id"
-            cols="1"
+            cols="3"
+            sm="1"
+            md="1"
+            lg="1"
             >   
                 <router-link
                 :to="'/movie/' + movie.MovieName + '/' + movie.ID"
                 >
                     <v-img
                     :src="movie.Poster"
-                    class="poster"
-                    >
-                    </v-img>
-                </router-link>
-            </v-col>
-        </v-row>
-        <v-row dense align-content="center" justify="center">
-            <v-col
-            v-for="movie in movies2"
-            :key="movie.id"
-            cols="1"
-            >   
-                <router-link
-                :to="'/movie/' + movie.MovieName + '/' + movie.ID"
-                >
-                    <v-img
-                    :src="movie.Poster"
+                    :width="getPosterWidth"
                     class="poster"
                     >
                     </v-img>
@@ -47,6 +34,17 @@ import axios from "axios";
                 apiUrl : process.env.VUE_APP_API_URL,
                 movies: [],
                 movies2: [],
+            }
+        },
+        computed: {
+            getPosterWidth() {
+                if (this.$vuetify.breakpoint.smAndDown) {
+                    return 150; // Width for small screens (sm)
+                } else if (this.$vuetify.breakpoint.mdAndDown) {
+                    return 190; // Width for medium-sized screens (md)
+                } else {
+                    return 200; // Width for large screens (lg)
+                }
             }
         },
         methods: {
@@ -73,23 +71,51 @@ import axios from "axios";
         },
         mounted () {
             this.getFeaturedMovies();
-            this.getFeaturedMovies2();
         },
     }
 </script>
 
 <style scoped>
-.poster{
-    height: 100%;
-    border: 1px rgb(97, 97, 97) solid;
+
+@media (min-width: 1px) {
+    /* Mobile / Small size */
+    .poster{
+        height: 100%;
+        border: 1px rgb(97, 97, 97) solid;
+    }
+    .poster:hover{
+        transform: scale(1.05);
+    }
+    .boxContainer{
+        background-color: #001219;
+        width: 100vw;
+        margin-bottom: 300px;
+    }
+
 }
-.poster:hover{
-    transform: scale(1.05);
+
+
+@media (min-width: 480px) {
+    /* Tablet / Med size */
 }
-.boxContainer{
-    background-color: #001219;
-    padding: 50px;
-    width: 100vw;
-    margin-bottom: 500px;
+
+
+@media (min-width: 800px) {
+    /* Desktop / Large size */
+    .poster{
+        height: 100%;
+        border: 1px rgb(97, 97, 97) solid;
+    }
+    .poster:hover{
+        transform: scale(1.05);
+    }
+    .boxContainer{
+        background-color: #001219;
+        padding: 50px;
+        width: 100vw;
+        margin-bottom: 500px;
+    }
+
 }
+
 </style>
