@@ -274,9 +274,9 @@ import cookies from 'vue-cookies';
 @media only screen and (min-width: 700px){
 /* Breakpoint for Tablet */
     .container {
-            width: 220px;
-            padding: 10px;
-        }
+        width: 300px;
+        padding: 30px;
+    }
 
     .img{
         width: 50px;

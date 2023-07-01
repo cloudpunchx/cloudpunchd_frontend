@@ -1,3 +1,11 @@
+<!-- working on page resizing -->
+
+<!-- xs: Extra small screens (less than 600px)
+sm: Small screens (600px to 959px)
+md: Medium screens (960px to 1263px)
+lg: Large screens (1264px to 1903px)
+xl: Extra large screens (1904px and above) -->
+
 <template>
     <div class="pageContainer">
         <div v-if="token" class="header">
@@ -18,10 +26,25 @@
             class="contentContainer"
             >
                 <v-row
-                >
+                >   
                     <v-col 
-                    cols="12"
-                    sm="3" 
+                    v-if="isSmallBreakpoint"
+                    cols="auto" 
+                    md="1"
+                    lg="1"
+                    >
+                        <v-row>
+                            <v-col>
+                                <div class="placeholderDiv">
+
+                                </div>
+                            </v-col>
+                        </v-row>
+                    </v-col>
+
+                    <v-col 
+                    cols="auto"
+                    sm="1" 
                     md="3"
                     lg="4"
                     >
@@ -29,29 +52,17 @@
                             <v-col>
                                 <v-img
                                 :src="movie.Poster"
-                                :width="300"
+                                :width="getPosterWidth"
                                 class="poster"
                                 >
-                                    <template v-slot:placeholder>
-                                        <v-row
-                                        class="fill-height ma-0"
-                                        align-content="center"
-                                        justify="center"
-                                        >
-                                            <v-progress-circular
-                                                indeterminate
-                                                color="grey-lighten-5"
-                                            ></v-progress-circular>
-                                        </v-row>
-                                    </template>
                                 </v-img>
                             </v-col>
                         </v-row>
                     </v-col>
                     <v-col 
-                    cols="12"
-                    sm="4"
-                    md="4"
+                    cols="auto"
+                    sm="1"
+                    md="2"
                     lg="5"
                     >
                         <div class="infoContainer">
@@ -63,9 +74,9 @@
                         </div>
                     </v-col>
                     <v-col 
-                    cols="12" 
-                    sm="5"
-                    md="5"
+                    cols="auto" 
+                    sm="2"
+                    md="2"
                     lg="3"
                     >
                         <div class="logContainer">
@@ -75,12 +86,12 @@
                 </v-row>
                 <v-row>
                     <v-col 
-                    cols="12"
-                    sm="8"
-                    md="7"
+                    cols="auto"
+                    sm="2"
+                    md="2"
                     lg="7"
                     >
-                        <div class="container">
+                        <div class="reviewContainer">
                             <h4>REVIEWS</h4>
                             <v-divider class="divider" color="#adb5bd"></v-divider>
                             <GetMovieReviews/>
@@ -123,6 +134,20 @@ import cookies from 'vue-cookies';
                 movie: [],
                 active: false,
                 showModal: false,
+            }
+        },
+        computed: {
+            getPosterWidth() {
+                if (this.$vuetify.breakpoint.smAndDown) {
+                    return 200; // Width for small screens (sm)
+                } else if (this.$vuetify.breakpoint.mdAndDown) {
+                    return 300; // Width for medium-sized screens (md)
+                } else {
+                    return 300; // Width for large screens (lg)
+                }
+            },
+            isSmallBreakpoint() {
+                return !this.$vuetify.breakpoint.xsOnly;
             }
         },
         methods: {
@@ -191,30 +216,16 @@ import cookies from 'vue-cookies';
 
 .contentContainer {
     margin-top: -200px;
-    max-width: 2000px;
-    width: 100%;
-}
-
-.infoContainer {
-    color: white;
-    width: 350px;
+    /* max-width: 2000px; */
+    /* width: 100%; */
 }
 
 .logContainer {
     margin-top: 50px;
 }
 
-.container {
-    color: #adb5bd;
-}
-
-.backdropFade {
-    height: 60vh;
-    position: relative;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
+.divider{
+    width: 100%;
 }
 
 .grad1 img {
@@ -283,4 +294,68 @@ import cookies from 'vue-cookies';
     opacity: 0;
     transform: scale(0.3) translateY(-50%);
 }
+
+@media (min-width: 1px) {
+    /* Mobile / Small size */
+
+    .backdropFade {
+        height: 30vh;
+        position: relative;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+    .infoContainer {
+        color: white;
+        width: 200px;
+    }
+
+    .reviewContainer {
+        color: #adb5bd;
+        width: 300px;
+    }
+}
+
+
+@media (min-width: 480px) {
+    /* Tablet / Med size */
+
+    .backdropFade {
+        height: 40vh;
+        position: relative;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+    .infoContainer {
+        color: white;
+        width: 320px;
+    }
+}
+
+
+@media (min-width: 800px) {
+    /* Desktop / Large size */
+
+    .backdropFade {
+        height: 60vh;
+        position: relative;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+    .infoContainer {
+        width: 350px;
+    }
+
+    .reviewContainer {
+        width: 700px;
+    }
+}
+
 </style>

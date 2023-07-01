@@ -73,7 +73,7 @@ import axios from "axios";
     margin-left: 20px;
 }
 .divider{
-    width: 500px;
+    width: 100%;
 }
 .altText{
     font-size: 15pt;
