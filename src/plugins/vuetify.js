@@ -8,7 +8,8 @@ const vuetify = new Vuetify({
         themes: {
             light: {
                 // background is dark blue
-                background: "#001219", 
+                background: "#001219",
+                grey: "#242730",
                 // primary is red
                 primary: '#DD1C1A',
                 // secondary is yellow

@@ -1,31 +1,40 @@
-<!-- Need to design header for resize -->
+<!-- Need to fix pop out modal on mobile -->
 
 <template>
     <div>
         <v-app-bar color="transparent" dark elevation="0" absolute class="nav-bar">
+            <!-- Only show Icon when it isMobile -->
+            <v-app-bar-nav-icon v-show="isMobile" @click="toggleDrawer" class="navIcon"></v-app-bar-nav-icon>
+
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
+
             <v-toolbar-title>
-            <router-link to="/">
-                <img src="../assets/cloudpunchdLogo.png" alt="Logo" class="logo">
-            </router-link>
+                <router-link to="/">
+                    <img src="../assets/cloudpunchdLogo.png" alt="Logo" class="logo">
+                </router-link>
             </v-toolbar-title>
+
             <v-spacer></v-spacer>
             
-            <button 
+            <button
+            v-show="!isMobile" 
             class="signIn" 
             @click="showModal = true"
             >SIGN IN</button>
             
-            <button 
+            <button
+            v-show="!isMobile"
             class="signIn" 
             @click="showModal2 = true"
             >CREATE ACCOUNT</button>
 
-            <v-text-field 
-            v-model="query" 
+            <v-text-field
+            v-show="!isMobile"
+            class="textField"
+            v-model="query"
             hide-details 
             clearable 
             append-icon="mdi-magnify" 
@@ -50,7 +59,7 @@
             </div>
         </transition>
         <transition name="pop" appear>
-            <div class="modal" 
+            <div class="modal modal-mobile" 
             role="dialog" 
             v-if="showModal"
             >
@@ -66,7 +75,7 @@
             </div>
         </transition>
         <transition name="pop" appear>
-            <div class="modal" 
+            <div class="modal modal-mobile" 
             role="dialog" 
             v-if="showModal2"
             >
@@ -74,6 +83,50 @@
             </div>
         </transition>
         
+        <!-- Nav Drawer for Tablet/Mobile (smaller screens) -->
+        <v-navigation-drawer
+        color="grey"
+        v-model="drawer"
+        absolute
+        temporary
+        left
+        :style="{ position: drawer ? 'fixed' : 'absolute' }"
+        >
+            <v-list
+            nav 
+            dense>
+                <v-list-item-group>
+                    <v-list-item>
+                        <v-text-field
+                        class="textField"
+                        v-model="query"
+                        dark
+                        hide-details 
+                        clearable 
+                        append-icon="mdi-magnify" 
+                        @click:append="search_movies"
+                        background-color="rgba(148, 148, 148, 0.63)" 
+                        >
+                        </v-text-field>
+                    </v-list-item>
+
+                    <v-list-item>
+                        <button
+                        class="listItem" 
+                        @click="showModal = true"
+                        >SIGN IN</button>
+                    </v-list-item>
+        
+                    <v-list-item>
+                        <button
+                        class="listItem" 
+                        @click="showModal2 = true"
+                        >CREATE ACCOUNT</button>
+                    </v-list-item>
+                </v-list-item-group>
+            </v-list>
+        </v-navigation-drawer>
+
     </div>
 </template>
 
@@ -93,22 +146,31 @@ import UserSignup from '@/components/UserSignup.vue'
                 showModal: false,
                 showModal2: false,
                 query: "",
+                drawer: false,
             }
+        },
+        computed: {
+            // isMobile() {
+            //     return this.$vuetify.breakpoint.smAndDown;
+            // },
+            isMobile() {
+                const isMobile = this.$vuetify.breakpoint.smAndDown;
+                console.log('isMobile:', isMobile);
+                return isMobile;
+            },
         },
         methods: {
             search_movies(){
                 router.push({name: 'SearchResults', params: {query: this.query}});
+            },
+            toggleDrawer() {
+                this.drawer = !this.drawer;
             },
         }
     }
 </script>
 
 <style scoped>
-.logo {
-    width: 250px;
-    margin-top: 5px;
-    cursor: pointer;
-}
 .v-app-bar{
     z-index: 2;
 }
@@ -124,11 +186,44 @@ button:hover{
     margin-right: 20px;
 }
 
+.listItem:hover,
+.listItem:active{
+    color: white;
+}
+
 /* CHECKBOX */
 
 input[type=checkbox]{
     display: none;
 } 
+
+@media (min-width: 1px) {
+    /* Mobile Sizing */
+    .logo {
+        width: 260px;
+        margin-top: 15px;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 480px) {
+    /* Tablet / Med Size */
+    .logo {
+        width: 200px;
+    }
+}
+
+@media (min-width: 960px) {
+    /* Desktop / Large */
+    .logo {
+        width: 250px;
+        margin-top: 10px;
+    }
+
+    .textField{
+        width: 60px;
+    }
+}
 
 /* Pop Up for Sign In */
 .modal {
@@ -157,6 +252,16 @@ input[type=checkbox]{
     opacity: 0.6;
     cursor: pointer;
 }
+
+.modal-mobile {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%; /* Adjust the width to your preference */
+    max-height: 100%; /* Adjust the max-height to your preference */
+}
+
 
 /* Modal Overlay Transition */
 

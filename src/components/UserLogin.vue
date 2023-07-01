@@ -2,7 +2,7 @@
     <div>
         <v-card 
         class="mx-auto"
-        max-width="600"
+        width="400px"
         title="User Sign In"
         shaped
         >
@@ -18,6 +18,7 @@
                     color="secondary"
                     clearable
                     label="Email"
+                    dark
                     filled
                     shaped
                     ></v-text-field>
@@ -30,6 +31,7 @@
                     :rules="[required]"
                     label="Password"
                     placeholder="Enter your password"
+                    dark
                     filled
                     shaped
                     @click="togglePassword"

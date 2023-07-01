@@ -1,14 +1,15 @@
 <template>
     <div>
         <v-card
+        width="400px"
         class="mx-auto"
-        max-width="600"
         title="User Registration"
         shaped
         >
             <v-container class="signUpForm">
                 <h3>Join Cloudpunchd</h3>
                 <v-text-field
+                dark
                 required
                 v-model="username"
                 color="secondary"
@@ -18,6 +19,7 @@
                 ></v-text-field>
 
                 <v-text-field
+                dark
                 required
                 v-model="firstName"
                 color="secondary"
@@ -27,6 +29,7 @@
                 ></v-text-field>
 
                 <v-text-field
+                dark
                 required
                 v-model="lastName"
                 color="secondary"
@@ -36,6 +39,7 @@
                 ></v-text-field>
 
                 <v-text-field
+                dark
                 required
                 v-model="email"
                 color="secondary"
@@ -45,6 +49,7 @@
                 ></v-text-field>
 
                 <v-text-field
+                dark
                 required
                 @click="togglePassword"
                 v-model="password"
@@ -59,6 +64,7 @@
 
                 <v-checkbox
                 v-model="terms"
+                dark
                 color="secondary"
                 label="I agree to site terms and conditions"
                 ></v-checkbox>
@@ -97,6 +103,7 @@ import router from '@/router';
                 username: '',
                 email: '',
                 password: '',
+                terms: false,
                 show: false,
                 feedbackMsg: '',
                 userId: null,

@@ -36,14 +36,44 @@ import axios from "axios";
 </script>
 
 <style scoped>
-.backdropFade{
-    height: 50vh;
-    position: absolute;
-    top: 0%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
+
+@media (min-width: 1px) {
+    /* Mobile / Small size */
+    .backdropFade{
+        height: 25vh;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
 }
+
+@media (min-width: 480px) {
+    /* Tablet / Med size */
+
+    .backdropFade{
+        height: 40vh;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+}
+
+@media (min-width: 800px) {
+    /* Desktop / Large size */
+    .backdropFade{
+        height: 50vh;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+}
+
 .grad1 img {
     -webkit-mask-image: linear-gradient(rgb(0, 0, 0), transparent);
     mask-image: linear-gradient(black, transparent);

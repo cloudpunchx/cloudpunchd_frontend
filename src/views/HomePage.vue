@@ -6,15 +6,14 @@
         <div>
             <FrontPageImg/>
             <section class="description">
-                <h1>Track Your Love For Movies</h1>
-                <h1>Share With Friends</h1>
+                <h1 class="introText">Track Your Love For Movies</h1>
+                <h1 class="introText">Share With Friends</h1>
                 <div class="buttonContainer">
                     <v-btn 
                     @click="showModal = true"
                     color="white"
                     text
                     rounded
-                    large
                     >
                     CREATE AN ACCOUNT
                     </v-btn>
@@ -85,11 +84,6 @@ export default {
 </script>
 
 <style scoped>
-h1{
-    color: whitesmoke;
-    font-size: 35pt;
-    font-family: lobster;
-}
 .description{
     background-color: #001219;
     text-align: center;
@@ -107,7 +101,8 @@ h1{
 }
 .v-btn{
     font-size: 1rem;
-    background-color: #ffd60a;
+    border: 1px solid #DD1C1A;
+    background-color: #dd1d1a61;
 }
 
 .v-btn:hover {
@@ -118,6 +113,27 @@ h1{
     margin-top: 100px;
 }
 
+@media (min-width: 1px) {
+    /* Mobile / Small size */
+    .introText{
+        font-size: 2rem;
+        color: whitesmoke;
+        font-family: lobster;
+    }
+}
+
+@media (min-width: 480px) {
+    /* Tablet / Med size */
+}
+
+@media (min-width: 800px) {
+    /* Desktop / Large size */
+    .introText{
+        font-size: 3rem;
+    }
+}
+
+/* Pop Out Modal */
 .modal {
     position: fixed;
     top: 20%;
