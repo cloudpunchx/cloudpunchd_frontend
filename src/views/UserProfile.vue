@@ -1,6 +1,3 @@
-<!-- still need to fix sizing -->
-<!-- on resize the recently watched moves down from fav films, could be placeholders -->
-
 <template>
     <div class="pageContainer">
         <div v-if="token" class="header">
@@ -9,22 +6,22 @@
         <div v-else>
             <PageHeader class="header"/>
         </div>
-        
+
         <div class="parentContainer">
             <v-container class="profileContainer">
                 <v-row
+                dense 
+                no-gutters
                 >
                     <v-col
-                    cols="12"
-                    md="3"
+                    sm="4"
                     lg="2"
                     >
-                        <v-avatar size="150"><v-img :src="profile_img"></v-img></v-avatar>
+                        <v-avatar size="150" class="avatar"><v-img :src="profile_img"></v-img></v-avatar>
                     </v-col>
 
                     <v-col
-                    cols="12"
-                    md="2"
+                    sm="6"
                     lg="5"
                     >
                         <div class="userInfo">
@@ -34,8 +31,7 @@
                     </v-col>
 
                     <v-col
-                    cols="12"
-                    md="1"
+                    sm="3"
                     lg="3"
                     >
                         <div>
@@ -192,7 +188,6 @@ import PageFooter from '@/components/PageFooter.vue'
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 900px;
 }
 .profileContainer{
     border-radius: 10px;
@@ -214,11 +209,6 @@ import PageFooter from '@/components/PageFooter.vue'
 .contentContainer2 {
     background-color: #242730e3;
     border-radius: 10px;
-}
-
-.userInfo{
-    width: 500px;
-    padding: 0px 20px;
 }
 .editBtn{
     font-size: .7rem;
@@ -242,8 +232,13 @@ h4{
 
 @media (min-width: 1px) {
     /* Mobile / Small size */
-    .parentContainer2{
+    .parentContainer, .parentContainer2{
         width: 70%;
+    }
+
+    .userInfo{
+        width: 300px;
+        padding: 20px 0px;
     }
 
 }
@@ -251,15 +246,24 @@ h4{
 
 @media (min-width: 480px) {
     /* Tablet / Med size */
-    .parentContainer2{
+    .parentContainer, .parentContainer2{
         width: 80%;
+    }
+
+    .avatar{
+        margin-bottom: 20px;
+    }
+
+    .userInfo{
+        width: 500px;
+        padding: 0px 20px;
     }
 }
 
 
 @media (min-width: 800px) {
 
-    .parentContainer2{
+    .parentContainer, .parentContainer2{
         width: 70%;
     }
 }
@@ -267,8 +271,9 @@ h4{
 @media (min-width: 1200px) {
     /* Desktop / Large size */
 
-    .parentContainer2{
+    .parentContainer, .parentContainer2{
         width: 50%;
     }
+
 }
 </style>

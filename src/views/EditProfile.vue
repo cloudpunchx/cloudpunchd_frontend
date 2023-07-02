@@ -100,7 +100,7 @@
                             <v-text-field
                             background-color="#495057"
                             v-model="bio"
-                            :label="bioGet + ' (bio)'"
+                            :label="bio"
                             dark
                             filled
                             shaped
@@ -200,7 +200,6 @@ import PageFooter from '@/components/PageFooter.vue'
                 emailGet: "",
                 password: "",
                 bio: "",
-                bioGet: "",
                 profile_img: "",
                 feedbackMsg: "",
                 active: false,
@@ -220,7 +219,7 @@ import PageFooter from '@/components/PageFooter.vue'
                     this.firstnameGet = response.data.firstName;
                     this.lastnameGet = response.data.lastName;
                     this.emailGet = response.data.email;
-                    this.bioGet = response.data.bio;
+                    this.bio = response.data.bio;
                 }).catch((error)=>{
                     this.feedbackMsg = error;
                 })
