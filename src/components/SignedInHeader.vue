@@ -1,10 +1,11 @@
 
-<!-- what is this?             handleItemClick(item) {
-                console.log(item);
-            }, -->
 <template>
     <div>
         <v-app-bar color="transparent" dark elevation="0" absolute class="nav-bar">
+            <!-- Only show Icon when it isMobile -->
+            <v-app-bar-nav-icon v-show="isMobile" @click="toggleDrawer" class="navIcon"></v-app-bar-nav-icon>
+
+            
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
@@ -16,10 +17,14 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
-            <v-avatar size="40"><v-img :src="profileImg"></v-img></v-avatar>
-            <v-menu offset-y>
+            <v-avatar v-show="!isMobile" size="40"><v-img :src="profileImg"></v-img></v-avatar>
+            <v-menu
+            v-show="!isMobile"
+            offset-y
+            >
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn 
+                    <v-btn
+                    v-show="!isMobile"
                     text 
                     v-bind="attrs" 
                     v-on="on" 
@@ -46,21 +51,64 @@
                 </v-list>
             </v-menu>
             <v-text-field 
-                v-model="query" 
-                hide-details 
-                clearable 
-                append-icon="mdi-magnify" 
-                @click:append="search_movies"
-                background-color="rgba(148, 148, 148, 0.63)" 
-                filled
-                shaped
-                >
+            v-show="!isMobile"
+            v-model="query" 
+            hide-details 
+            clearable 
+            append-icon="mdi-magnify" 
+            @click:append="search_movies"
+            background-color="rgba(148, 148, 148, 0.63)" 
+            filled
+            shaped
+            >
             </v-text-field>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
         </v-app-bar>
+
+        <!-- Nav Drawer for Tablet/Mobile (smaller screens) -->
+        <v-navigation-drawer
+        color="grey"
+        v-model="drawer"
+        absolute
+        temporary
+        left
+        :style="{ position: drawer ? 'fixed' : 'absolute' }"
+        >
+            <v-list
+            nav 
+            dense>
+                <v-list-item-group>
+                    <v-list-item>
+                        <v-text-field 
+                        class="textField"
+                        v-model="query"
+                        dark
+                        hide-details 
+                        clearable 
+                        append-icon="mdi-magnify" 
+                        @click:append="search_movies"
+                        background-color="rgba(148, 148, 148, 0.63)"
+                        >
+                        </v-text-field>
+                    </v-list-item>
+
+                    <v-list-item>
+                        <router-link :to="'/user/'+username" tag="div" class="listItem">Profile</router-link>
+                    </v-list-item>
+
+                    <v-list-item>
+                        <router-link :to="username+'/watchlist'" tag="div" class="listItem">Watchlist</router-link>
+                    </v-list-item>
+        
+                    <v-list-item>
+                        <UserLogout class="listItem"/>
+                    </v-list-item>
+                </v-list-item-group>
+            </v-list>
+        </v-navigation-drawer>
         
     </div>
 </template>
@@ -84,7 +132,15 @@ import UserLogout from '@/components/UserLogout.vue'
                 profileImg: "",
                 showDropdown: false,
                 query: "",
+                drawer: false,
             }
+        },
+        computed: {
+            isMobile() {
+                const isMobile = this.$vuetify.breakpoint.smAndDown;
+                console.log('isMobile:', isMobile);
+                return isMobile;
+            },
         },
         methods: {
             get_user_profile(){
@@ -105,11 +161,11 @@ import UserLogout from '@/components/UserLogout.vue'
             toggleDropdown() {
                 this.showDropdown = !this.showDropdown
             },
-            // handleItemClick(item) {
-            //     console.log(item);
-            // },
             search_movies(){
                 router.push({name: 'SearchResults', params: {query: this.query}});
+            },
+            toggleDrawer() {
+                this.drawer = !this.drawer;
             },
         },
         created (){

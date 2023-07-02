@@ -148,9 +148,6 @@ import UserSignup from '@/components/UserSignup.vue'
             }
         },
         computed: {
-            // isMobile() {
-            //     return this.$vuetify.breakpoint.smAndDown;
-            // },
             isMobile() {
                 const isMobile = this.$vuetify.breakpoint.smAndDown;
                 console.log('isMobile:', isMobile);

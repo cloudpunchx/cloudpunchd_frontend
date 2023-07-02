@@ -41,9 +41,9 @@ import router from '@/router';
                 this.loading = true
                 setTimeout(() => (this.loading = false), 2000)
             },
-            required (v) {
-                return !!v || 'Field is required'
-            },
+            // required (v) {
+            //     return !!v || 'Field is required'
+            // },
         },
         created (){
             this.getToken();

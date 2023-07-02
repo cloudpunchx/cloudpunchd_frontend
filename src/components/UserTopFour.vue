@@ -1,11 +1,15 @@
 <template>
     <div>
-        <div v-if="movies.length > 0" class="container">
-            <v-row dense justify="start">
+        <v-container v-if="movies.length > 0" class="container">
+            <v-row
+            dense 
+            no-gutters
+            justify="start"
+            >
                 <v-col
                 v-for="movie in movies"
                 :key="movie.ID"
-                cols="2"
+                sm="3"
                 lg="3"
                 >
                     <router-link
@@ -13,37 +17,46 @@
                     >
                         <v-img
                         :src="movie.Poster"
-                        :width="200"
+                        :width="getPosterWidth"
                         class="poster"
                         >
                         </v-img>
                     </router-link>
                 </v-col>
-
-                <!-- Placeholder content -->
-                <v-col v-for="index in 4 - movies.length" :key="index" cols="2" lg="3">
-                    <div class="placeholderDiv">
+                <v-col 
+                v-for="index in 4 - movies.length" 
+                :key="index"
+                sm="3"
+                lg="3"
+                >
+                    <div class="placeholderDiv"
+                    :style="{ width: getPosterWidth + 'px', height: getPosterHeight + 'px' }"
+                    >
 
                     </div>
                 </v-col>
             </v-row>
-        </div>
+        </v-container>
 
         <!-- Show 2nd container if there is no data for user (eg. new user) -->
-        <div v-else class="container">
-            <v-row dense justify="start">
+        <v-container v-else class="container">
+            <v-row 
+            dense 
+            no-gutters
+            justify="start"
+            sm="3"
+            lg="3"
+            >
                 <v-col
                 v-for="n in 4"
                 :key="n"
-                cols="2"
-                lg="3"
                 >  
                     <div class="placeholderDiv">
 
                     </div>
                 </v-col>
             </v-row>
-        </div>
+        </v-container>
     </div>
 </template>
 
@@ -58,6 +71,21 @@ import cookies from 'vue-cookies';
                 apiUrl : process.env.VUE_APP_API_URL,
                 movies: [],
             }
+        },
+        computed: {
+            getPosterWidth() {
+                if (this.$vuetify.breakpoint.smAndDown) {
+                    return 90;
+                } else if (this.$vuetify.breakpoint.mdAndDown) {
+                    return 100; 
+                } else {
+                    return 130; 
+                }
+            },
+            getPosterHeight() {
+                // Adjust the height based on the aspect ratio of the poster
+                return (this.getPosterWidth / 2) * 3;
+            },
         },
         methods: {
             getUserTopFour() {
@@ -93,8 +121,6 @@ import cookies from 'vue-cookies';
     transform: scale(1.05);
 }
 .placeholderDiv{
-    width: 140px;
-    height: 200px;
     margin: 5px;
     background-color: #101b1fc9;
     border: 1px rgb(97, 97, 97) solid;

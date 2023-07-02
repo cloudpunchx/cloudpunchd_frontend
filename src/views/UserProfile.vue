@@ -1,8 +1,6 @@
 <!-- still need to fix sizing -->
 <!-- on resize the recently watched moves down from fav films, could be placeholders -->
 
-<!-- when no data is there have placeholder for size -->
-
 <template>
     <div class="pageContainer">
         <div v-if="token" class="header">
@@ -56,21 +54,31 @@
         </div>
 
         <div class="parentContainer2">
-            <v-container class="contentContainer">
+            <v-container 
+            class="contentContainer"
+            >
                 <v-row>
-                    <v-col cols="12" md="12" lg="8">
-                        <div class="favFilmContainer">
+                    <v-col 
+                    cols="auto" 
+                    sm="10" 
+                    md="8" 
+                    lg="8"
+                    >
+                        <div>
                             <h4>FAVOURITE FILMS</h4>
                             <v-divider class="divider" color="#adb5bd"></v-divider>
                             <UserTopFour/>
                         </div>
-                        <div class="recentlyWatchedContainer">
+                        <div>
                             <h4>RECENTLY WATCHED</h4>
                             <v-divider class="divider" color="#adb5bd"></v-divider>
                             <RecentlyWatched/>
                         </div>
                     </v-col>
-                    <v-col cols="12" md="12" lg="4">
+                    <v-col 
+                    cols="12" 
+                    md="12" 
+                    lg="4">
                         <v-row>
                             <v-col cols="12">
                                 <div class="sideSection">
@@ -223,11 +231,44 @@ import PageFooter from '@/components/PageFooter.vue'
 h4{
     color: #adb5bd;
 }
+
 .footer{
     position: absolute;
     bottom: -100vh;
     width: 100%;
     background-color: #001219;
     z-index: 1;
+}
+
+@media (min-width: 1px) {
+    /* Mobile / Small size */
+    .parentContainer2{
+        width: 70%;
+    }
+
+}
+
+
+@media (min-width: 480px) {
+    /* Tablet / Med size */
+    .parentContainer2{
+        width: 80%;
+    }
+}
+
+
+@media (min-width: 800px) {
+
+    .parentContainer2{
+        width: 70%;
+    }
+}
+
+@media (min-width: 1200px) {
+    /* Desktop / Large size */
+
+    .parentContainer2{
+        width: 50%;
+    }
 }
 </style>
