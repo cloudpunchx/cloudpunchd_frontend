@@ -1,14 +1,26 @@
+<!-- fix Create Acct pop up, modal not covering page -->
+
 <template>
     <div class="pageContainer">
         <div>
             <PageHeader/>
         </div>
-        <div>
-            <FrontPageImg/>
-            <section class="description">
-                <h1 class="introText">Track Your Love For Movies</h1>
-                <h1 class="introText">Share With Friends</h1>
-                <div class="buttonContainer">
+
+        <FrontPageImg/>
+
+        <v-container class="description">
+            <v-row>
+                <v-col>
+                    <h1 class="introText">Track Your Love For Movies</h1>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col>
+                    <h1 class="introText">Share With Friends</h1>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col>
                     <v-btn 
                     @click="showModal = true"
                     color="white"
@@ -17,12 +29,23 @@
                     >
                     CREATE AN ACCOUNT
                     </v-btn>
-                </div>
-                <div class="featuredContainer">
+                </v-col>
+            </v-row>
+
+            <v-row align-content="center" justify="center">
+                <v-col
+                cols="12"
+                sm="9"
+                md="11"
+                lg="9"
+                >
                     <FeaturedMovies/>
-                </div>
+                </v-col>
+            </v-row>
+
+            <div class="footer">
                 <PageFooter/>
-            </section>
+            </div>
 
             <transition name="fade" appear>
                 <div class="modal-overlay" 
@@ -37,7 +60,7 @@
                     <UserSignup/>
                 </div>
             </transition>
-        </div>
+        </v-container>
     </div>
 </template>
 
@@ -113,6 +136,15 @@ export default {
     margin-top: 100px;
 }
 
+.footer{
+    padding-top: 100%;
+    position: absolute;
+    bottom: -100vh;
+    width: 100%;
+    background-color: #001219;
+    z-index: -1;
+}
+
 @media (min-width: 1px) {
     /* Mobile / Small size */
     .description{
@@ -136,12 +168,9 @@ export default {
 
 @media (min-width: 800px) {
     /* Desktop / Large size */
-    .description{
-        margin-top: 0;
-    }
     
     .introText{
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 }
 

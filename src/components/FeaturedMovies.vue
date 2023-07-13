@@ -1,13 +1,13 @@
 <template>
     <div class="boxContainer">
-        <v-row dense align-content="center" justify="center">
+        <v-row dense>
             <v-col
             v-for="movie in movies"
             :key="movie.id"
-            cols="3"
-            sm="1"
-            md="1"
-            lg="1"
+            cols="2"
+            sm="2"
+            md="2"
+            lg="2"
             >   
                 <router-link
                 :to="'/movie/' + movie.MovieName + '/' + movie.ID"
@@ -33,7 +33,6 @@ import axios from "axios";
             return {
                 apiUrl : process.env.VUE_APP_API_URL,
                 movies: [],
-                movies2: [],
             }
         },
         computed: {
@@ -41,9 +40,9 @@ import axios from "axios";
                 if (this.$vuetify.breakpoint.smAndDown) {
                     return 150; // Width for small screens (sm)
                 } else if (this.$vuetify.breakpoint.mdAndDown) {
-                    return 190; // Width for medium-sized screens (md)
+                    return 200; // Width for medium-sized screens (md)
                 } else {
-                    return 200; // Width for large screens (lg)
+                    return 180; // Width for large screens (lg)
                 }
             }
         },
@@ -54,16 +53,6 @@ import axios from "axios";
                     method: "GET",
                 }).then((response)=>{
                     this.movies = response.data;
-                }).catch((error)=>{
-                    console.log(error);
-                })
-            },
-            getFeaturedMovies2() {
-                axios.request({
-                    url: this.apiUrl+"/movies-featured",
-                    method: "GET",
-                }).then((response)=>{
-                    this.movies2 = response.data;
                 }).catch((error)=>{
                     console.log(error);
                 })
@@ -86,10 +75,10 @@ import axios from "axios";
     .poster:hover{
         transform: scale(1.05);
     }
-    .boxContainer{
-        background-color: #001219;
-        width: 100vw;
-        margin-bottom: 300px;
+    .boxContainer {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
     }
 
 }
@@ -102,19 +91,7 @@ import axios from "axios";
 
 @media (min-width: 800px) {
     /* Desktop / Large size */
-    .poster{
-        height: 100%;
-        border: 1px rgb(97, 97, 97) solid;
-    }
-    .poster:hover{
-        transform: scale(1.05);
-    }
-    .boxContainer{
-        background-color: #001219;
-        padding: 50px;
-        width: 100vw;
-        margin-bottom: 500px;
-    }
+
 
 }
 

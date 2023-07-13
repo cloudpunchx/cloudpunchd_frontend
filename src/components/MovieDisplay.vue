@@ -1,30 +1,22 @@
 <template>
     <div class="boxContainer">
-        <v-row dense align-content="center" justify="center">
+        <v-row dense>
             <v-col
             v-for="movie in movies"
             :key="movie.id"
-            cols="1"
+            cols="2"
+            sm="2"
+            md="2"
+            lg="2"
             >   
                 <router-link
                 :to="'/movie/' + movie.MovieName + '/' + movie.ID"
                 >
                     <v-img
                     :src="movie.Poster"
+                    :width="getPosterWidth"
                     class="poster"
                     >
-                        <template v-slot:placeholder>
-                            <v-row
-                                class="fill-height ma-0"
-                                align-content="center"
-                                justify="center"
-                            >
-                                <v-progress-circular
-                                indeterminate
-                                color="grey-lighten-5"
-                                ></v-progress-circular>
-                            </v-row>
-                        </template>
                     </v-img>
                 </router-link>
             </v-col>
@@ -44,6 +36,17 @@ import axios from "axios";
                 movies: [],
             }
         },
+        computed: {
+            getPosterWidth() {
+                if (this.$vuetify.breakpoint.smAndDown) {
+                    return 150; // Width for small screens (sm)
+                } else if (this.$vuetify.breakpoint.mdAndDown) {
+                    return 200; // Width for medium-sized screens (md)
+                } else {
+                    return 180; // Width for large screens (lg)
+                }
+            }
+        },
         methods: {
             get_horror_movies(){
                 axios.request({
@@ -53,7 +56,7 @@ import axios from "axios";
                         query: 'Horror'
                     },
                 }).then((response)=>{
-                    this.slicedResults = response.data.slice(0,10)
+                    this.slicedResults = response.data.slice(0,6)
                     this.movies = this.slicedResults;
                 }).catch((error)=>{
                     this.errorMsg = error;
@@ -68,15 +71,15 @@ import axios from "axios";
 
 <style scoped>
 .poster{
-    /* height: 100%; */
+    height: 100%;
     border: 1px rgb(97, 97, 97) solid;
 }
 .poster:hover{
     transform: scale(1.05);
 }
-.boxContainer{
-    background-color: #212529;
-    padding: 50px;
-    width: 100vw;
-    margin-bottom: 500px;
+.boxContainer {
+    display: flex;
+    justify-content: center;
 }
+
+</style>

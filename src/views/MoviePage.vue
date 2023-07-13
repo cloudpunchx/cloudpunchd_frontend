@@ -1,11 +1,3 @@
-<!-- working on page resizing -->
-
-<!-- xs: Extra small screens (less than 600px)
-sm: Small screens (600px to 959px)
-md: Medium screens (960px to 1263px)
-lg: Large screens (1264px to 1903px)
-xl: Extra large screens (1904px and above) -->
-
 <template>
     <div class="pageContainer">
         <div v-if="token" class="header">
