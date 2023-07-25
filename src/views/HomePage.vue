@@ -46,11 +46,17 @@
                     </v-row>
                 </v-container>
             </v-row>
-        </v-container>
 
-        <div class="footer">
-            <PageFooter />
-        </div>
+            <v-row align-content="center" justify="center">
+                <v-col cols="12" sm="9" md="11" lg="9">
+                    <BlogPreview />
+                </v-col>
+            </v-row>
+
+            <div class="footer">
+                <PageFooter />
+            </div>
+        </v-container>
 
         <!-- Pop Out for Sign Up -->
         <transition name="fade" appear>
@@ -73,6 +79,7 @@
     import PageHeader from "@/components/PageHeader.vue";
     import FrontPageImg from "@/components/FrontPageImg.vue";
     import FeaturedMovies from "@/components/FeaturedMovies.vue";
+    import BlogPreview from "@/components/BlogPreview.vue";
     import UserSignup from "@/components/UserSignup.vue";
     import PageFooter from "@/components/PageFooter.vue";
 
@@ -82,6 +89,7 @@
             PageHeader,
             FrontPageImg,
             FeaturedMovies,
+            BlogPreview,
             UserSignup,
             PageFooter,
         },
@@ -178,7 +186,7 @@
     }
 
     .footer {
-        padding-top: 100%;
+        /* padding-top: 100%; */
         position: absolute;
         bottom: -100vh;
         width: 100%;
@@ -199,8 +207,6 @@
         .text2 {
             font-size: 0.8rem;
         }
-
-        /* need to size for pages  */
         .siteHighlights {
             width: 1280px;
         }
