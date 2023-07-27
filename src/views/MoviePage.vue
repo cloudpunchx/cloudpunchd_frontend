@@ -175,7 +175,7 @@
     .footer {
         position: absolute;
         bottom: -100vh;
-        width: 100%;
+        width: 100vw;
         z-index: -1;
     }
 
@@ -313,7 +313,7 @@
             transform: translateX(0%);
         }
         .poster {
-            width: 300px;
+            width: 250px;
         }
         .infoContainer {
             width: 45vw;

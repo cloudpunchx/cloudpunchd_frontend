@@ -14,11 +14,7 @@
 
 <style scoped>
     .v-footer {
-        color: white;
-        background-color: #11161d;
-        text-align: center;
-        width: 100%;
-        padding: 5px;
+        background-color: #2c3440;
         margin-top: auto;
     }
     img {

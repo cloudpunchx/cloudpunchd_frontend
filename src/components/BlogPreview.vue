@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-container>
+        <v-container class="blogPostContainer">
             <v-row>
                 <v-col
                     v-for="post in posts"
@@ -96,11 +96,6 @@
 <style scoped>
     @media only screen and (min-width: 1px) {
         /* Breakpoint for Mobile */
-        .blogPostContainer {
-            text-align: center;
-            display: flex;
-            flex-wrap: wrap;
-        }
         h3 {
             font-size: 1.2rem;
             margin-bottom: 5px;

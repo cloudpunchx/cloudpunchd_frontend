@@ -8,7 +8,7 @@
         <FrontPageImg />
 
         <!-- Main Section, including Header Text (intro), FeaturedMovies display, Information display, Blog Post Previews -->
-        <v-container class="section1">
+        <v-main class="section1">
             <v-row>
                 <!-- Intro -->
                 <v-col>
@@ -60,12 +60,12 @@
                     <BlogPreview />
                 </v-col>
             </v-row>
+        </v-main>
 
-            <!-- Footer -->
-            <div class="footer">
-                <PageFooter />
-            </div>
-        </v-container>
+        <!-- Footer -->
+        <div class="footer">
+            <PageFooter />
+        </div>
 
         <!-- Pop Out for Sign Up -->
         <transition name="fade" appear>
@@ -166,16 +166,6 @@
         width: 100%;
         margin-bottom: 15px;
     }
-    .section1 {
-        color: whitesmoke;
-        background-color: #11161d;
-        text-align: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1;
-    }
     .buttonContainer {
         margin-top: 30px;
         left: 50%;
@@ -195,10 +185,7 @@
     }
 
     .footer {
-        position: absolute;
-        bottom: -100vh;
-        width: 100%;
-        z-index: -1;
+        margin-top: 20px;
     }
 
     /* Pop Out Modal */
@@ -254,7 +241,19 @@
 
     @media (min-width: 1px) {
         /* Mobile / Small size */
+
+        .pageContainer {
+            display: flex;
+            flex-direction: column;
+            padding-top: 300px;
+            min-height: 100vh;
+        }
         .section1 {
+            flex: 1;
+            color: whitesmoke;
+            background-color: #11161d;
+            text-align: center;
+            padding-bottom: 80px;
             margin-top: -20%;
         }
 
@@ -274,6 +273,9 @@
 
     @media (min-width: 480px) {
         /* Tablet / Med size */
+        .pageContainer {
+            padding-top: 290px;
+        }
         .text2 {
             font-size: 1rem;
             color: whitesmoke;
@@ -289,6 +291,9 @@
     @media (min-width: 600px) {
         /* Extra sizing for mid size */
 
+        .pageContainer {
+            padding-top: 300px;
+        }
         .siteHighlights {
             width: 75%;
         }
@@ -296,7 +301,9 @@
 
     @media (min-width: 800px) {
         /* Desktop / Large size */
-
+        .pageContainer {
+            padding-top: 380px;
+        }
         .text2 {
             font-size: 1.2rem;
         }
