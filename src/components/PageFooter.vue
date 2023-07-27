@@ -1,7 +1,7 @@
 <template>
     <v-footer class="text-center d-flex flex-column">
         <div>
-            <img src="../assets/cloudpunchMedia.png" alt="Cloudpunch Media">
+            <img src="../assets/cloudpunchMedia.png" alt="Cloudpunch Media" />
         </div>
     </v-footer>
 </template>
@@ -13,15 +13,15 @@
 </script>
 
 <style scoped>
-.v-footer {
-    color: white;
-    background-color: #001219;
-    text-align: center;
-    width: 100%;
-    padding: 5px;
-    margin-top: auto;
-}
-img {
-    width: 200px;
-}
+    .v-footer {
+        color: white;
+        background-color: #11161d;
+        text-align: center;
+        width: 100%;
+        padding: 5px;
+        margin-top: auto;
+    }
+    img {
+        width: 200px;
+    }
 </style>

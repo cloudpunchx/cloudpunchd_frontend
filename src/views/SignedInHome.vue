@@ -85,7 +85,7 @@
 
 <style scoped>
     .header {
-        background-color: #001219;
+        background-color: #11161d;
     }
     .divider {
         width: 100%;

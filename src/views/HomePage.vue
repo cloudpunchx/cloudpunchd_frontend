@@ -4,20 +4,24 @@
             <PageHeader />
         </div>
 
+        <!-- This is the 'cover img' on the front page -->
         <FrontPageImg />
 
-        <!-- Main Section, including Header Text (intro), FeaturedMovies display, Information display -->
+        <!-- Main Section, including Header Text (intro), FeaturedMovies display, Information display, Blog Post Previews -->
         <v-container class="section1">
             <v-row>
+                <!-- Intro -->
                 <v-col>
-                    <h1 class="text1">Track Your Love For Movies</h1>
-                    <h1 class="text1">Share With Friends</h1>
+                    <h1 class="text1">Track Your Love For Movies.</h1>
+                    <h1 class="text1">Share With Friends.</h1>
                 </v-col>
             </v-row>
+
+            <!-- Create Acct Btn - opens pop up Modal -->
             <v-row>
                 <v-col>
-                    <v-btn @click="showModal = true" color="white" text rounded>
-                        CREATE AN ACCOUNT
+                    <v-btn @click="showModal = true" color="white" text>
+                        GET STARTED - IT'S FREE!
                     </v-btn>
                 </v-col>
             </v-row>
@@ -27,19 +31,20 @@
                 </v-col>
             </v-row>
 
+            <!-- Featured Movies -->
             <v-row align-content="center" justify="center">
                 <v-col cols="12" sm="9" md="11" lg="9">
                     <FeaturedMovies />
                 </v-col>
             </v-row>
 
+            <!-- Info Section -->
             <v-row align-content="center" justify="center">
                 <v-container class="siteHighlights">
                     <h4 class="heading">CLOUDPUNCHD LETS YOU...</h4>
-                    <v-divider class="divider" color="#adb5bd"></v-divider>
                     <v-row dense>
                         <v-col v-for="card in cards" :key="card.id" cols="4">
-                            <v-card color="#545a60" dark>
+                            <v-card color="#456" dark>
                                 <v-card-text> {{ card.text }}</v-card-text>
                             </v-card>
                         </v-col>
@@ -47,12 +52,16 @@
                 </v-container>
             </v-row>
 
+            <!-- Blog Post Previews -->
             <v-row align-content="center" justify="center">
                 <v-col cols="12" sm="9" md="11" lg="9">
+                    <h4 class="heading">RECENT STORIES...</h4>
+                    <v-divider class="divider" color="#adb5bd"></v-divider>
                     <BlogPreview />
                 </v-col>
             </v-row>
 
+            <!-- Footer -->
             <div class="footer">
                 <PageFooter />
             </div>
@@ -159,7 +168,7 @@
     }
     .section1 {
         color: whitesmoke;
-        background-color: #001219;
+        background-color: #11161d;
         text-align: center;
         position: absolute;
         top: 50%;
@@ -186,52 +195,10 @@
     }
 
     .footer {
-        /* padding-top: 100%; */
         position: absolute;
         bottom: -100vh;
         width: 100%;
         z-index: -1;
-    }
-
-    @media (min-width: 1px) {
-        /* Mobile / Small size */
-        .section1 {
-            margin-top: -20%;
-        }
-
-        .text1 {
-            font-size: 2rem;
-            font-family: lobster;
-        }
-
-        .text2 {
-            font-size: 0.8rem;
-        }
-        .siteHighlights {
-            width: 1280px;
-        }
-    }
-
-    @media (min-width: 480px) {
-        /* Tablet / Med size */
-        .text2 {
-            font-size: 1rem;
-            color: whitesmoke;
-        }
-        .section1 {
-            margin-top: 0;
-        }
-    }
-
-    @media (min-width: 800px) {
-        /* Desktop / Large size */
-
-        .text1 {
-            font-size: 2.5rem;
-        }
-        .text2 {
-            font-size: 1.2rem;
-        }
     }
 
     /* Pop Out Modal */
@@ -283,5 +250,55 @@
     .pop-leave-to {
         opacity: 0;
         transform: scale(0.3) translateY(-50%);
+    }
+
+    @media (min-width: 1px) {
+        /* Mobile / Small size */
+        .section1 {
+            margin-top: -20%;
+        }
+
+        .text1 {
+            font-size: 2rem;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-weight: bold;
+        }
+
+        .text2 {
+            font-size: 0.8rem;
+        }
+        .siteHighlights {
+            width: 100%;
+        }
+    }
+
+    @media (min-width: 480px) {
+        /* Tablet / Med size */
+        .text2 {
+            font-size: 1rem;
+            color: whitesmoke;
+        }
+        .section1 {
+            margin-top: 0;
+        }
+        .siteHighlights {
+            width: 100%;
+        }
+    }
+
+    @media (min-width: 600px) {
+        /* Extra sizing for mid size */
+
+        .siteHighlights {
+            width: 75%;
+        }
+    }
+
+    @media (min-width: 800px) {
+        /* Desktop / Large size */
+
+        .text2 {
+            font-size: 1.2rem;
+        }
     }
 </style>

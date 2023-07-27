@@ -52,8 +52,6 @@
                 append-icon="mdi-magnify"
                 @click:append="search_movies"
                 background-color="rgba(148, 148, 148, 0.63)"
-                filled
-                shaped
             >
             </v-text-field>
 
@@ -178,7 +176,7 @@
         z-index: 2;
     }
     .nav-bar {
-        background: linear-gradient(to bottom, #001219, transparent);
+        background: linear-gradient(to bottom, #11161d, transparent);
     }
     button {
         color: rgb(224, 224, 224);

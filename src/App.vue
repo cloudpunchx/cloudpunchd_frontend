@@ -1,21 +1,20 @@
 <template>
-  <v-app>
-    <v-main>
-      <router-view/>
-    </v-main>
-  </v-app>
+    <v-app>
+        <v-main>
+            <router-view />
+        </v-main>
+    </v-app>
 </template>
 
 <script>
-
-export default {
-  name: 'App',
-};
+    export default {
+        name: "App",
+    };
 </script>
 
 <style scoped>
-@import "../src/assets/sass/style.scss";
-.v-application {
-    background-color: #001219;
-}
+    @import "../src/assets/sass/style.scss";
+    .v-application {
+        background-color: #11161d;
+    }
 </style>

@@ -29,21 +29,22 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
-            <v-avatar v-show="!isMobile" size="40"
-                ><v-img :src="profileImg"></v-img
-            ></v-avatar>
+
             <v-menu v-show="!isMobile" offset-y>
                 <template v-slot:activator="{on, attrs}">
                     <v-btn
-                        v-show="!isMobile"
                         text
+                        v-show="!isMobile"
                         v-bind="attrs"
                         v-on="on"
                         @mouseover="showDropdown = true"
                         class="listItemBtn"
                     >
+                        <v-avatar v-show="!isMobile" size="30" class="avatar"
+                            ><v-img :src="profileImg"></v-img
+                        ></v-avatar>
                         {{ usernameUppercase }}
-                        <v-icon right>mdi-menu-down</v-icon>
+                        <v-icon>mdi-menu-down</v-icon>
                     </v-btn>
                 </template>
                 <v-list
@@ -83,8 +84,6 @@
                 append-icon="mdi-magnify"
                 @click:append="search_movies"
                 background-color="rgba(148, 148, 148, 0.63)"
-                filled
-                shaped
             >
             </v-text-field>
             <v-spacer></v-spacer>
@@ -213,37 +212,30 @@
 </script>
 
 <style scoped>
-    .listItemBtn {
-        color: whitesmoke;
-    }
-    .listItemBtn:hover {
-        color: rgb(157, 157, 157);
-    }
-    .listItem {
-        color: whitesmoke;
-        background-color: #052938;
-    }
-    .listItem:hover {
-        color: rgb(157, 157, 157);
-        cursor: pointer;
+    .v-app-bar {
+        z-index: 2;
     }
     .nav-bar {
         border: none;
         padding: 10px;
-        background: linear-gradient(to bottom, #001219, transparent);
+        background: linear-gradient(to bottom, #11161d, transparent);
     }
     .logo {
         width: 250px;
         margin-top: 5px;
         cursor: pointer;
     }
-    .v-app-bar {
-        z-index: 2;
-    }
-    .search-box {
-        margin-right: -200px;
-    }
-    button {
+    .avatar {
         margin: 10px;
+    }
+    .listItemBtn {
+        margin-right: 5px;
+    }
+    .listItem {
+        background-color: #89a;
+    }
+    .listItem:hover {
+        color: whitesmoke;
+        cursor: pointer;
     }
 </style>

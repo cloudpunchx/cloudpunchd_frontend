@@ -14,7 +14,7 @@
                         class="card"
                         shaped
                         elevation="5"
-                        color="#545a60"
+                        color="#2c3440"
                         dark
                     >
                         <v-img
@@ -105,6 +105,9 @@
             font-size: 1.2rem;
             margin-bottom: 5px;
             color: whitesmoke;
+        }
+        .subHeading {
+            color: #99aabb;
         }
         .contentContainer {
             flex: 1;
