@@ -1,23 +1,18 @@
 <template>
-    <div class="boxContainer">
-        <v-row dense>
-            <v-col
-                v-for="movie in movies"
-                :key="movie.id"
-                cols="2"
-                sm="2"
-                md="2"
-                lg="2"
-            >
-                <router-link :to="'/movie/' + movie.MovieName + '/' + movie.ID">
-                    <v-img
-                        :src="movie.Poster"
-                        :width="getPosterWidth"
-                        class="poster"
-                    >
-                    </v-img>
-                </router-link>
-            </v-col>
+    <div>
+        <v-row>
+            <v-container class="boxContainer">
+                <v-row dense>
+                    <v-col v-for="movie in movies" :key="movie.id">
+                        <router-link
+                            :to="'/movie/' + movie.MovieName + '/' + movie.ID"
+                            class="movieLink"
+                        >
+                            <v-img :src="movie.Poster" class="poster"> </v-img>
+                        </router-link>
+                    </v-col>
+                </v-row>
+            </v-container>
         </v-row>
     </div>
 </template>
@@ -32,17 +27,6 @@
                 apiUrl: process.env.VUE_APP_API_URL,
                 movies: [],
             };
-        },
-        computed: {
-            getPosterWidth() {
-                if (this.$vuetify.breakpoint.smAndDown) {
-                    return 150; // Width for small screens (sm)
-                } else if (this.$vuetify.breakpoint.mdAndDown) {
-                    return 170; // Width for medium-sized screens (md)
-                } else {
-                    return 170; // Width for large screens (lg)
-                }
-            },
         },
         methods: {
             getFeaturedMovies() {
@@ -68,25 +52,39 @@
 <style scoped>
     @media (min-width: 1px) {
         /* Mobile / Small size */
-        .poster {
-            height: 100%;
-            border: 1px rgb(97, 97, 97) solid;
-        }
-        .poster:hover {
-            transform: scale(1.05);
-        }
         .boxContainer {
-            display: flex;
             justify-content: center;
             margin-bottom: 25px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
         }
-    }
-
-    @media (min-width: 480px) {
-        /* Tablet / Med size */
+        .poster {
+            min-width: 150px;
+            max-width: 150px;
+            min-height: 225px;
+            max-height: 225px;
+            border: 1px rgb(97, 97, 97) solid;
+        }
     }
 
     @media (min-width: 800px) {
+        /* Tablet / Med size */
+        .poster {
+            min-width: 139px;
+            max-width: 139px;
+            min-height: 250px;
+            max-height: 250px;
+        }
+    }
+
+    @media (min-width: 1264px) {
         /* Desktop / Large size */
+        .poster {
+            min-width: 180px;
+            max-width: 180px;
+            min-height: 280px;
+            max-height: 280px;
+        }
     }
 </style>

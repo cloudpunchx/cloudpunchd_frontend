@@ -32,19 +32,27 @@
             </v-row>
 
             <!-- Featured Movies -->
-            <v-row align-content="center" justify="center">
-                <v-col cols="12" sm="9" md="11" lg="9">
-                    <FeaturedMovies />
-                </v-col>
-            </v-row>
+            <v-container class="featuredContainer">
+                <v-row align-content="center" justify="center">
+                    <v-col class="featuredContainer">
+                        <FeaturedMovies />
+                    </v-col>
+                </v-row>
+            </v-container>
 
             <!-- Info Section -->
             <v-row align-content="center" justify="center">
                 <v-container class="siteHighlights">
                     <h4 class="heading">CLOUDPUNCHD LETS YOU...</h4>
                     <v-row dense>
-                        <v-col v-for="card in cards" :key="card.id" cols="4">
-                            <v-card color="#456" dark>
+                        <v-col
+                            v-for="card in cards"
+                            :key="card.id"
+                            sm="6"
+                            md="4"
+                            lg="4"
+                        >
+                            <v-card class="infoCard" color="#456" dark>
                                 <v-card-text> {{ card.text }}</v-card-text>
                             </v-card>
                         </v-col>
@@ -54,11 +62,13 @@
 
             <!-- Blog Post Previews -->
             <v-row align-content="center" justify="center">
-                <v-col cols="12" sm="9" md="11" lg="9">
-                    <h4 class="heading">RECENT STORIES...</h4>
-                    <v-divider class="divider" color="#adb5bd"></v-divider>
-                    <BlogPreview />
-                </v-col>
+                <v-container class="blogPostContainer">
+                    <v-col>
+                        <h4 class="heading">RECENT STORIES...</h4>
+                        <v-divider class="divider" color="#adb5bd"></v-divider>
+                        <BlogPreview />
+                    </v-col>
+                </v-container>
             </v-row>
         </v-main>
 
@@ -180,10 +190,6 @@
         background-color: #dd1c1a;
     }
 
-    .featuredContainer {
-        margin-top: 100px;
-    }
-
     .footer {
         margin-top: 20px;
     }
@@ -255,10 +261,13 @@
             text-align: center;
             padding-bottom: 80px;
             margin-top: -20%;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .text1 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-family: Georgia, "Times New Roman", Times, serif;
             font-weight: bold;
         }
@@ -266,8 +275,15 @@
         .text2 {
             font-size: 0.8rem;
         }
+        .featuredContainer {
+            width: 350px;
+        }
         .siteHighlights {
-            width: 100%;
+            width: 100vw;
+        }
+        .infoCard {
+            font-size: 0.8rem;
+            width: 130px;
         }
     }
 
@@ -284,7 +300,13 @@
             margin-top: 0;
         }
         .siteHighlights {
-            width: 100%;
+            width: 450px;
+        }
+        .infoCard {
+            width: 120px;
+        }
+        .blogPostContainer {
+            width: 450px;
         }
     }
 
@@ -294,8 +316,21 @@
         .pageContainer {
             padding-top: 300px;
         }
+        .text1 {
+            font-size: 2rem;
+        }
+        .featuredContainer {
+            width: 500px;
+        }
         .siteHighlights {
-            width: 75%;
+            width: 550px;
+        }
+        .infoCard {
+            font-size: 0.9rem;
+            width: 300px;
+        }
+        .blogPostContainer {
+            width: 550px;
         }
     }
 
@@ -306,6 +341,46 @@
         }
         .text2 {
             font-size: 1.2rem;
+        }
+        .siteHighlights {
+            width: 500px;
+        }
+        .infoCard {
+            font-size: 1rem;
+            width: 250px;
+        }
+        .blogPostContainer {
+            width: 500px;
+        }
+    }
+
+    @media (min-width: 960px) {
+        /* Desktop / Large size */
+        .featuredContainer {
+            width: 960px;
+        }
+        .siteHighlights {
+            width: 900px;
+        }
+        .blogPostContainer {
+            width: 900px;
+        }
+    }
+
+    @media (min-width: 1264px) {
+        /* Desktop / Large size */
+        .featuredContainer {
+            width: 1200px;
+        }
+        .siteHighlights {
+            width: 1000px;
+        }
+        .infoCard {
+            font-size: 1rem;
+            width: 300px;
+        }
+        .blogPostContainer {
+            width: 1200px;
         }
     }
 </style>

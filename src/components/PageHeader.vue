@@ -204,7 +204,7 @@
     @media (min-width: 1px) {
         /* Mobile Sizing */
         .logo {
-            width: 260px;
+            width: 150px;
             margin-top: 15px;
             cursor: pointer;
         }

@@ -1,13 +1,13 @@
 <template>
     <div>
-        <v-container class="blogPostContainer">
+        <v-container>
             <v-row>
                 <v-col
                     v-for="post in posts"
                     :key="post.id"
                     cols="12"
                     sm="12"
-                    md="6"
+                    md="4"
                     lg="4"
                 >
                     <v-card
@@ -17,14 +17,10 @@
                         color="#2c3440"
                         dark
                     >
-                        <v-img
-                            :src="post.src"
-                            aspect-ratio="2"
-                            class="postImg"
-                        ></v-img>
+                        <v-img :src="post.src" class="postImg"></v-img>
                         <div class="contentContainer">
                             <h3>{{ post.title }}</h3>
-                            <p class="subHeading">{{ post.content }}</p>
+                            <p class="postContent">{{ post.content }}</p>
                         </div>
                     </v-card>
                 </v-col>
@@ -97,12 +93,13 @@
     @media only screen and (min-width: 1px) {
         /* Breakpoint for Mobile */
         h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 5px;
             color: whitesmoke;
         }
-        .subHeading {
+        .postContent {
             color: #99aabb;
+            font-size: 0.9rem;
         }
         .contentContainer {
             flex: 1;
@@ -115,13 +112,13 @@
         h3 {
             font-size: 1.3rem;
         }
+        .postContent {
+            font-size: 1rem;
+        }
     }
 
     @media only screen and (min-width: 800px) {
         /* Breakpoint for Desktop */
-        h3 {
-            font-size: 1.5rem;
-        }
     }
 
     @media only screen and (min-width: 1260px) {
