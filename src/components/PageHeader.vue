@@ -229,14 +229,12 @@
         }
     }
 
-    /* Pop Up for Sign In */
+    /* Pop Up for Sign In/Sign Up */
     .modal {
         position: fixed;
-        top: 20%;
-        right: 0;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        top: 50%; /* Center the modal vertically */
+        left: 50%; /* Center the modal horizontally */
+        transform: translate(-50%, -50%); /* Center the modal perfectly */
         margin: auto;
         text-align: center;
         border-radius: 1rem;

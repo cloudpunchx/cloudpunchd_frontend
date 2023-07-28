@@ -280,10 +280,13 @@
         }
         .siteHighlights {
             width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .infoCard {
             font-size: 0.8rem;
-            width: 130px;
+            width: 155px;
         }
     }
 
@@ -301,6 +304,9 @@
         }
         .siteHighlights {
             width: 450px;
+            position: relative;
+            left: 0%;
+            transform: translateX(-0%);
         }
         .infoCard {
             width: 120px;

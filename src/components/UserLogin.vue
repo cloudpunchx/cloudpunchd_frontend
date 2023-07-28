@@ -99,11 +99,6 @@
 </script>
 
 <style scoped>
-    h3 {
-        color: #99aabb;
-        font-size: 25pt;
-        margin-bottom: 20px;
-    }
     .passwordField:hover {
         cursor: pointer;
     }
@@ -122,7 +117,12 @@
             background-color: #456;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             border-radius: 25px;
-            padding: 5px;
+            padding: 10px;
+        }
+        h3 {
+            color: #99aabb;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
         }
     }
 
@@ -130,10 +130,14 @@
         /* Tablet / Med size */
         .loginForm {
             padding: 40px;
+            width: 350px;
         }
     }
 
     @media (min-width: 800px) {
         /* Desktop / Large size */
+        .loginForm {
+            width: 450px;
+        }
     }
 </style>
