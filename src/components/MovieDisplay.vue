@@ -1,85 +1,95 @@
 <template>
-    <div class="boxContainer">
-        <v-row dense>
-            <v-col
-            v-for="movie in movies"
-            :key="movie.id"
-            cols="2"
-            sm="2"
-            md="2"
-            lg="2"
-            >   
-                <router-link
-                :to="'/movie/' + movie.MovieName + '/' + movie.ID"
-                >
-                    <v-img
-                    :src="movie.Poster"
-                    :width="getPosterWidth"
-                    class="poster"
-                    >
-                    </v-img>
-                </router-link>
-            </v-col>
+    <div>
+        <v-row>
+            <v-container class="boxContainer">
+                <v-row dense>
+                    <v-col v-for="movie in movies" :key="movie.id">
+                        <router-link
+                            :to="'/movie/' + movie.MovieName + '/' + movie.ID"
+                            class="movieLink"
+                        >
+                            <v-img :src="movie.Poster" class="poster"> </v-img>
+                        </router-link>
+                    </v-col>
+                </v-row>
+            </v-container>
         </v-row>
     </div>
 </template>
 
 <script>
-import axios from "axios";
+    import axios from "axios";
 
     export default {
         name: "MovieDisplay",
         data() {
             return {
-                apiUrl : process.env.VUE_APP_API_URL,
+                apiUrl: process.env.VUE_APP_API_URL,
                 slicedResults: [],
                 movies: [],
-            }
-        },
-        computed: {
-            getPosterWidth() {
-                if (this.$vuetify.breakpoint.smAndDown) {
-                    return 150; // Width for small screens (sm)
-                } else if (this.$vuetify.breakpoint.mdAndDown) {
-                    return 200; // Width for medium-sized screens (md)
-                } else {
-                    return 180; // Width for large screens (lg)
-                }
-            }
+            };
         },
         methods: {
-            get_horror_movies(){
-                axios.request({
-                    url: this.apiUrl+"/movie-search",
-                    method: "GET",
-                    params: {
-                        query: 'Horror'
-                    },
-                }).then((response)=>{
-                    this.slicedResults = response.data.slice(0,6)
-                    this.movies = this.slicedResults;
-                }).catch((error)=>{
-                    this.errorMsg = error;
-                })
+            get_horror_movies() {
+                axios
+                    .request({
+                        url: this.apiUrl + "/movie-search",
+                        method: "GET",
+                        params: {
+                            query: "Horror",
+                        },
+                    })
+                    .then((response) => {
+                        this.slicedResults = response.data.slice(0, 6);
+                        this.movies = this.slicedResults;
+                    })
+                    .catch((error) => {
+                        this.errorMsg = error;
+                    });
             },
         },
-        mounted () {
+        mounted() {
             this.get_horror_movies();
         },
-    }
+    };
 </script>
 
 <style scoped>
-.poster{
-    height: 100%;
-    border: 1px rgb(97, 97, 97) solid;
-}
-.poster:hover{
-    transform: scale(1.05);
-}
-.boxContainer {
-    display: flex;
-    justify-content: center;
-}
+    @media (min-width: 1px) {
+        /* Mobile / Small size */
+        .boxContainer {
+            justify-content: center;
+            margin-bottom: 25px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .poster {
+            min-width: 150px;
+            max-width: 150px;
+            min-height: 225px;
+            max-height: 225px;
+            border: 1px rgb(97, 97, 97) solid;
+        }
+    }
 
+    @media (min-width: 800px) {
+        /* Tablet / Med size */
+        .poster {
+            min-width: 139px;
+            max-width: 139px;
+            min-height: 250px;
+            max-height: 250px;
+        }
+    }
+
+    @media (min-width: 1264px) {
+        /* Desktop / Large size */
+        .poster {
+            min-width: 180px;
+            max-width: 180px;
+            min-height: 280px;
+            max-height: 280px;
+        }
+    }
 </style>

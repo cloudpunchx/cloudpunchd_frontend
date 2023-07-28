@@ -197,11 +197,9 @@
     /* Pop Out Modal */
     .modal {
         position: fixed;
-        top: 20%;
-        right: 0;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        top: 50%; /* Center the modal vertically */
+        left: 50%; /* Center the modal horizontally */
+        transform: translate(-50%, -50%); /* Center the modal perfectly */
         margin: auto;
         text-align: center;
         border-radius: 1rem;
@@ -256,7 +254,6 @@
         }
         .section1 {
             flex: 1;
-            color: whitesmoke;
             background-color: #11161d;
             text-align: center;
             padding-bottom: 80px;
@@ -267,6 +264,7 @@
         }
 
         .text1 {
+            color: #eaebec;
             font-size: 1.5rem;
             font-family: Georgia, "Times New Roman", Times, serif;
             font-weight: bold;
