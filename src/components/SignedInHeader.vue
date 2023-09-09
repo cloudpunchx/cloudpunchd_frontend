@@ -69,6 +69,11 @@
                             >Watchlist</router-link
                         ></v-list-item
                     >
+                    <v-list-item
+                        ><router-link to="/settings" tag="div" class="listItem"
+                            >Settings</router-link
+                        ></v-list-item
+                    >
                     <v-list-item>
                         <v-list-item-title class="listItem">
                             <UserLogout />
@@ -121,7 +126,7 @@
                         <router-link
                             :to="'/user/' + username"
                             tag="div"
-                            class="listItem"
+                            class="mobileListItem"
                             >Profile</router-link
                         >
                     </v-list-item>
@@ -130,13 +135,22 @@
                         <router-link
                             :to="username + '/watchlist'"
                             tag="div"
-                            class="listItem"
+                            class="mobileListItem"
                             >Watchlist</router-link
                         >
                     </v-list-item>
 
                     <v-list-item>
-                        <UserLogout class="listItem" />
+                        <router-link
+                            to="/settings"
+                            tag="div"
+                            class="mobileListItem"
+                            >Settings</router-link
+                        >
+                    </v-list-item>
+
+                    <v-list-item>
+                        <UserLogout class="mobileListItem" />
                     </v-list-item>
                 </v-list-item-group>
             </v-list>
@@ -218,12 +232,6 @@
     .nav-bar {
         border: none;
         padding: 10px;
-        background: linear-gradient(to bottom, #11161d, transparent);
-    }
-    .logo {
-        width: 250px;
-        margin-top: 5px;
-        cursor: pointer;
     }
     .avatar {
         margin: 10px;
@@ -232,10 +240,41 @@
         margin-right: 5px;
     }
     .listItem {
-        background-color: #89a;
+        color: rgb(202, 221, 240);
+        background-color: #2c3440;
     }
     .listItem:hover {
         color: whitesmoke;
         cursor: pointer;
+    }
+    .mobileListItem {
+        color: rgb(202, 221, 240);
+    }
+    .mobileListItem:hover {
+        color: whitesmoke;
+    }
+
+    @media (min-width: 1px) {
+        /* Mobile Sizing */
+        .logo {
+            width: 150px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+    }
+
+    @media (min-width: 480px) {
+        /* Tablet / Med Size */
+        .logo {
+            width: 200px;
+        }
+    }
+
+    @media (min-width: 960px) {
+        /* Desktop / Large */
+        .logo {
+            width: 250px;
+            margin-top: 10px;
+        }
     }
 </style>

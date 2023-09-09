@@ -121,13 +121,13 @@
     }
     .username {
         color: whitesmoke;
-        border-bottom: 1px solid #99aabb;
+        border-bottom: 1.8px solid #7a90a7;
         /* Transition for smooth hover effect */
         transition: border-color 0.2s;
     }
     .username:hover {
         cursor: pointer;
-        border-color: white;
+        border-color: whitesmoke;
     }
     .divider {
         width: 100%;
@@ -145,7 +145,7 @@
             flex: 1;
         }
         .pageTitle {
-            color: #dbebfa;
+            color: #99aabb;
             padding: 5px;
             font-size: 1.5rem;
             font-weight: lighter;

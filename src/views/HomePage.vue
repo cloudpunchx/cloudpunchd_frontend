@@ -183,11 +183,11 @@
     }
     .v-btn {
         font-size: 1rem;
-        border: 1px solid #dd1c1a;
+        border: 1px solid #a40e0d;
         background-color: #dd1d1a61;
     }
     .v-btn:hover {
-        background-color: #dd1c1a;
+        background-color: #a40e0d;
     }
 
     .footer {
@@ -271,6 +271,7 @@
         }
 
         .text2 {
+            color: #eaebec;
             font-size: 0.8rem;
         }
         .featuredContainer {
@@ -373,6 +374,9 @@
 
     @media (min-width: 1264px) {
         /* Desktop / Large size */
+        .pageContainer {
+            padding-top: 400px;
+        }
         .featuredContainer {
             width: 1200px;
         }
@@ -385,6 +389,13 @@
         }
         .blogPostContainer {
             width: 1200px;
+        }
+    }
+
+    @media (min-width: 2000px) {
+        /* Larger size */
+        .pageContainer {
+            padding-top: 550px;
         }
     }
 </style>

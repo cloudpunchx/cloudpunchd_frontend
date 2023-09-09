@@ -342,4 +342,12 @@
             transform: translateX(-0%);
         }
     }
+
+    @media (min-width: 2000px) {
+        /* Larger size */
+
+        .infoContainer {
+            width: 25vw;
+        }
+    }
 </style>

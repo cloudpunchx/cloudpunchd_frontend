@@ -190,43 +190,18 @@
         margin-right: 20px;
     }
 
-    .listItem:hover,
-    .listItem:active {
-        color: white;
+    .listItem {
+        color: rgb(202, 221, 240);
+    }
+    .listItem:hover {
+        color: whitesmoke;
+        cursor: pointer;
     }
 
     /* CHECKBOX */
 
     input[type="checkbox"] {
         display: none;
-    }
-
-    @media (min-width: 1px) {
-        /* Mobile Sizing */
-        .logo {
-            width: 150px;
-            margin-top: 15px;
-            cursor: pointer;
-        }
-    }
-
-    @media (min-width: 480px) {
-        /* Tablet / Med Size */
-        .logo {
-            width: 200px;
-        }
-    }
-
-    @media (min-width: 960px) {
-        /* Desktop / Large */
-        .logo {
-            width: 250px;
-            margin-top: 10px;
-        }
-
-        .textField {
-            width: 60px;
-        }
     }
 
     /* Pop Up for Sign In/Sign Up */
@@ -277,5 +252,33 @@
     .pop-leave-to {
         opacity: 0;
         transform: scale(0.3) translateY(-50%);
+    }
+
+    @media (min-width: 1px) {
+        /* Mobile Sizing */
+        .logo {
+            width: 150px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+    }
+
+    @media (min-width: 480px) {
+        /* Tablet / Med Size */
+        .logo {
+            width: 200px;
+        }
+    }
+
+    @media (min-width: 960px) {
+        /* Desktop / Large */
+        .logo {
+            width: 250px;
+            margin-top: 10px;
+        }
+
+        .textField {
+            width: 60px;
+        }
     }
 </style>
